@@ -3,24 +3,36 @@ import Link from "next/link";
 export default function AppNavbar() {
   return (
     <nav>
-      <ul className='flex gap-3'>
+      <ul className='hidden md:flex flex-wrap gap-1'>
         <li>
-          <Link href={`/`}>Beranda</Link>
+          <Link href={`/`}>
+            <a className='nav-link'>Beranda</a>
+          </Link>
         </li>
         <li>
-          <Link href={`/profile`}>Profil</Link>
+          <Link href={`/profile`}>
+            <a className='nav-link'>Profile</a>
+          </Link>
         </li>
         <li>
-          <Link href={`/about`}>Kompetensi Keahlian</Link>
+          <Link href={`#`}>
+            <a className='nav-link'>Kompetensi Keahlian</a>
+          </Link>
         </li>
         <li>
-          <Link href={`/about`}>Akademik</Link>
+          <Link href={`#`}>
+            <a className='nav-link'>Akademik</a>
+          </Link>
         </li>
         <li>
-          <Link href={`/about`}>Informasi</Link>
+          <Link href={`#`}>
+            <a className='nav-link'>Informasi</a>
+          </Link>
         </li>
         <li>
-          <Link href={`/about`}>PPDB Online</Link>
+          <Link href={`#`}>
+            <a className='nav-link'>PPDB Online</a>
+          </Link>
         </li>
       </ul>
     </nav>

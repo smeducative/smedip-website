@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-link {
+  @apply px-3 py-1 text-gray-800 border-b border-transparent font-medium text-sm;
+}
+
+.nav-link:hover {
+  @apply text-green-800 border-b-2 border-green-400 transition ease-in delay-75;
+}
