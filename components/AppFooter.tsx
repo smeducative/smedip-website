@@ -10,7 +10,7 @@ export default function AppFooter() {
       }}>
       <div className='pt-12 pb-10 '>
         <div className='mx-auto max-w-7xl'>
-          <div className='grid grid-cols-12 gap-6'>
+          <div className='px-5 xl:px-0 grid grid-cols-12 gap-6'>
             <div className='col-span-12'>
               <img
                 src='/logo.png'
@@ -19,7 +19,7 @@ export default function AppFooter() {
               />
             </div>
             <div className='col-span-12 xl:col-span-4'>
-              <h1 className='mb-5 text-xl xl:text-2xl font-bold'>
+              <h1 className='mb-3 text-xl xl:text-2xl font-bold'>
                 SMK Diponegoro Karanganyar
               </h1>
               <p className='text-slate-400'>
@@ -36,7 +36,7 @@ export default function AppFooter() {
                 Kompetensi Keahlian
               </h1>
 
-              <ul className='mt-5 text-slate-400'>
+              <ul className='mt-3 text-slate-400'>
                 <li>
                   <Link href={`#`}>
                     <a className='hover:text-slate-100 hover:underline'>
@@ -69,7 +69,7 @@ export default function AppFooter() {
             </div>
 
             <div className='col-span-12 xl:col-span-4'>
-              <h1 className='text-xl xl:text-2xl font-bold mb-5'>
+              <h1 className='text-xl xl:text-2xl font-bold mb-3'>
                 Lokasi Sekolah
               </h1>
               <address className='text-slate-400'>
