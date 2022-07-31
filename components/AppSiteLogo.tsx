@@ -12,8 +12,8 @@ export default function AppSiteLogo() {
         className='h-8 w-8'
       />
 
-      <Link href={"/"}>
-        <a className='flex flex-col'>
+      <Link href={"/"} className=''>
+        <a className='hidden md:flex flex-col'>
           <span className='font-bold text-xl border-b border-gray-600'>
             SMK Diponegoro Karanganyar
           </span>

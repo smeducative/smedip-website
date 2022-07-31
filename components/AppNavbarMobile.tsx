@@ -1,9 +1,17 @@
 import Link from "next/link";
+import { useState } from "react";
 
-export default function AppNavbar() {
+type Props = {
+  open: boolean;
+};
+
+export default function AppNavbarMobile({ open }: Props) {
   return (
     <nav>
-      <ul className='hidden lg:flex flex-wrap gap-2'>
+      <ul
+        className={`${
+          open ? "flex py-5 px-3" : "hidden"
+        } flex-col gap-3 transition duration-100`}>
         <li>
           <Link href={`/`}>
             <a className='nav-link'>Beranda</a>
