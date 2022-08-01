@@ -15,7 +15,9 @@ const PublikasiList = () => {
     <div className='mt-8 px-3 xl:px-0'>
       <div className='grid grid-cols-12 gap-3'>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => (
-          <Link href={"#"} key={i}>
+          <Link
+            href={`/publikasi/${encodeURIComponent(publikasi.title)}`}
+            key={i}>
             <a className='py-2 px-3 col-span-12 flex bg-white border border-slate-200 hover:border-green-600 hover:shadow hover:shadow-green-600'>
               <div className='mr-3 xl:mr-5'>
                 <img

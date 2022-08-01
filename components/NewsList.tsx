@@ -13,7 +13,7 @@ export default function NewsList() {
   return (
     <div className='grid grid-cols-12 gap-3 md:gap-y-5'>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => (
-        <Link href={`#`} key={i}>
+        <Link href={`/berita/${encodeURIComponent(blogPost.title)}`} key={i}>
           <a className='p-3 col-span-12 lg:col-span-6 xl:col-span-4 bg-white border border-slate-200 hover:border-green-700 hover:shadow hover:shadow-green-500 transition duration-150'>
             <img
               src={blogPost.image}
