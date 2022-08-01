@@ -9,7 +9,7 @@ export default function NewsSection() {
         Informasi Terbaru
       </h1>
 
-      <div className='mt-12'>
+      <div className='mt-5 xl:mt-8'>
         <NewsList />
       </div>
     </div>

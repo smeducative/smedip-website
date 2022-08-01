@@ -12,7 +12,7 @@ const PublikasiList = () => {
   };
 
   return (
-    <div className='mt-8 px-5 xl:px-0'>
+    <div className='mt-8 px-3 xl:px-0'>
       <div className='grid grid-cols-12 gap-3'>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => (
           <Link href={"#"} key={i}>

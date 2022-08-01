@@ -4,13 +4,7 @@ import Link from "next/link";
 export default function AppSiteLogo() {
   return (
     <div className='flex items-center gap-6'>
-      <Image
-        src='/logo.png'
-        alt='smedip logo'
-        width={50}
-        height={50}
-        className='h-8 w-8'
-      />
+      <Image src='/logo.png' alt='smedip logo' width={35} height={35} />
 
       <Link href={"/"} className=''>
         <a className='hidden md:flex flex-col'>

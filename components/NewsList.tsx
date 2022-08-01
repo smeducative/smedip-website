@@ -11,7 +11,7 @@ export default function NewsList() {
   };
 
   return (
-    <div className='mt-3 xl:mt-8 grid grid-cols-12 gap-3 md:gap-y-5'>
+    <div className='grid grid-cols-12 gap-3 md:gap-y-5'>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => (
         <Link href={`#`} key={i}>
           <a className='p-3 col-span-12 lg:col-span-6 xl:col-span-4 bg-white border border-slate-200 hover:border-green-700 hover:shadow hover:shadow-green-500 transition duration-150'>
