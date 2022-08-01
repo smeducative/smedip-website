@@ -11,7 +11,7 @@ export default function NewsSection() {
   };
 
   return (
-    <div className='px-3 xl:px-0 mx-auto max-w-6xl mt-8 xl:mt-12'>
+    <div className='mt-8 xl:mt-20 px-3 xl:px-0 mx-auto max-w-6xl'>
       <h1 className='text-2xl xl:text-4xl font-bold text-center'>
         Informasi Terbaru
       </h1>
@@ -20,11 +20,11 @@ export default function NewsSection() {
         <div className='mt-8 grid grid-cols-12 gap-3 gap-y-7 md:gap-y-5'>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => (
             <Link href={`#`} key={i}>
-              <a className='py-3 px-5 col-span-12 lg:col-span-6 xl:col-span-4 bg-white'>
+              <a className='py-3 px-5 col-span-12 lg:col-span-6 xl:col-span-4 bg-white border border-transparent hover:border-green-700 hover:shadow hover:shadow-green-500 transition duration-150'>
                 <img
                   src={blogPost.image}
                   alt={blogPost.title}
-                  className='w-full h-44 lg:h-48 object-cover rounded-md hover:scale-95 duration-100 ease-out'
+                  className='w-full h-44 lg:h-48 object-cover hover:scale-95 duration-100 ease-out'
                 />
                 <div className='mt-3 flex flex-col overflow-x-hidden break-words'>
                   <div className='mb-2'>
@@ -33,7 +33,9 @@ export default function NewsSection() {
                       {blogPost.author} . {blogPost.date}
                     </span>
                   </div>
-                  <p className='text-slate-600 font-light'>{blogPost.body}</p>
+                  <p className='text-slate-600 text-sm font-base'>
+                    {blogPost.body}
+                  </p>
                 </div>
               </a>
             </Link>
