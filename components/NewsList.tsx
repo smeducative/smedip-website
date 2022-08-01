@@ -11,19 +11,21 @@ export default function NewsList() {
   };
 
   return (
-    <div className='mt-8 grid grid-cols-12 gap-3 gap-y-7 md:gap-y-5'>
+    <div className='mt-3 xl:mt-8 grid grid-cols-12 gap-3 md:gap-y-5'>
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => (
         <Link href={`#`} key={i}>
-          <a className='py-3 px-5 col-span-12 lg:col-span-6 xl:col-span-4 bg-white border border-transparent hover:border-green-700 hover:shadow hover:shadow-green-500 transition duration-150'>
+          <a className='p-3 col-span-12 lg:col-span-6 xl:col-span-4 bg-white border border-slate-200 hover:border-green-700 hover:shadow hover:shadow-green-500 transition duration-150'>
             <img
               src={blogPost.image}
               alt={blogPost.title}
-              className='w-full h-44 lg:h-48 object-cover hover:scale-95 duration-100 ease-out'
+              className='w-full h-44 lg:h-48 object-cover'
             />
-            <div className='mt-3 flex flex-col overflow-x-hidden break-words'>
+            <div className='mt-1 flex flex-col overflow-x-hidden break-words'>
               <div className='mb-2'>
-                <h2 className='text-lg font-bold'>{blogPost.title}</h2>
-                <span className='font-normal text-sm text-gray-600'>
+                <h2 className='text-base xl:text-lg font-bold'>
+                  {blogPost.title}
+                </h2>
+                <span className='font-normal text-sm text-gray-700'>
                   {blogPost.author} . {blogPost.date}
                 </span>
               </div>
