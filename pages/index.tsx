@@ -4,6 +4,7 @@ import AppFooter from "../components/AppFooter";
 import AppLayout from "../components/layouts/AppLayout";
 import HeroSection from "../components/sections/HeroSection";
 import NewsSection from "../components/sections/NewsSection";
+import PublikasiSection from "../components/sections/PublikasiSection";
 
 const Home: NextPage = () => {
   return (
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       </Head>
       <HeroSection />
       <NewsSection />
+      <PublikasiSection />
       <AppFooter />
     </AppLayout>
   );
