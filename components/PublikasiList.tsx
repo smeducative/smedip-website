@@ -16,20 +16,20 @@ const PublikasiList = () => {
       <div className='grid grid-cols-12 gap-3'>
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((_, i) => (
           <Link href={"#"} key={i}>
-            <a className='py-2 px-4 col-span-12 flex bg-white gap-5 border border-transparent hover:border-green-600 hover:shadow hover:shadow-green-600'>
-              <div>
+            <a className='py-2 px-4 col-span-12 flex bg-white border border-slate-200 hover:border-green-600 hover:shadow hover:shadow-green-600'>
+              <div className='mr-3'>
                 <img
                   src={publikasi.image}
                   alt={publikasi.title}
-                  className='w-80 h-44 object-cover hover:scale-105 transition duration-200'
+                  className='w-80 h-20 xl:h-48 object-cover hover:scale-105 transition duration-200'
                 />
               </div>
               <div>
                 <div className='text-lg font-bold'>{publikasi.title}</div>
-                <div className='text-sm text-slate-600'>
+                <div className='text-xs text-slate-400'>
                   {publikasi.author} {publikasi.date}
                 </div>
-                <div className='text-sm font-normal text-slate-600'>
+                <div className='text-sm font-normal text-slate-500 mt-2'>
                   {publikasi.description}
                 </div>
               </div>

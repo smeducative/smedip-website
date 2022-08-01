@@ -10,8 +10,6 @@ const Home: NextPage = () => {
   return (
     <AppLayout>
       <Head>
-        {/* favicon */}
-        <link rel='shortcut icon' href='/logo.png' />
         <title>SMK Diponegoro Karanganyar Kab. Pekalongan</title>
       </Head>
       <HeroSection />
