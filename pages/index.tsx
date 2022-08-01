@@ -17,7 +17,6 @@ const Home: NextPage = () => {
       <HeroSection />
       <NewsSection />
       <PublikasiSection />
-      <AppFooter />
     </AppLayout>
   );
 };
