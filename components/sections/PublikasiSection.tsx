@@ -7,12 +7,19 @@ export default function PublikasiSection() {
   return (
     <div className='mt-8 xl:mt-20'>
       <div className='mx-auto max-w-6xl'>
-        <div className='text-center'>
-          <h1 className='text-xl xl:text-3xl font-bold'>Publikasi </h1>
+        <div className='grid grid-cols-12 gap-3'>
+          <div className='col-span-12 xl:col-span-8'>
+            <div className='px-5 xl:px-0'>
+              <div className='border-b-2 border-yellow-600'>
+                <h1 className='text-xl xl:text-2xl font-bold text-gray-800'>
+                  Publikasi
+                </h1>
+              </div>
+            </div>
+            {/*  */}
+            <PublikasiList />
+          </div>
         </div>
-
-        {/*  */}
-        <PublikasiList />
       </div>
     </div>
   );
