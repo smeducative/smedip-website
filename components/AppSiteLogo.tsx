@@ -5,13 +5,15 @@ export default function AppSiteLogo() {
   return (
     <div className='flex items-center gap-6'>
       <Link href='/'>
-        <Image
-          src='/logo.png'
-          alt='smedip logo'
-          width={35}
-          height={35}
-          className='cursor-pointer'
-        />
+        <a>
+          <Image
+            src='/logo.png'
+            alt='smedip logo'
+            width={35}
+            height={35}
+            className='cursor-pointer'
+          />
+        </a>
       </Link>
 
       <Link href={"/"}>
