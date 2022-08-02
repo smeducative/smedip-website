@@ -3,7 +3,8 @@ import Link from "next/link";
 
 const PublikasiList = () => {
   const publikasi = {
-    title: "Contoh publikasi",
+    title:
+      "Contoh publikasi dengan judul yang agak sedikit panjang ya bestie, dan yang paling panjang banget ya itu ya gini wkwk",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     image: "http://placekitten.com/200/200",
@@ -18,15 +19,15 @@ const PublikasiList = () => {
           <Link
             href={`/publikasi/${encodeURIComponent(publikasi.title)}`}
             key={i}>
-            <a className='py-2 px-3 col-span-12 flex bg-white border border-slate-200 hover:border-green-600 hover:shadow hover:shadow-green-600'>
+            <a className='py-2 px-3 col-span-12 flex bg-white border border-slate-200 hover:border-green-600/50 hover:shadow hover:shadow-green-600/50'>
               <div className='mr-3 xl:mr-5'>
                 <img
                   src={publikasi.image}
                   alt={publikasi.title}
-                  className='w-96 h-20 xl:h-44 object-cover'
+                  className='w-[370px] h-20 xl:h-36 object-cover'
                 />
               </div>
-              <div>
+              <div className='break-words'>
                 <div className='text-base xl:text-lg font-bold'>
                   {publikasi.title}
                 </div>

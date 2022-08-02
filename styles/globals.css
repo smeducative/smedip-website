@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: "Roboto", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .nav-link {
   @apply px-3 py-1 text-gray-800 border-b border-transparent font-medium text-sm;
 }
