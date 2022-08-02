@@ -1,13 +1,28 @@
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import AppLayout from "../../components/layouts/AppLayout";
+import Jumbotron from "../../components/sections/Jumbotron";
 
-export default function ReadPublication({ slug }: { slug: string }) {
+type Props = {
+  slug: string;
+  title: string;
+  body: HTMLElement;
+};
+
+export default function ReadPublication({ slug, title, body }: Props) {
   return (
     <AppLayout>
-      <div className='pt-32'>
-        <h1>Read Publications</h1>
+      <Head>
+        <title>{title}</title>
+      </Head>
 
-        <div>{slug}</div>
+      <Jumbotron title={title} />
+
+      <div className='pt-32'>
+        <div className='mx-auto max-w-6xl'>
+          <h1>Read Publications</h1>
+          <div dangerouslySetInnerHTML={body}></div>
+        </div>
       </div>
     </AppLayout>
   );
@@ -23,11 +38,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   console.log(context);
 
-  const slug = context.params.slug as string;
+  const slug = context.params.slug;
+  const title =
+    "contoh judul publikasi dengan judul yang agak sedikit panjang dan yang panjang banget";
 
   return {
     props: {
       slug,
+      title,
     },
   };
 };
