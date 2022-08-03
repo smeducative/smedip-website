@@ -1,28 +1,35 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
+import {
+  getPublikasi,
+  Publikasi,
+  showNews,
+  showPublikasi,
+} from "../../lib/fetch";
 
-type Props = {
-  title: string;
-  body: string;
-  author: string;
-  date: string;
-};
-
-export default function ReadPublication({ title, body, author, date }: Props) {
+export default function ReadPublication({ data }: { data: Publikasi }) {
   return (
     <AppLayout>
       <Head>
-        <title>{title}</title>
+        <title>{data.title}</title>
       </Head>
       <Jumbotron
-        title={title}
+        title={data.title}
         sub={
           <div className='text-sm xl:text-base text-slate-400 font-light space-x-3'>
-            <span>{author}</span>
-            <span>-</span>
-            <span>{date}</span>
+            <span>{data.author.name}</span>
+            <span> - </span>
+            <span>
+              {new Date(data.created_at).toLocaleString("id-ID", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </span>
           </div>
         }
       />
@@ -37,7 +44,7 @@ export default function ReadPublication({ title, body, author, date }: Props) {
                   text-sm lg:text-base
                   prose max-w-none prose-green text-black 
                   leading-normal`}
-                dangerouslySetInnerHTML={{ __html: body }}
+                dangerouslySetInnerHTML={{ __html: data.content }}
               />
             </div>
           </div>
@@ -48,28 +55,28 @@ export default function ReadPublication({ title, body, author, date }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const { data: publications } = await getPublikasi();
+
   return {
-    paths: [{ params: { slug: "first-post" } }],
+    paths: publications.map((pub) => ({
+      params: {
+        slug: `/publikasi/${pub.slug}`,
+      },
+    })),
     fallback: "blocking",
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context);
-
-  const title =
-    "Contoh judul publikasi yang akan sangat sedikit panjang dan lebar di kali tinggi dan lebih dari tinggi sekali";
-  const body =
-    "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu <a href='/'>inilah link</a> fugiat <b>nulla pariatur</b>. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  const author = "Rio Aprianto";
-  const date = "22-08-1999 12:22";
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
+  const { slug } = params;
+  const { data } = await showPublikasi(slug);
 
   return {
     props: {
-      title,
-      body,
-      author,
-      date,
+      data,
     },
+    revalidate: 1,
   };
 };

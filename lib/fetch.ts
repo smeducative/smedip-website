@@ -31,6 +31,16 @@ export const getNews = async (): Promise<{ data: News[] }> => {
   return api.get("/publikasi/berita").then((res) => res.data);
 };
 
+export const showNews = async (slug: string): Promise<{ data: News }> => {
+  return api.get(`/publikasi/berita/${slug}`).then((res) => res.data);
+};
+
 export const getPublikasi = async (): Promise<{ data: Publikasi[] }> => {
   return api.get("/publikasi").then((res) => res.data);
+};
+
+export const showPublikasi = async (
+  slug: string | null
+): Promise<{ data: Publikasi }> => {
+  return api.get(`/publikasi/${slug}`).then((res) => res.data);
 };
