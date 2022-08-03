@@ -1,9 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { Publikasi } from "../../lib/fetch";
 import PublikasiList from "../PublikasiList";
 
-export default function PublikasiSection() {
+export default function PublikasiSection({
+  publikasi,
+}: {
+  publikasi: Publikasi[];
+}) {
   return (
     <div className='mt-8 xl:mt-20'>
       <div className='mx-auto max-w-6xl'>
@@ -17,7 +22,7 @@ export default function PublikasiSection() {
               </div>
             </div>
             {/*  */}
-            <PublikasiList />
+            <PublikasiList list={publikasi} />
           </div>
         </div>
       </div>

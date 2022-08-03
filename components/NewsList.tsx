@@ -39,12 +39,9 @@ export default function NewsList({ list }: { list: News[] }) {
                       </span>
                     </div>
                   </div>
-                  <div
-                    className='text-slate-600 text-sm font-base'
-                    dangerouslySetInnerHTML={{
-                      __html: content,
-                    }}
-                  />
+                  <div className='text-slate-600 text-sm font-base'>
+                    {news.content.replace(/(<([^>]+)>)/gi, "")}
+                  </div>
                 </div>
               </a>
             </Link>

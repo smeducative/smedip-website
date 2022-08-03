@@ -24,6 +24,13 @@ export type News = {
   author: Author;
 };
 
+// type of publikasi is the same as news
+export type Publikasi = News;
+
 export const getNews = async (): Promise<{ data: News[] }> => {
   return api.get("/publikasi/berita").then((res) => res.data);
+};
+
+export const getPublikasi = async (): Promise<{ data: Publikasi[] }> => {
+  return api.get("/publikasi").then((res) => res.data);
 };

@@ -6,14 +6,15 @@ import AppLayout from "../components/layouts/AppLayout";
 import HeroSection from "../components/sections/HeroSection";
 import NewsSection from "../components/sections/NewsSection";
 import PublikasiSection from "../components/sections/PublikasiSection";
-import { getNews } from "../lib/fetch";
+import { getNews, getPublikasi, Publikasi } from "../lib/fetch";
 import type { News } from "../lib/fetch";
 
 type Props = {
   news: News[];
+  publikasi: Publikasi[];
 };
 
-const Home: NextPage<Props> = ({ news }) => {
+const Home: NextPage<Props> = ({ news, publikasi }) => {
   return (
     <AppLayout>
       <Head>
@@ -22,17 +23,19 @@ const Home: NextPage<Props> = ({ news }) => {
       <HeroSection />
       <KompetensiKeahlian />
       <NewsSection news={news} />
-      <PublikasiSection />
+      <PublikasiSection publikasi={publikasi} />
     </AppLayout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data: news } = await getNews();
+  const { data: publikasi } = await getPublikasi();
 
   return {
     props: {
       news,
+      publikasi,
     },
   };
 };
