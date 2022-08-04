@@ -15,7 +15,7 @@ export default function AppFooter() {
               <img
                 src='/logo.png'
                 alt='smk diponegoro pekalongan'
-                className='w-14 h-14 mb-5'
+                className='w-14 h-14'
               />
             </div>
             <div className='col-span-12 xl:col-span-4'>
@@ -23,7 +23,7 @@ export default function AppFooter() {
                 SMK Diponegoro Karanganyar
               </h1>
               <p className='text-sm text-slate-400'>
-                VISI Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan
+                Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan
                 Kejuruan dengan Layanan Pendidikan yang Modern Sesuai
                 Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya
                 Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern
