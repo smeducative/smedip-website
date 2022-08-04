@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
+import { ParsedUrlQuery } from "querystring";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
 import {
@@ -67,10 +68,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
+interface IProps extends ParsedUrlQuery {
+  slug: string;
+}
+
 export const getStaticProps: GetStaticProps = async ({
   params,
 }: GetStaticPropsContext) => {
-  const { slug } = params;
+  const { slug } = params as IProps;
   const { data } = await showPublikasi(slug);
 
   return {
