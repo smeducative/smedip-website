@@ -44,9 +44,9 @@ export default function NavDropdown({ title, items }: NavDropdownProps) {
             {items &&
               items.map((item) => (
                 <li key={item.title}>
-                  <Link href={`/visi-dan-misi`}>
+                  <Link href={item.href}>
                     <a className='block px-4 py-2 text-left text-gray-900 hover:bg-green-100 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out'>
-                      Visi dan Misi
+                      {item.title}
                     </a>
                   </Link>
                 </li>

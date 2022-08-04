@@ -6,7 +6,7 @@ export default function AppNavbar() {
     <nav>
       <ul className='hidden lg:flex flex-wrap gap-2'>
         <li>
-          <Link href={`/`}>
+          <Link href='/'>
             <a className='nav-link'>Beranda</a>
           </Link>
         </li>
@@ -22,14 +22,13 @@ export default function AppNavbar() {
           </Link>
         </li>
         <li>
-          <Link href={`#`}>
-            <a className='nav-link'>Akademik</a>
-          </Link>
-        </li>
-        <li>
-          <Link href={`#`}>
-            <a className='nav-link'>Informasi</a>
-          </Link>
+          <NavDropdown
+            title='Informasi'
+            items={[
+              { title: "Berita", href: "/berita" },
+              { title: "Publikasi", href: "/publikasi" },
+            ]}
+          />
         </li>
         <li>
           <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>

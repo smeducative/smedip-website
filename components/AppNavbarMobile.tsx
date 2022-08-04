@@ -29,14 +29,13 @@ export default function AppNavbarMobile({ open }: Props) {
           </Link>
         </li>
         <li>
-          <Link href={`#`}>
-            <a className='nav-link'>Akademik</a>
-          </Link>
-        </li>
-        <li>
-          <Link href={`#`}>
-            <a className='nav-link'>Informasi</a>
-          </Link>
+          <NavDropdown
+            title='Informasi'
+            items={[
+              { title: "Berita", href: "/berita" },
+              { title: "Publikasi", href: "/publikasi" },
+            ]}
+          />
         </li>
         <li>
           <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
