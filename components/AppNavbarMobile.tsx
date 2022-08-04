@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import NavDropdown from "./NavDropdown";
 
 type Props = {
   open: boolean;
@@ -18,9 +18,10 @@ export default function AppNavbarMobile({ open }: Props) {
           </Link>
         </li>
         <li>
-          <Link href={`/profile`}>
-            <a className='nav-link'>Profile</a>
-          </Link>
+          <NavDropdown
+            title='Profile'
+            items={[{ title: "Visi dan Misi", href: "/visi-dan-misi" }]}
+          />
         </li>
         <li>
           <Link href={`#`}>
@@ -38,8 +39,10 @@ export default function AppNavbarMobile({ open }: Props) {
           </Link>
         </li>
         <li>
-          <Link href={`#`}>
-            <a className='nav-link'>PPDB Online</a>
+          <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
+            <a className='nav-link' target={"_blank"}>
+              PPDB Online
+            </a>
           </Link>
         </li>
       </ul>

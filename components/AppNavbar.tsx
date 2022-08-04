@@ -1,4 +1,5 @@
 import Link from "next/link";
+import NavDropdown from "./NavDropdown";
 
 export default function AppNavbar() {
   return (
@@ -10,9 +11,10 @@ export default function AppNavbar() {
           </Link>
         </li>
         <li>
-          <Link href={`/profile`}>
-            <a className='nav-link'>Profile</a>
-          </Link>
+          <NavDropdown
+            title='Profile'
+            items={[{ title: "Visi dan Misi", href: "/visi-dan-misi" }]}
+          />
         </li>
         <li>
           <Link href={`#`}>
@@ -30,8 +32,10 @@ export default function AppNavbar() {
           </Link>
         </li>
         <li>
-          <Link href={`#`}>
-            <a className='nav-link'>PPDB Online</a>
+          <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
+            <a target='_blank' className='nav-link'>
+              PPDB Online
+            </a>
           </Link>
         </li>
       </ul>
