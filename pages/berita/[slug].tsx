@@ -1,28 +1,23 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
+import { ParsedUrlQuery } from "querystring";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
+import { getNews, News, showNews } from "../../lib/fetch";
 
-type Props = {
-  title: string;
-  body: string;
-  author: string;
-  date: string;
-};
-
-export default function ReadNews({ title, body, author, date }: Props) {
+export default function ReadNews({ news }: { news: News }) {
   return (
     <AppLayout>
       <Head>
-        <title>{title}</title>
+        <title>{news.title}</title>
       </Head>
       <Jumbotron
-        title={title}
+        title={news.title}
         sub={
           <div className='text-sm xl:text-base text-slate-400 font-light space-x-3'>
-            <span>{author}</span>
-            <span>-</span>
-            <span>{date}</span>
+            <span>{news.author.name}</span>
+            <span> - </span>
+            <span>{news.created_at}</span>
           </div>
         }
       />
@@ -37,9 +32,10 @@ export default function ReadNews({ title, body, author, date }: Props) {
                   text-sm lg:text-base
                   prose max-w-none prose-green text-black 
                   leading-normal`}
-                dangerouslySetInnerHTML={{ __html: body }}
+                dangerouslySetInnerHTML={{ __html: news.content }}
               />
             </div>
+            <div className='col-span-12 xl:col-span-4'></div>
           </div>
         </div>
       </div>
@@ -48,27 +44,34 @@ export default function ReadNews({ title, body, author, date }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const { data: newses } = await getNews();
+
   return {
-    paths: [{ params: { slug: "first-post" } }],
+    paths: newses.map((pub) => ({
+      params: {
+        slug: `/berita/${pub.slug}`,
+      },
+    })),
     fallback: "blocking",
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context);
+interface IProps extends ParsedUrlQuery {
+  slug: string;
+}
 
-  const title = "Contoh judul berita yang akan sangat sedikit panjang";
-  const body =
-    "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu <a href='/'>inilah link</a> fugiat <b>nulla pariatur</b>. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  const author = "Rio Aprianto";
-  const date = "22-08-1999 12:22";
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: GetStaticPropsContext) => {
+  const { slug } = params as IProps;
+  const { data: news } = await showNews(slug);
+
+  console.log(news);
 
   return {
     props: {
-      title,
-      body,
-      author,
-      date,
+      news,
     },
+    revalidate: 1,
   };
 };
