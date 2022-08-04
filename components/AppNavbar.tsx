@@ -17,7 +17,7 @@ export default function AppNavbar() {
           />
         </li>
         <li>
-          <Link href={`#`}>
+          <Link href={`/#kompetensi-keahlian`}>
             <a className='nav-link'>Kompetensi Keahlian</a>
           </Link>
         </li>

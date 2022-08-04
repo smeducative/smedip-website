@@ -24,7 +24,7 @@ export default function AppNavbarMobile({ open }: Props) {
           />
         </li>
         <li>
-          <Link href={`#`}>
+          <Link href={`/#kompetensi-keahlian`}>
             <a className='nav-link'>Kompetensi Keahlian</a>
           </Link>
         </li>

@@ -2,7 +2,7 @@ import KompetensiKeahlianList from "./KompetensiKeahlianList";
 
 export default function KompetensiKeahlian() {
   return (
-    <div className='mt-14 mb-24' id='kompetensi-keahlian'>
+    <div className='py-14' id='kompetensi-keahlian'>
       <div className='mx-auto max-w-6xl'>
         <div className='text-center my-8'>
           <div className='text-xl xl:text-3xl font-bold'>
