@@ -11,7 +11,7 @@ export default function VisiDanMisi() {
       <Jumbotron title='Visi dan Misi SMK DIPONEGORO KARANGANYAR Kab. Pekalongan' />
 
       <div className='mx-auto max-w-6xl flex items-center justify-center'>
-        <div className='mt-8 w-2/3'>
+        <div className='mt-8 w-full px-5 xl:p-0 xl:w-2/3'>
           <h1 className='text-center text-lg font-bold'>VISI</h1> <br />
           <p>
             Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan Kejuruan
