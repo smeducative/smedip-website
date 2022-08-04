@@ -40,7 +40,7 @@ export default function NewsList({ list }: { list: News[] }) {
                     </div>
                   </div>
                   <div className='text-slate-600 text-sm font-base'>
-                    {news.content.replace(/(<([^>]+)>)/gi, "")}
+                    {news.content.replace(/(<([^>]+)>)/gi, "").slice(0, 160)}
                   </div>
                 </div>
               </a>

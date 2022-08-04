@@ -28,11 +28,17 @@ const PublikasiList = ({ list }: { list: Publikasi[] }) => {
                       {article.author.name}
                     </span>
                     <span className='text-xs xl:text-sm font-normal text-slate-400'>
-                      {article.created_at}
+                      {new Date(article.created_at).toLocaleString("id-ID", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
                     </span>
                   </div>
-                  <div className='hidden xl:block text-xs xl:text-sm font-normal text-slate-500 mt-2'>
-                    {article.content.replace(/(<([^>]+)>)/gi, "")}
+                  <div className='hidden lg:block text-xs xl:text-sm font-normal text-slate-500 mt-2'>
+                    {article.content.replace(/(<([^>]+)>)/gi, "").slice(0, 160)}
                   </div>
                 </div>
               </a>
