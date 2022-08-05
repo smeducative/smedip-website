@@ -16,7 +16,7 @@ export default function Berita({ news }: { news: News[] }) {
 
       <div className='mx-auto max-w-6xl'>
         <div className='grid grid-cols-12'>
-          <div className='col-span-12'>
+          <div className='px-3 xl:px-0 col-span-12'>
             <NewsList list={news} />
           </div>
         </div>
