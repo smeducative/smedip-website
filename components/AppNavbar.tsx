@@ -1,37 +1,40 @@
 import Link from "next/link";
+import NavDropdown from "./NavDropdown";
 
 export default function AppNavbar() {
   return (
     <nav>
       <ul className='hidden lg:flex flex-wrap gap-2'>
         <li>
-          <Link href={`/`}>
+          <Link href='/'>
             <a className='nav-link'>Beranda</a>
           </Link>
         </li>
         <li>
-          <Link href={`/profile`}>
-            <a className='nav-link'>Profile</a>
-          </Link>
+          <NavDropdown
+            title='Profile'
+            items={[{ title: "Visi dan Misi", href: "/visi-dan-misi" }]}
+          />
         </li>
         <li>
-          <Link href={`#`}>
+          <Link href={`/#kompetensi-keahlian`}>
             <a className='nav-link'>Kompetensi Keahlian</a>
           </Link>
         </li>
         <li>
-          <Link href={`#`}>
-            <a className='nav-link'>Akademik</a>
-          </Link>
+          <NavDropdown
+            title='Informasi'
+            items={[
+              { title: "Berita", href: "/berita" },
+              { title: "Publikasi", href: "/publikasi" },
+            ]}
+          />
         </li>
         <li>
-          <Link href={`#`}>
-            <a className='nav-link'>Informasi</a>
-          </Link>
-        </li>
-        <li>
-          <Link href={`#`}>
-            <a className='nav-link'>PPDB Online</a>
+          <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
+            <a target='_blank' className='nav-link'>
+              PPDB Online
+            </a>
           </Link>
         </li>
       </ul>

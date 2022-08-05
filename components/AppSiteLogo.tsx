@@ -4,15 +4,19 @@ import Link from "next/link";
 export default function AppSiteLogo() {
   return (
     <div className='flex items-center gap-6'>
-      <Image
-        src='/logo.png'
-        alt='smedip logo'
-        width={50}
-        height={50}
-        className='h-8 w-8'
-      />
+      <Link href='/'>
+        <a>
+          <Image
+            src='/logo.png'
+            alt='smedip logo'
+            width={35}
+            height={35}
+            className='cursor-pointer'
+          />
+        </a>
+      </Link>
 
-      <Link href={"/"} className=''>
+      <Link href={"/"}>
         <a className='hidden md:flex flex-col'>
           <span className='font-bold text-xl border-b border-gray-600'>
             SMK Diponegoro Karanganyar

@@ -15,15 +15,15 @@ export default function AppFooter() {
               <img
                 src='/logo.png'
                 alt='smk diponegoro pekalongan'
-                className='w-14 h-14 mb-5'
+                className='w-14 h-14'
               />
             </div>
             <div className='col-span-12 xl:col-span-4'>
               <h1 className='mb-3 text-xl xl:text-2xl font-bold'>
                 SMK Diponegoro Karanganyar
               </h1>
-              <p className='text-slate-400'>
-                VISI Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan
+              <p className='text-sm text-slate-400'>
+                Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan
                 Kejuruan dengan Layanan Pendidikan yang Modern Sesuai
                 Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya
                 Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern
@@ -36,7 +36,7 @@ export default function AppFooter() {
                 Kompetensi Keahlian
               </h1>
 
-              <ul className='mt-3 text-slate-400'>
+              <ul className='mt-3 text-slate-400 text-sm'>
                 <li>
                   <Link href={`#`}>
                     <a className='hover:text-slate-100 hover:underline'>
@@ -72,7 +72,7 @@ export default function AppFooter() {
               <h1 className='text-xl xl:text-2xl font-bold mb-3'>
                 Lokasi Sekolah
               </h1>
-              <address className='text-slate-400'>
+              <address className='text-slate-400 text-sm'>
                 Jl. Raya Karanganyar No.KM, RW.2, Sawah, Kayugeritan, Kec.
                 Karanganyar, Kabupaten Pekalongan, Jawa Tengah 51182
               </address>
