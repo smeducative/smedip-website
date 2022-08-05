@@ -62,7 +62,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: publications.map((pub) => ({
       params: {
-        slug: `/publikasi/${pub.slug}`,
+        slug: pub.slug,
       },
     })),
     fallback: "blocking",
