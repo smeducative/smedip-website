@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
@@ -39,6 +40,11 @@ export default function ReadPublication({ data }: { data: Publikasi }) {
         <div className='mx-auto max-w-6xl'>
           <div className='grid grid-cols-12 gap-3'>
             <div className='col-span-12 xl:col-span-8 bg-white border border-slate-100'>
+              <img
+                src={data.cover}
+                alt={data.title}
+                className='w-full object-cover'
+              />
               <article
                 className={`
                   w-full px-5 py-3
