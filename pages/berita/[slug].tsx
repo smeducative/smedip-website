@@ -72,7 +72,11 @@ export const getStaticProps: GetStaticProps = async ({
   const { slug } = params as IProps;
   const { data: news } = await showNews(slug);
 
-  console.log(news);
+  if (!news) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {

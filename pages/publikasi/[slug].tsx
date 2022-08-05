@@ -4,12 +4,7 @@ import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
-import {
-  getPublikasi,
-  Publikasi,
-  showNews,
-  showPublikasi,
-} from "../../lib/fetch";
+import { getPublikasi, Publikasi, showPublikasi } from "../../lib/fetch";
 
 export default function ReadPublication({ data }: { data: Publikasi }) {
   return (
@@ -83,6 +78,12 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext) => {
   const { slug } = params as IProps;
   const { data } = await showPublikasi(slug);
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
