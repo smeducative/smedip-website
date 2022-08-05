@@ -21,7 +21,7 @@ export default function KompetensiKeahlianList({
             <div className='p-5'>
               <div>{item.svg}</div>
               <div className='text-lg font-bold'>{item.code}</div>
-              <div>{item.name}</div>
+              <div className='text-sm xl:text-base'>{item.name}</div>
             </div>
           </div>
         ))}

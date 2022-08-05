@@ -9,7 +9,7 @@ export default function KompetensiKeahlian() {
             Kompetensi Keahlian
           </div>
         </div>
-        <div className='grid grid-cols-12 gap-3'>
+        <div className='px-3 xl:px-0 grid grid-cols-12 gap-3'>
           <KompetensiKeahlianList
             items={[
               {
