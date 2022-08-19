@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Publikasi } from "../lib/fetch";
+import striptags from "striptags";
 
 const PublikasiList = ({ list }: { list: Publikasi[] }) => {
   return (
@@ -11,7 +12,7 @@ const PublikasiList = ({ list }: { list: Publikasi[] }) => {
             <Link
               href={`/publikasi/${encodeURIComponent(article.slug)}`}
               key={i}>
-              <a className='py-2 px-3 col-span-12 flex bg-white border border-slate-200 hover:border-green-600/50 hover:shadow hover:shadow-green-600/50'>
+              <a className='py-2 px-3 col-span-12 flex bg-white border border-slate-200 hover:scale-105 hover:shadow hover:shadow-slate-200/50 transition duration-300'>
                 <div className='w-1/3 mr-3 xl:mr-5'>
                   <img
                     src={article.cover}
@@ -38,7 +39,10 @@ const PublikasiList = ({ list }: { list: Publikasi[] }) => {
                     </span>
                   </div>
                   <div className='hidden lg:block text-xs xl:text-sm font-normal text-slate-500 mt-2'>
-                    {article.content.replace(/(<([^>]+)>)/gi, "").slice(0, 160)}
+                    {striptags(article.content)
+                      .replaceAll("&nbsp;", "")
+                      .slice(0, 160)}{" "}
+                    ...
                   </div>
                 </div>
               </a>

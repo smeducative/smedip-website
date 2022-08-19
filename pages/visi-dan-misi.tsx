@@ -8,7 +8,7 @@ export default function VisiDanMisi() {
       <Head>
         <title>Visi dan Misi</title>
       </Head>
-      <Jumbotron title='Visi dan Misi SMK DIPONEGORO KARANGANYAR Kab. Pekalongan' />
+      <Jumbotron title='Visi dan Misi' center />
 
       <div className='mx-auto max-w-6xl flex items-center justify-center'>
         <div className='mt-8 w-full px-5 xl:p-0 xl:w-2/3'>
