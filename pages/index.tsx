@@ -16,7 +16,7 @@ type Props = {
 
 const Home: NextPage<Props> = ({ news, publikasi }) => {
   return (
-    <AppLayout>
+    <AppLayout bright>
       <Head>
         <title>SMK Diponegoro Karanganyar Kab. Pekalongan</title>
       </Head>

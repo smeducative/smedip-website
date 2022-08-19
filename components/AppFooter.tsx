@@ -38,21 +38,21 @@ export default function AppFooter() {
 
               <ul className='mt-3 text-slate-400 text-sm'>
                 <li>
-                  <Link href={`#`}>
+                  <Link href={`/kompetensi-keahlian/tbsm`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Teknik dan Bisnis Sepeda Motor
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`#`}>
+                  <Link href={`/kompetensi-keahlian/tkj`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Teknik Komputer dan Jaringan
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`#`}>
+                  <Link href={`/kompetensi-keahlian/atph`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Agribisnis Tanaman Pangan dan Holtikultura
                     </a>
