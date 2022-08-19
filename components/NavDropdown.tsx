@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type NavDropdownProps = {
   title: string;
@@ -12,12 +12,42 @@ type NavDropdownProps = {
 export default function NavDropdown({ title, items }: NavDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const trigger = useRef<HTMLButtonElement>(null);
+  const navbar = useRef<HTMLDivElement>(null);
+
+  // close on click outside
+  useEffect(() => {
+    const clickHandler = (evt: MouseEvent) => {
+      if (!navbar.current || !trigger.current) return;
+      if (
+        !isOpen ||
+        navbar.current.contains(evt.target as Node) ||
+        trigger.current.contains(evt.target as Node)
+      )
+        return;
+      setIsOpen(false);
+    };
+    document.addEventListener("click", clickHandler);
+    return () => document.removeEventListener("click", clickHandler);
+  });
+
+  // close if the esc key is pressed
+  useEffect(() => {
+    const keyHandler = (evt: KeyboardEvent) => {
+      if (!isOpen || evt.code !== "esc") return;
+      setIsOpen(false);
+    };
+    document.addEventListener("keydown", keyHandler);
+    return () => document.removeEventListener("keydown", keyHandler);
+  });
+
   return (
     <div className='relative'>
       <button
         className='flex items-center focus:outline-none focus:shadow-outline'
         aria-haspopup='true'
         aria-expanded='false'
+        ref={trigger}
         onClick={() => setIsOpen(!isOpen)}>
         <span className='nav-link'>{title}</span>
         <svg
@@ -34,6 +64,7 @@ export default function NavDropdown({ title, items }: NavDropdownProps) {
         </svg>
       </button>
       <div
+        ref={navbar}
         className={
           isOpen
             ? "absolute left-0 mt-2 -ml-1 origin-top-left rounded-md shadow-lg"
