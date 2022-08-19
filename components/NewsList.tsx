@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { News } from "../lib/fetch";
-import dynamic from "next/dynamic";
+import striptags from "striptags";
 
 /* eslint-disable @next/next/no-img-element */
 export default function NewsList({ list }: { list: News[] }) {
@@ -40,7 +40,10 @@ export default function NewsList({ list }: { list: News[] }) {
                     </div>
                   </div>
                   <div className='text-slate-600 text-sm font-base'>
-                    {news.content.replace(/(<([^>]+)>)/gi, "").slice(0, 160)}
+                    {striptags(news.content)
+                      .replaceAll("&nbsp;", "")
+                      .slice(0, 160)}{" "}
+                    ...
                   </div>
                 </div>
               </a>
