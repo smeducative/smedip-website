@@ -6,7 +6,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const { items } = await getActivities();
+    const items = await getActivities();
 
     // cache result for 1 hour
     res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
