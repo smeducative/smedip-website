@@ -10,7 +10,7 @@ export const getActivities = async () => {
     await fetch(`${apiEndpoint}/activities?channelId=${channelId}&key=${key}
     &part=snippet,contentDetails&maxResults=10`);
 
-  const response: Activities[] = await data.json();
+  const response = await data.json();
 
   return response;
 };
