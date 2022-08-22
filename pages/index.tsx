@@ -8,6 +8,7 @@ import NewsSection from "../components/sections/NewsSection";
 import PublikasiSection from "../components/sections/PublikasiSection";
 import { getNews, getPublikasi, Publikasi } from "../lib/fetch";
 import type { News } from "../lib/fetch";
+import YoutubeActivities from "../components/YoutubeActivites";
 
 type Props = {
   news: News[];
@@ -23,6 +24,7 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
       <HeroSection />
       <KompetensiKeahlian />
       <NewsSection news={news} />
+      <YoutubeActivities />
       <PublikasiSection publikasi={publikasi} />
     </AppLayout>
   );
@@ -37,7 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
       news,
       publikasi,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
 
