@@ -1,30 +1,37 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 import { ParsedUrlQuery } from "querystring";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
 import { getNews, News, showNews } from "../../lib/fetch";
+import striptags from "striptags";
 
 export default function ReadNews({ news }: { news: News }) {
   return (
     <AppLayout>
-      <Head>
-        <title>{news.title}</title>
-      </Head>
+      <NextSeo
+        title={news.title}
+        description={striptags(news.content)
+          .replaceAll("&nbsp;", "")
+          .slice(0, 160)}
+      />
       <Jumbotron
         title={news.title}
         sub={
           <div className='text-sm xl:text-base text-slate-400 font-light space-x-3'>
             <span>{news.author.name}</span>
             <span> - </span>
-            <span>{new Date(news.created_at).toLocaleString("id-ID", {
+            <span>
+              {new Date(news.created_at).toLocaleString("id-ID", {
                 day: "2-digit",
                 month: "long",
                 year: "numeric",
                 hour: "2-digit",
                 minute: "2-digit",
-              })}</span>
+              })}
+            </span>
           </div>
         }
       />
@@ -88,6 +95,6 @@ export const getStaticProps: GetStaticProps = async ({
     props: {
       news,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
