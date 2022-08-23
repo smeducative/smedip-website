@@ -1,17 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import { NextSeo } from "next-seo";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
 import { getPublikasi, Publikasi, showPublikasi } from "../../lib/fetch";
+import striptags from "striptags";
 
 export default function ReadPublication({ data }: { data: Publikasi }) {
   return (
     <AppLayout>
-      <Head>
-        <title>{data.title}</title>
-      </Head>
+      <NextSeo
+        title={data.title}
+        description={striptags(data.content)
+          .replaceAll("&nbsp;", "")
+          .slice(0, 160)}
+      />
       <Jumbotron
         title={data.title}
         sub={
@@ -89,6 +94,6 @@ export const getStaticProps: GetStaticProps = async ({
     props: {
       data,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
