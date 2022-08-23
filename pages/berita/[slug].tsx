@@ -18,7 +18,13 @@ export default function ReadNews({ news }: { news: News }) {
           <div className='text-sm xl:text-base text-slate-400 font-light space-x-3'>
             <span>{news.author.name}</span>
             <span> - </span>
-            <span>{news.created_at}</span>
+            <span>{new Date(news.created_at).toLocaleString("id-ID", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })}</span>
           </div>
         }
       />

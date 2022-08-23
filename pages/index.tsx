@@ -9,6 +9,7 @@ import PublikasiSection from "../components/sections/PublikasiSection";
 import { getNews, getPublikasi, Publikasi } from "../lib/fetch";
 import type { News } from "../lib/fetch";
 import YoutubeActivities from "../components/YoutubeActivites";
+import SambutanKepsek from "../components/SambutanKepsek";
 
 type Props = {
   news: News[];
@@ -22,6 +23,7 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
         <title>SMK Diponegoro Karanganyar Kab. Pekalongan</title>
       </Head>
       <HeroSection />
+      <SambutanKepsek />
       <KompetensiKeahlian />
       <NewsSection news={news} />
       <YoutubeActivities />

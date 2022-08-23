@@ -25,7 +25,7 @@ const YoutubeActivities = () => {
         <div className='py-3 px-5 xl:px-0'>
           <h2 className='font-bold text-2xl font-roboto'>Keseruan Smedip</h2>
         </div>
-        <div className='px-5 xl:px-0 flex items-center overflow-hidden hover:overflow-x-auto gap-3'>
+        <div className='px-5 xl:px-0 flex items-center overflow-x-auto gap-3'>
           {items &&
             items.map((item) => (
               <Link
