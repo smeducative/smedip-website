@@ -12,6 +12,8 @@ import YoutubeActivities from "../components/YoutubeActivites";
 import SambutanKepsek from "../components/SambutanKepsek";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { url } from "inspector";
+import { getFullpath } from "../lib/getFullpath";
 
 type Props = {
   news: News[];
@@ -19,14 +21,28 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ news, publikasi }) => {
-  const router = useRouter();
+  const { asPath, basePath, route } = useRouter();
 
   return (
     <AppLayout bright>
       <NextSeo
-        title='SMK Diponegoro Karanganyar Kab. Pekalongan'
+        title='SMK Diponegoro Karanganyar Kab. Pekalongan | MAU Modern, Agamis, Unggul'
         description='Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan Kejuruan dengan Layanan Pendidikan yang Modern Sesuai Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern Agamis Unggul)'
-        canonical={router.pathname}
+        canonical={getFullpath()}
+        openGraph={{
+          title: "SMK Diponegoro Karanganyar",
+          description:
+            "Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan Kejuruan dengan Layanan Pendidikan yang Modern Sesuai Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern Agamis Unggul)",
+          url: route,
+          images: [
+            {
+              url: getFullpath("/logo.png"),
+              width: 850,
+              height: 650,
+              alt: "Photo of text",
+            },
+          ],
+        }}
       />
       <HeroSection />
       <SambutanKepsek />

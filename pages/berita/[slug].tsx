@@ -7,15 +7,34 @@ import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
 import { getNews, News, showNews } from "../../lib/fetch";
 import striptags from "striptags";
+import { useRouter } from "next/router";
+import { getFullpath } from "../../lib/getFullpath";
 
 export default function ReadNews({ news }: { news: News }) {
+  const { asPath } = useRouter();
+
   return (
     <AppLayout>
       <NextSeo
-        title={news.title}
+        title={`${news.title} | SMK Diponegoro Karanganyar`}
         description={striptags(news.content)
           .replaceAll("&nbsp;", "")
           .slice(0, 160)}
+        openGraph={{
+          title: `${news.title} | SMK Diponegoro Karanganyar`,
+          description: striptags(news.content)
+            .replaceAll("&nbsp;", "")
+            .slice(0, 160),
+          url: getFullpath(asPath),
+          images: [
+            {
+              url: news.cover,
+              width: 850,
+              height: 650,
+              alt: news.title,
+            },
+          ],
+        }}
       />
       <Jumbotron
         title={news.title}
