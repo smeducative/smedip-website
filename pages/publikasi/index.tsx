@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
 import AppLayout from "../../components/layouts/AppLayout";
 import PublikasiList from "../../components/PublikasiList";
 import Jumbotron from "../../components/sections/Jumbotron";
@@ -7,6 +8,7 @@ import { getPublikasi, Publikasi } from "../../lib/fetch";
 const Publikasi = ({ publications }: { publications: Publikasi[] }) => {
   return (
     <AppLayout>
+      <NextSeo title='Publikasi Guru dan Tenaga Kependidikan | SMK Diponegoro Karanganyar' />
       <Jumbotron title='Publikasi' />
 
       <div className='mx-auto max-w-6xl'>

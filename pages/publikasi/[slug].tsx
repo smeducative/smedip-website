@@ -1,21 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { NextSeo } from "next-seo";
-import Head from "next/head";
+import { getFullpath } from "../../lib/getFullpath";
 import { ParsedUrlQuery } from "querystring";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
 import { getPublikasi, Publikasi, showPublikasi } from "../../lib/fetch";
 import striptags from "striptags";
+import { useRouter } from "next/router";
 
 export default function ReadPublication({ data }: { data: Publikasi }) {
+  const { asPath } = useRouter();
+
   return (
     <AppLayout>
       <NextSeo
-        title={data.title}
+        title={`${data.title} | SMK Diponegoro Karanganyar`}
         description={striptags(data.content)
           .replaceAll("&nbsp;", "")
           .slice(0, 160)}
+        openGraph={{
+          title: `${data.title} | SMK Diponegoro Karanganyar`,
+          description: striptags(data.content)
+            .replaceAll("&nbsp;", "")
+            .slice(0, 160),
+          url: getFullpath(asPath),
+          images: [
+            {
+              url: data.cover,
+              width: 850,
+              height: 650,
+              alt: data.title,
+            },
+          ],
+        }}
       />
       <Jumbotron
         title={data.title}

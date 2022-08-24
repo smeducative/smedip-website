@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import AppLayout from "../../components/layouts/AppLayout";
 import NewsList from "../../components/NewsList";
 import Jumbotron from "../../components/sections/Jumbotron";
@@ -8,9 +8,7 @@ import { getNews, News } from "../../lib/fetch";
 export default function Berita({ news }: { news: News[] }) {
   return (
     <AppLayout>
-      <Head>
-        <title>Informasi terbaru</title>
-      </Head>
+      <NextSeo title='Informasi dan Berita Terbaru | SMK Diponegoro Karanganyar' />
 
       <Jumbotron title='Informasi Terbaru' />
 
