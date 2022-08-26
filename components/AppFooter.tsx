@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function AppFooter() {
   return (
     <footer
-      className='mt-20 text-slate-100'
+      className='mt-12 text-slate-100'
       style={{
         backgroundColor: `#081c05`,
       }}>

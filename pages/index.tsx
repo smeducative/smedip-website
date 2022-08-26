@@ -14,6 +14,7 @@ import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { url } from "inspector";
 import { getFullpath } from "../lib/getFullpath";
+import InCollaborateWith from "../components/InCollaborateWith";
 
 type Props = {
   news: News[];
@@ -50,6 +51,7 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
       <NewsSection news={news} />
       <YoutubeActivities />
       <PublikasiSection publikasi={publikasi} />
+      <InCollaborateWith />
     </AppLayout>
   );
 };
