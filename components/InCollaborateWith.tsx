@@ -1,10 +1,14 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 const InCollaborateWith = () => {
   const collaborators = [
     {
       name: "Smeducative",
       logo: "/assets/collaborator/smeducative.png",
+    },
+    {
+      name: "BKK Smedip",
+      logo: "/assets/collaborator/bkk-smedip.jpeg",
     },
     {
       name: "AR TV",
@@ -19,7 +23,7 @@ const InCollaborateWith = () => {
   return (
     <div className='mt-12 mx-auto max-w-6xl'>
       <div className='py-12 px-5 xl:px-0'>
-        <div className='flex items-center justify-center textlg xl:text-2xl font-bold font-roboto'>
+        <div className='flex items-center justify-center textlg xl:text-2xl font-bold font-roboto uppercase'>
           In Collaboration with
         </div>
         <div className='flex flex-row flex-wrap gap-6 items-center justify-center'>
@@ -28,7 +32,7 @@ const InCollaborateWith = () => {
               key={collaborator.name}
               src={collaborator.logo}
               alt={collaborator.name}
-              className={`h-32 xl:h-44 w-32 xl:w-44 object-contain`}
+              className={`h-24 lg:h-40 w-24 lg:w-40 object-contain`}
             />
           ))}
         </div>
