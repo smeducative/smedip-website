@@ -18,6 +18,10 @@ const InCollaborateWith = () => {
       name: "creasico",
       logo: "/assets/collaborator/creasico.png",
     },
+    {
+      name: "bank bsi",
+      logo: "/assets/collaborator/bsi.png",
+    },
   ];
 
   return (
