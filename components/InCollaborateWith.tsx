@@ -22,6 +22,10 @@ const InCollaborateWith = () => {
       name: "bank bsi",
       logo: "/assets/collaborator/bsi.png",
     },
+    {
+      name: "evercoss",
+      logo: "/assets/collaborator/evercoss.png",
+    },
   ];
 
   return (
@@ -36,7 +40,7 @@ const InCollaborateWith = () => {
               key={collaborator.name}
               src={collaborator.logo}
               alt={collaborator.name}
-              className={`h-24 lg:h-40 w-24 lg:w-40 object-contain`}
+              className={`h-24 lg:h-40 w-24 lg:w-40 object-contain hover:scale-105 transition duration-300 cursor-pointer`}
             />
           ))}
         </div>
