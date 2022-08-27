@@ -69,6 +69,32 @@ export default function AppFooter() {
             </div>
 
             <div className='col-span-12 xl:col-span-4'>
+              <h1 className='text-xl xl:text-2xl font-bold mb-3'>Tautan</h1>
+
+              <ul className='mt-3 text-slate-400 text-sm'>
+                <li>
+                  <Link href={`//smeduverse.smkdiponegoropekalongan.sch.id`}>
+                    <a className='hover:text-slate-100 hover:underline'>
+                      Smeduverse
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`//ppdb.smkdiponegoropekalongan.sch.id`}>
+                    <a className='hover:text-slate-100 hover:underline'>PPDB</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href={`https://s.id/kurikulum-merdeka`}>
+                    <a className='hover:text-slate-100 hover:underline'>
+                      Kurikulum Merdeka
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className='col-span-12 xl:col-span-4'>
               <h1 className='text-xl xl:text-2xl font-bold mb-3'>
                 Lokasi Sekolah
               </h1>
