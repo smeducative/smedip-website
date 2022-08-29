@@ -73,14 +73,15 @@ export default function AppFooter() {
 
               <ul className='mt-3 text-slate-400 text-sm'>
                 <li>
-                  <Link href={`//smeduverse.smkdiponegoropekalongan.sch.id`}>
+                  <Link
+                    href={`https://smeduverse.smkdiponegoropekalongan.sch.id`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Smeduverse
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`//ppdb.smkdiponegoropekalongan.sch.id`}>
+                  <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
                     <a className='hover:text-slate-100 hover:underline'>PPDB</a>
                   </Link>
                 </li>

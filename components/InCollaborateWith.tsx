@@ -11,12 +11,16 @@ const InCollaborateWith = () => {
       logo: "/assets/collaborator/bkk-smedip.jpeg",
     },
     {
-      name: "AR TV",
-      logo: "/assets/collaborator/artv.png",
+      name: "IPNU",
+      logo: "/assets/collaborator/ipnu.png",
     },
     {
-      name: "creasico",
-      logo: "/assets/collaborator/creasico.png",
+      name: "IPPNU",
+      logo: "/assets/collaborator/ippnu.png",
+    },
+    {
+      name: "AR TV",
+      logo: "/assets/collaborator/artv.png",
     },
     {
       name: "bank bsi",
@@ -26,6 +30,14 @@ const InCollaborateWith = () => {
       name: "evercoss",
       logo: "/assets/collaborator/evercoss.png",
     },
+    {
+      name: "seven retail",
+      logo: "/assets/collaborator/seven.jpg",
+    },
+    {
+      name: "creasico",
+      logo: "/assets/collaborator/creasico.png",
+    },
   ];
 
   return (
@@ -34,13 +46,13 @@ const InCollaborateWith = () => {
         <div className='flex items-center justify-center textlg xl:text-2xl font-bold font-roboto uppercase'>
           In Collaboration with
         </div>
-        <div className='flex flex-row flex-wrap gap-6 items-center justify-center'>
+        <div className='mt-8 flex flex-row flex-wrap gap-6 items-center justify-center'>
           {collaborators.map((collaborator) => (
             <img
               key={collaborator.name}
               src={collaborator.logo}
               alt={collaborator.name}
-              className={`h-24 lg:h-40 w-24 lg:w-40 object-contain hover:scale-105 transition duration-300 cursor-pointer`}
+              className={`p-3 h-24 lg:h-40 w-24 lg:w-40 object-contain hover:scale-105 transition duration-300 cursor-pointer`}
             />
           ))}
         </div>
