@@ -1,4 +1,4 @@
-import { Html, Head, Main } from "next/document";
+import { Html, Head, Main, NextScript } from "next/document";
 import Script from "next/script";
 
 export default function Document() {
@@ -19,10 +19,11 @@ export default function Document() {
           href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'
           rel='stylesheet'
         />
-        <script
+        <Script
           type='text/javascript'
           src='https://platform-api.sharethis.com/js/sharethis.js#property=630ec1666e703a0012b60fcb&product=inline-share-buttons'
-          async='async'></script>
+          async='async'
+        />
       </Head>
       <body>
         <Main />
