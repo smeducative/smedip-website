@@ -22,7 +22,7 @@ export default function Document() {
         <Script
           type='text/javascript'
           src='https://platform-api.sharethis.com/js/sharethis.js#property=630ec1666e703a0012b60fcb&product=inline-share-buttons'
-          async='async'
+          async
         />
       </Head>
       <body>
