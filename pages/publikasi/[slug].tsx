@@ -71,6 +71,7 @@ export default function ReadPublication({ data }: { data: Publikasi }) {
                   leading-normal`}
                 dangerouslySetInnerHTML={{ __html: data.content }}
               />
+              <div className="sharethis-inline-share-button"></div>
             </div>
           </div>
         </div>

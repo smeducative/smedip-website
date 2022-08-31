@@ -72,6 +72,7 @@ export default function ReadNews({ news }: { news: News }) {
                   leading-normal`}
                 dangerouslySetInnerHTML={{ __html: news.content }}
               />
+              <div className="sharethis-inline-share-button"></div>
             </div>
             <div className='col-span-12 xl:col-span-4'></div>
           </div>
