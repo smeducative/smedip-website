@@ -10,7 +10,7 @@ export default function AppFooter() {
       }}>
       <div className='pt-12 pb-10 '>
         <div className='mx-auto max-w-7xl'>
-          <div className='px-5 xl:px-0 grid grid-cols-12 gap-6'>
+          <div className='px-5 grid grid-cols-12 gap-6'>
             <div className='col-span-12'>
               <img
                 src='/logo.png'
