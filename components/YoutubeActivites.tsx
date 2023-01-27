@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { Activities } from "../type/youtube";
 
 const YoutubeActivities = () => {
-  const [items, setItems] = useState<Activities[] | null>(null);
+  const [items, setItems] = useState<Activities[] | null>([]);
+
   useEffect(() => {
     const getActivities = async (): Promise<Activities[]> => {
-      const data = await fetch("/api/youtube-activities").then((res) =>
-        res.json()
-      );
+      const response = await fetch("/api/youtube-activities");
+
+      console.log(response);
+
+      const data = await response.json();
 
       setItems(data);
 

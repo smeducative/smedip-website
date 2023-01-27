@@ -7,7 +7,7 @@ export default function AppHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className='fixed top-0 inset-x-0 z-50 bg-white shadow shadow-green-200 bg-opacity-75 filter backdrop-blur-md border-t-4 border-green-600'>
+    <div className='fixed top-0 inset-x-0 z-50 bg-white shadow shadow-green-200 bg-opacity-75 filter backdrop-blur-md border-t-4 border-primary-0'>
       <div className='mx-auto max-w-7xl'>
         <div className='px-5 py-3 flex items-center justify-between'>
           <AppSiteLogo />

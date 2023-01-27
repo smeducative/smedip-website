@@ -5,7 +5,7 @@ export default function HeroSection() {
       style={{
         backgroundImage: `url(/assets/images/bg-smedip.jpeg)`,
       }}>
-      <div className='bg-green-900 bg-opacity-60' id='particles-js'>
+      <div className='bg-primary-0 bg-opacity-60' id='particles-js'>
         <div className='pt-16 mx-auto max-w-7xl'>
           <div className='py-32 xl:py-56 px-5 2xl:px-0 flex items-center'>
             <div className='flex flex-col text-white leading-tight drop-shadow-lg shadow-yellow-500'>

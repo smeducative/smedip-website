@@ -12,5 +12,7 @@ export const getActivities = async () => {
 
   const response = await data.json();
 
+  console.log(data, response.errors);
+
   return response;
 };

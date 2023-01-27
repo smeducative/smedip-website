@@ -6,6 +6,9 @@ module.exports = {
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
       },
+      colors: {
+        primary: ["#066649"],
+      },
     },
   },
   plugins: [require("@tailwindcss/typography")],

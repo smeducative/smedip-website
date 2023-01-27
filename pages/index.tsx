@@ -49,7 +49,7 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
       <SambutanKepsek />
       <KompetensiKeahlian />
       <NewsSection news={news} />
-      <YoutubeActivities />
+      {/* <YoutubeActivities /> */}
       <PublikasiSection publikasi={publikasi} />
       <InCollaborateWith />
     </AppLayout>

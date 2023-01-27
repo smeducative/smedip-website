@@ -15,7 +15,7 @@ export default function KompetensiKeahlian() {
               {
                 svg: (
                   <svg
-                    className='w-8 h-8 text-green-600'
+                    className='w-8 h-8 text-primary-0'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -34,7 +34,7 @@ export default function KompetensiKeahlian() {
               {
                 svg: (
                   <svg
-                    className='w-8 h-8 text-green-600'
+                    className='w-8 h-8 text-primary-0'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -59,7 +59,7 @@ export default function KompetensiKeahlian() {
               {
                 svg: (
                   <svg
-                    className='w-8 h-8 text-green-600'
+                    className='w-8 h-8 text-primary-0'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'
@@ -78,7 +78,7 @@ export default function KompetensiKeahlian() {
               {
                 svg: (
                   <svg
-                    className='w-8 h-8 text-green-600'
+                    className='w-8 h-8 text-primary-0'
                     fill='none'
                     stroke='currentColor'
                     viewBox='0 0 24 24'

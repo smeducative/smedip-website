@@ -6,7 +6,7 @@ type Props = {
 
 export default function Jumbotron({ title, sub, center }: Props) {
   return (
-    <div className='bg-gradient-to-t from-green-900 via-green-700 to-green-500'>
+    <div className='bg-gradient-to-t from-primary-0 to-green-700'>
       <div className='pt-16 mx-auto max-w-6xl'>
         <div
           className={`py-12 xl:py-16 px-5 xl:px-0 ${
