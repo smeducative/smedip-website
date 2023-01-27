@@ -10,6 +10,7 @@ const PublikasiList = ({ list }: { list: Publikasi[] }) => {
         {list &&
           list.map((article, i) => (
             <Link
+              legacyBehavior
               href={`/publikasi/${encodeURIComponent(article.slug)}`}
               key={i}>
               <a className='py-2 px-3 col-span-12 flex bg-white border border-slate-200 hover:scale-105 hover:shadow hover:shadow-slate-200/50 transition duration-300'>

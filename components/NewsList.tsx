@@ -14,6 +14,7 @@ export default function NewsList({ list }: { list: News[] }) {
           const content = news.content;
           return (
             <Link
+              legacyBehavior
               href={`/berita/${encodeURIComponent(news.slug)}`}
               key={news.slug}>
               <a className='col-span-12 lg:col-span-6 xl:col-span-4 bg-white border border-slate-200 hover:border-green-700 hover:shadow hover:shadow-green-500 transition duration-200 rounded hover:scale-95'>

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function AppSiteLogo() {
   return (
     <div className='flex items-center gap-6'>
-      <Link href='/'>
+      <Link legacyBehavior href='/'>
         <a>
           <Image
             src='/logo.png'
@@ -16,7 +16,7 @@ export default function AppSiteLogo() {
         </a>
       </Link>
 
-      <Link href={"/"}>
+      <Link legacyBehavior href={"/"}>
         <a className='hidden md:flex flex-col'>
           <span className='font-bold text-xl border-b border-gray-600'>
             SMK Diponegoro Karanganyar

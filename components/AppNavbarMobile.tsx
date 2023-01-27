@@ -13,7 +13,7 @@ export default function AppNavbarMobile({ open }: Props) {
           open ? "flex py-5 px-3" : "hidden"
         } flex-col gap-3 transition duration-100`}>
         <li>
-          <Link href={`/`}>
+          <Link legacyBehavior href={`/`}>
             <a className='nav-link'>Beranda</a>
           </Link>
         </li>
@@ -24,7 +24,7 @@ export default function AppNavbarMobile({ open }: Props) {
           />
         </li>
         <li>
-          <Link href={`/#kompetensi-keahlian`}>
+          <Link legacyBehavior href={`/#kompetensi-keahlian`}>
             <a className='nav-link'>Kompetensi Keahlian</a>
           </Link>
         </li>
@@ -38,7 +38,9 @@ export default function AppNavbarMobile({ open }: Props) {
           />
         </li>
         <li>
-          <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
+          <Link
+            legacyBehavior
+            href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
             <a className='nav-link' target={"_blank"}>
               PPDB Online
             </a>

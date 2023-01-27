@@ -38,28 +38,28 @@ export default function AppFooter() {
 
               <ul className='mt-3 text-slate-400 text-sm'>
                 <li>
-                  <Link href={`/kompetensi-keahlian/tbsm`}>
+                  <Link legacyBehavior href={`/kompetensi-keahlian/tbsm`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Teknik dan Bisnis Sepeda Motor
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/kompetensi-keahlian/tkj`}>
+                  <Link legacyBehavior href={`/kompetensi-keahlian/tkj`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Teknik Komputer dan Jaringan
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`/kompetensi-keahlian/atph`}>
+                  <Link legacyBehavior href={`/kompetensi-keahlian/atph`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Agribisnis Tanaman Pangan dan Holtikultura
                     </a>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`#`}>
+                  <Link legacyBehavior href={`#`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Broadcasting dan Perfilman
                     </a>
@@ -74,6 +74,7 @@ export default function AppFooter() {
               <ul className='mt-3 text-slate-400 text-sm'>
                 <li>
                   <Link
+                    legacyBehavior
                     href={`https://smeduverse.smkdiponegoropekalongan.sch.id`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Smeduverse
@@ -81,12 +82,14 @@ export default function AppFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
+                  <Link
+                    legacyBehavior
+                    href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
                     <a className='hover:text-slate-100 hover:underline'>PPDB</a>
                   </Link>
                 </li>
                 <li>
-                  <Link href={`https://s.id/kurikulum-merdeka`}>
+                  <Link legacyBehavior href={`https://s.id/kurikulum-merdeka`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Kurikulum Merdeka
                     </a>

@@ -32,6 +32,7 @@ const YoutubeActivities = () => {
           {items &&
             items.map((item) => (
               <Link
+                legacyBehavior
                 key={item.id}
                 href={`https://youtu.be/${item.contentDetails.upload.videoId}`}
                 className='cursor-pointer'>
