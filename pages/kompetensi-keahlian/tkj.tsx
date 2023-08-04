@@ -73,7 +73,7 @@ const TKJ = () => {
 
           <p className='mt-10'>
             <strong>Fasilitas</strong>&nbsp;Jurusan Teknik Komputer &amp;
-            Jaringan SMKN 1 Kaliwungu :
+            Jaringan SMK Diponegoro Karanganyar :
           </p>
 
           <ul>
