@@ -1,6 +1,4 @@
 import type { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
-import AppFooter from "../components/AppFooter";
 import KompetensiKeahlian from "../components/KompetensiKeahlian";
 import AppLayout from "../components/layouts/AppLayout";
 import HeroSection from "../components/sections/HeroSection";
@@ -8,11 +6,9 @@ import NewsSection from "../components/sections/NewsSection";
 import PublikasiSection from "../components/sections/PublikasiSection";
 import { getNews, getPublikasi, Publikasi } from "../lib/fetch";
 import type { News } from "../lib/fetch";
-import YoutubeActivities from "../components/YoutubeActivites";
 import SambutanKepsek from "../components/SambutanKepsek";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import { url } from "inspector";
 import { getFullpath } from "../lib/getFullpath";
 import InCollaborateWith from "../components/InCollaborateWith";
 
@@ -22,7 +18,7 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ news, publikasi }) => {
-  const { asPath, basePath, route } = useRouter();
+  const { route } = useRouter();
 
   return (
     <AppLayout bright>
