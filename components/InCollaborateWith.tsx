@@ -34,19 +34,15 @@ const InCollaborateWith = () => {
       name: "seven retail",
       logo: "/assets/collaborator/seven.jpg",
     },
-    {
-      name: "creasico",
-      logo: "/assets/collaborator/creasico.png",
-    },
   ];
 
   return (
-    <div className='mt-12 mx-auto max-w-6xl'>
-      <div className='py-12 px-5 xl:px-0'>
-        <div className='flex items-center justify-center textlg xl:text-2xl font-bold font-roboto uppercase'>
+    <div className="mt-12 mx-auto max-w-6xl">
+      <div className="py-12 px-5 xl:px-0">
+        <div className="flex items-center justify-center textlg xl:text-2xl font-bold font-roboto uppercase">
           In Collaboration with
         </div>
-        <div className='mt-8 flex flex-row flex-wrap gap-6 items-center justify-center'>
+        <div className="mt-8 flex flex-row flex-wrap gap-6 items-center justify-center">
           {collaborators.map((collaborator) => (
             <img
               key={collaborator.name}
