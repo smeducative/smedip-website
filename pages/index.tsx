@@ -11,6 +11,7 @@ import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { getFullpath } from "../lib/getFullpath";
 import InCollaborateWith from "../components/InCollaborateWith";
+import SmedipKristalPage from "@/components/SmedipKristal";
 
 type Props = {
   news: News[];
@@ -23,8 +24,8 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
   return (
     <AppLayout bright>
       <NextSeo
-        title='SMK Diponegoro Karanganyar Kab. Pekalongan | MAU Modern, Agamis, Unggul'
-        description='Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan Kejuruan dengan Layanan Pendidikan yang Modern Sesuai Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern Agamis Unggul)'
+        title="SMK Diponegoro Karanganyar Kab. Pekalongan | MAU Modern, Agamis, Unggul"
+        description="Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan Kejuruan dengan Layanan Pendidikan yang Modern Sesuai Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern Agamis Unggul)"
         canonical={getFullpath()}
         openGraph={{
           title: "SMK Diponegoro Karanganyar",
@@ -42,7 +43,8 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
         }}
       />
       <HeroSection />
-      <SambutanKepsek />
+      <SmedipKristalPage />
+      {/* <SambutanKepsek /> */}
       <KompetensiKeahlian />
       <NewsSection news={news} />
       {/* <YoutubeActivities /> */}
