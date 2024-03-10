@@ -9,9 +9,9 @@ export default function AppFooter() {
         backgroundColor: `#081c05`,
       }}
     >
-      <div className="pt-12 pb-10 ">
+      <div className="pt-12 pb-10">
         <div className="mx-auto max-w-7xl">
-          <div className="px-5 grid grid-cols-12 gap-6">
+          <div className="gap-6 grid grid-cols-12 px-5">
             <div className="col-span-12">
               <img
                 src="/logo.png"
@@ -20,10 +20,10 @@ export default function AppFooter() {
               />
             </div>
             <div className="col-span-12 xl:col-span-4">
-              <h1 className="mb-3 text-xl xl:text-2xl font-bold">
+              <h1 className="mb-3 font-bold text-xl xl:text-2xl">
                 SMK Diponegoro Karanganyar
               </h1>
-              <p className="text-sm text-slate-400">
+              <p className="text-slate-400 text-sm">
                 Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan
                 Kejuruan dengan Layanan Pendidikan yang Modern Sesuai
                 Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya
@@ -33,7 +33,7 @@ export default function AppFooter() {
             </div>
 
             <div className="col-span-12 xl:col-span-4">
-              <h1 className="text-xl xl:text-2xl font-bold">
+              <h1 className="font-bold text-xl xl:text-2xl">
                 Kompetensi Keahlian
               </h1>
 
@@ -41,21 +41,21 @@ export default function AppFooter() {
                 <li>
                   <Link legacyBehavior href={`/kompetensi-keahlian/tbsm`}>
                     <a className="hover:text-slate-100 hover:underline">
-                      Teknik dan Bisnis Sepeda Motor
+                      Teknik Otomotif
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link legacyBehavior href={`/kompetensi-keahlian/tkj`}>
                     <a className="hover:text-slate-100 hover:underline">
-                      Teknik Komputer dan Jaringan
+                      Teknik Jaringan Komputer dan Telekomunikasi
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link legacyBehavior href={`/kompetensi-keahlian/atph`}>
                     <a className="hover:text-slate-100 hover:underline">
-                      Agribisnis Tanaman Pangan dan Holtikultura
+                      Agribisnis Tanaman / Smart Farming
                     </a>
                   </Link>
                 </li>
@@ -70,7 +70,7 @@ export default function AppFooter() {
             </div>
 
             <div className="col-span-12 xl:col-span-4">
-              <h1 className="text-xl xl:text-2xl font-bold mb-3">Tautan</h1>
+              <h1 className="mb-3 font-bold text-xl xl:text-2xl">Tautan</h1>
 
               <ul className="mt-3 text-slate-400 text-sm">
                 <li>
@@ -127,7 +127,7 @@ export default function AppFooter() {
             </div>
 
             <div className="col-span-12 xl:col-span-4">
-              <h1 className="text-xl xl:text-2xl font-bold mb-3">
+              <h1 className="mb-3 font-bold text-xl xl:text-2xl">
                 Lokasi Sekolah
               </h1>
               <address className="text-slate-400 text-sm">
@@ -138,7 +138,7 @@ export default function AppFooter() {
           </div>
         </div>
       </div>
-      <div className="py-5 text-center bg-black">
+      <div className="bg-black py-5 text-center">
         &copy; {new Date().getFullYear()} SMK Diponegoro Karanganyar.
       </div>
     </footer>

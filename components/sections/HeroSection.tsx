@@ -4,26 +4,26 @@ import { motion } from "framer-motion";
 export default function HeroSection() {
   return (
     <div
-      className="min-h-screen bg-white bg-cover bg-center"
+      className="bg-white bg-cover bg-center min-h-screen"
       style={{
         backgroundImage: `url(/assets/images/CBMM4413.JPG)`,
       }}
     >
-      <div className="min-h-screen bg-primary/50">
-        <div className="relative min-h-screen pt-16 mx-auto max-w-7xl">
-          <div className="absolute bottom-1 w-full py-32 px-5 2xl:px-0 flex flex-col md:flex-row items-end justify-end">
+      <div className="bg-primary/50 min-h-screen">
+        <div className="relative mx-auto pt-16 max-w-7xl min-h-screen">
+          <div className="bottom-1 absolute flex md:flex-row flex-col justify-end items-end px-5 2xl:px-0 py-32 w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 2 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="flex flex-col text-center text-white leading-tight drop-shadow-lg shadow-yellow-500 w-full "
+              className="flex flex-col drop-shadow-lg shadow-yellow-500 w-full text-center text-white leading-tight"
             >
               <span className="text-lg lg:text-3xl">
                 Selamat datang di Official Website
               </span>
-              <span className="text-2xl lg:text-5xl font-extrabold underline">
+              <span className="font-extrabold text-2xl lg:text-5xl underline">
                 SMK Diponegoro Karanganyar
               </span>
               <span className="text-lg lg:text-3xl">Kabupaten Pekalongan</span>
@@ -38,6 +38,9 @@ export default function HeroSection() {
                 allowFullScreen
               />
             </div> */}
+            {/* 
+            // wahai genereasi indonesia, kibarkan semangat cita cita, raihlah mimpi yang nyata belajar dan beroda. bersama kami raih masa dpean, melangkah maju kita tak gentar, kreatif cerdas tampil inovatif, berbekal ilmu mandiri, smk diponegoro pekalongan solusi buat negeri, smk diponegoro pekalongan mengabdi sepenuh hati. smk diponegoro pekalongan mendidik kadar islami. smk diponegoro pekalongan unggul dlam prestasi, smk diponegoro pekalongan modern agamis unggul
+            */}
           </div>
         </div>
       </div>

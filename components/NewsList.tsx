@@ -9,7 +9,7 @@ moment.locale("id");
 /* eslint-disable @next/next/no-img-element */
 export default function NewsList({ list }: { list: News[] }) {
   return (
-    <div className="mt-5 xl:mt-12 grid grid-cols-12 gap-5 md:gap-y-5">
+    <div className="gap-5 md:gap-y-5 grid grid-cols-12 mt-5 xl:mt-12">
       {list?.map((news, i) => {
         const content = news.content;
         return (
@@ -25,20 +25,22 @@ export default function NewsList({ list }: { list: News[] }) {
               transition={{ duration: 1 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="col-span-12 lg:col-span-6 xl:col-span-4 bg-white border border-slate-200 hover:border-green-700 hover:shadow hover:shadow-green-500 transition duration-200 rounded hover:scale-95"
+              className="border-[#a36220]/20 border-2 col-span-12 lg:col-span-6 xl:col-span-4 bg-white hover:bg-[#DB7710] rounded hover:text-white duration-500"
             >
               <img
                 src={news.cover}
                 alt={news.title}
-                className="w-full h-60 lg:h-48 object-cover"
+                className="w-full h-60 lg:h-48 object-center object-cover hover:scale-110 duration-700"
               />
-              <div className="p-3 mt-1 flex flex-col overflow-x-hidden break-words">
-                <h2 className="text-base xl:text-lg font-bold">{news.title}</h2>
-                <div className="flex gap-1">
-                  <span className="font-normal text-sm text-gray-700">
-                    {news.author.name} -
+              <div className="flex flex-col mt-1 p-3 break-words overflow-x-hidden">
+                <h2 className="line-clamp-3 font-bold text-base xl:text-md">
+                  {news.title}
+                </h2>
+                <div className="flex flex-col gap-1">
+                  <span className="font-normal text-sm">
+                    {news.author.name}
                   </span>
-                  <span className="font-normal text-sm text-gray-700">
+                  <span className="font-normal text-sm">
                     {moment(news.created_at).format("LLLL")} WIB
                   </span>
                 </div>

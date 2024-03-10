@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import { getFullpath } from "../lib/getFullpath";
 import InCollaborateWith from "../components/InCollaborateWith";
 import SmedipKristalPage from "@/components/SmedipKristal";
+import MarsSmedip from "@/components/sections/MarsSmedip";
 
 type Props = {
   news: News[];
@@ -49,6 +50,7 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
       <NewsSection news={news} />
       {/* <YoutubeActivities /> */}
       <PublikasiSection publikasi={publikasi} />
+      <MarsSmedip />
       <InCollaborateWith />
     </AppLayout>
   );
