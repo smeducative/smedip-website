@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function HeroSection() {
   return (
     <div
@@ -9,7 +11,14 @@ export default function HeroSection() {
       <div className="min-h-screen bg-primary/50">
         <div className="relative min-h-screen pt-16 mx-auto max-w-7xl">
           <div className="absolute bottom-1 w-full py-20 xl:py-48 px-5 2xl:px-0 flex flex-col md:flex-row items-end justify-end">
-            <div className="flex flex-col text-center text-white leading-tight drop-shadow-lg shadow-yellow-500 w-full ">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="flex flex-col text-center text-white leading-tight drop-shadow-lg shadow-yellow-500 w-full "
+            >
               <span className="text-lg lg:text-3xl">
                 Selamat datang di Official Website
               </span>
@@ -17,7 +26,7 @@ export default function HeroSection() {
                 SMK Diponegoro Karanganyar
               </span>
               <span className="text-lg lg:text-3xl">Kabupaten Pekalongan</span>
-            </div>
+            </motion.div>
             {/* <div className="mt-12 md:mt-0 w-full md:w-1/2">
               <iframe
                 width="100%"
