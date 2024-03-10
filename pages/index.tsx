@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async () => {
       news,
       publikasi,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
 

@@ -23,26 +23,28 @@ const YoutubeActivities = () => {
   }, []);
 
   return (
-    <div className='mt-8 xl:mt-20 bg-gradient-to-tl from-green-500 to-yellow-400 py-5 border-y-2 border-green-800'>
-      <div className='mx-auto max-w-6xl'>
-        <div className='py-3 px-5 xl:px-0'>
-          <h2 className='font-bold text-2xl font-roboto'>Keseruan Smedip</h2>
+    <div className="border-green-800 border-y-2 bg-gradient-to-tl from-green-500 to-yellow-400 mt-8 xl:mt-20 py-5">
+      <div className="mx-auto max-w-6xl">
+        <div className="px-5 xl:px-0 py-3">
+          <h2 className="font-bold font-roboto text-2xl">Keseruan Smedip</h2>
         </div>
-        <div className='px-5 xl:px-0 flex items-center overflow-x-auto gap-3'>
+        <div className="flex items-center gap-3 px-5 xl:px-0 overflow-x-auto">
           {items &&
             items.map((item) => (
               <Link
                 legacyBehavior
                 key={item.id}
                 href={`https://youtu.be/${item.contentDetails.upload.videoId}`}
-                className='cursor-pointer'>
+                className="cursor-pointer"
+              >
                 <iframe
-                  width='570'
-                  height='215'
+                  width="570"
+                  height="215"
                   src={`https://www.youtube.com/embed/${item.contentDetails.upload.videoId}`}
                   title={item.snippet.title}
-                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                  allowFullScreen></iframe>
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </Link>
             ))}
         </div>
