@@ -3,14 +3,6 @@
 const InCollaborateWith = () => {
   const collaborators = [
     {
-      name: "Smeducative",
-      logo: "/assets/collaborator/smeducative.png",
-    },
-    {
-      name: "BKK Smedip",
-      logo: "/assets/collaborator/bkk-smedip.jpeg",
-    },
-    {
       name: "IPNU",
       logo: "/assets/collaborator/ipnu.png",
     },
@@ -19,12 +11,16 @@ const InCollaborateWith = () => {
       logo: "/assets/collaborator/ippnu.png",
     },
     {
-      name: "AR TV",
-      logo: "/assets/collaborator/artv.png",
+      name: "Smeducative",
+      logo: "/assets/collaborator/smeducative.png",
     },
     {
-      name: "bank bsi",
-      logo: "/assets/collaborator/bsi.png",
+      name: "BKK Smedip",
+      logo: "/assets/collaborator/bkk-smedip.jpeg",
+    },
+    {
+      name: "AR TV",
+      logo: "/assets/collaborator/artv.png",
     },
     {
       name: "evercoss",
@@ -34,15 +30,19 @@ const InCollaborateWith = () => {
       name: "seven retail",
       logo: "/assets/collaborator/seven.jpg",
     },
+    {
+      name: "Axioo Class Program",
+      logo: "/assets/collaborator/axioo-class-program.jpg",
+    },
   ];
 
   return (
-    <div className="mt-12 mx-auto max-w-6xl">
-      <div className="py-12 px-5 xl:px-0">
-        <div className="flex items-center justify-center textlg xl:text-2xl font-bold font-roboto uppercase">
+    <div className="mx-auto mt-12 max-w-6xl">
+      <div className="px-5 xl:px-0 py-12">
+        <div className="flex justify-center items-center font-bold font-roboto xl:text-2xl uppercase textlg">
           In Collaboration with
         </div>
-        <div className="mt-8 flex flex-row flex-wrap gap-6 items-center justify-center">
+        <div className="gap-6 grid grid-cols-2 md:grid-cols-4 mt-8">
           {collaborators.map((collaborator) => (
             <img
               key={collaborator.name}
