@@ -30,7 +30,7 @@ export default function ReadNews({
   const { asPath } = useRouter();
 
   return (
-    <AppLayout>
+    <AppLayout bright>
       <NextSeo
         title={`${news.title} | SMK Diponegoro Karanganyar`}
         description={striptags(news.content)
@@ -77,7 +77,7 @@ export default function ReadNews({
               <Image
                 src={news.cover}
                 alt={news.title}
-                className="w-full object-cover"
+                className="p-3 w-full object-cover"
                 width={850}
                 height={650}
               />
@@ -85,6 +85,8 @@ export default function ReadNews({
                 className={`
                   w-full px-5 py-3
                   text-sm lg:text-base
+                  font-roboto
+                  aspect-video
                   prose max-w-none prose-green text-black 
                   leading-normal`}
                 dangerouslySetInnerHTML={{ __html: news.content }}
