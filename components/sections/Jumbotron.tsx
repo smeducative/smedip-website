@@ -8,15 +8,15 @@ type Props = {
 
 export default function Jumbotron({ title, sub, center }: Props) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.5 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="bg-gradient-to-t from-primary to-green-700"
-    >
-      <div className="mx-auto pt-16 max-w-6xl">
+    <div className="bg-gradient-to-t from-primary to-green-700">
+      <motion.div
+        className="mx-auto pt-16 max-w-6xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
         <div
           className={`py-12 xl:py-20 px-5 xl:px-0 ${
             center ? "text-center" : "text-left"
@@ -27,7 +27,7 @@ export default function Jumbotron({ title, sub, center }: Props) {
           </h1>
           {sub}
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
