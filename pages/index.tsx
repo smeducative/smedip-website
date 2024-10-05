@@ -14,14 +14,15 @@ import InCollaborateWith from "../components/InCollaborateWith";
 import SmedipKristalPage from "@/components/SmedipKristal";
 import MarsSmedip from "@/components/sections/MarsSmedip";
 import PPDBPage from "@/components/ppdb";
-import YoutubeGridCards from "@/components/youtube-grid-cards";
+import YoutubeGridCards, { YTVideo } from "@/components/youtube-grid-cards";
 
 type Props = {
   news: News[];
   publikasi: Publikasi[];
+  videos: YTVideo[];
 };
 
-const Home: NextPage<Props> = ({ news, publikasi }) => {
+const Home: NextPage<Props> = ({ news, publikasi, videos }) => {
   const { route } = useRouter();
 
   return (
@@ -49,7 +50,7 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
       <SmedipKristalPage />
       {/* <SambutanKepsek /> */}
       <KompetensiKeahlian />
-      <YoutubeGridCards />
+      <YoutubeGridCards items={videos} />
       <NewsSection news={news} />
       {/* <YoutubeActivities /> */}
       <PublikasiSection publikasi={publikasi} />
@@ -61,6 +62,27 @@ const Home: NextPage<Props> = ({ news, publikasi }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
+  const url =
+    process.env.NODE_ENV === "production"
+      ? process.env.VERCEL_URL
+      : "http://localhost:3000";
+  const [smedipYT, bdpTV] = await Promise.all([
+    fetch(
+      `${url}/api/youtube-activities?channelId=UCtbl00zVFRkH2cALJgSN3Uw`
+    ).then((res) => res.json()),
+    fetch(
+      `${url}/api/youtube-activities?channelId=UCZ5gDURHX02514KEbzt6sVQ`
+    ).then((res) => res.json()),
+  ]);
+
+  const videos = [...smedipYT, ...bdpTV];
+
+  // then sort by snippet.publishedAt
+  const sorted = videos.sort(
+    (a, b) =>
+      Date.parse(b.snippet.publishedAt) - Date.parse(a.snippet.publishedAt)
+  );
+
   const { data: news } = await getNews();
   const { data: publikasi } = await getPublikasi();
 
@@ -68,8 +90,9 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       news,
       publikasi,
+      videos: sorted,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
 
