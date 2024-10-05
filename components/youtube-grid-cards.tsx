@@ -62,37 +62,14 @@ export type YTVideo = {
   contentDetails: YTContentDetails;
 };
 
-export default function YoutubeGridCards() {
+export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
   const [videos, setVideos] = useState<YTVideo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchVideos = async () => {
-      setIsLoading(true);
-
-      const [smedipYT, bdpTV] = await Promise.all([
-        fetch("/api/youtube-activities?channelId=UCtbl00zVFRkH2cALJgSN3Uw"),
-        fetch("/api/youtube-activities?channelId=UCZ5gDURHX02514KEbzt6sVQ"),
-      ]);
-
-      const data = await smedipYT.json();
-
-      const data2 = await bdpTV.json();
-
-      const videos = [...data, ...data2];
-
-      // then sort by snippet.publishedAt
-      const sorted = videos.sort(
-        (a, b) =>
-          Date.parse(b.snippet.publishedAt) - Date.parse(a.snippet.publishedAt)
-      );
-
-      setVideos(sorted);
-      setIsLoading(false);
-    };
-
-    fetchVideos();
-  }, []);
+    setVideos(items);
+    setIsLoading(false);
+  }, [items]);
 
   return (
     <motion.div
@@ -110,15 +87,12 @@ export default function YoutubeGridCards() {
         viewport={{ once: true }}
         transition={{ duration: 1.5 }}
         className='gap-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4'>
-        {isLoading && (
-          <div className='gap-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <Card key={i} className='rounded-md overflow-hidden'>
-                <Skeleton className='w-full h-12 object-cover' />
-              </Card>
-            ))}
-          </div>
-        )}
+        {isLoading &&
+          [1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+            <Card key={i} className='rounded-md overflow-hidden'>
+              <Skeleton className='w-full h-40 object-cover' />
+            </Card>
+          ))}
         {isLoading === false &&
           videos.map((video, index) => (
             <motion.div
