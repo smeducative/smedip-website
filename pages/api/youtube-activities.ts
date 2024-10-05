@@ -6,8 +6,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const { channelId } = req.query;
+
   try {
-    const { items }: { items: Activities[] } = await getActivities();
+    const { items }: { items: Activities[] } = await getActivities({
+      channelId: String(channelId),
+    });
 
     // cache result for 1 hour
     res.setHeader("Cache-Control", "s-maxage=3600, stale-while-revalidate");
