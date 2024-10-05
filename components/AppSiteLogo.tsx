@@ -3,22 +3,24 @@ import Link from "next/link";
 
 export default function AppSiteLogo() {
   return (
-    <div className='flex items-center gap-6'>
+    <div className='flex items-center gap-3'>
       <Link legacyBehavior href='/'>
         <a>
           <Image
             src='/logo.png'
             alt='smedip logo'
-            width={35}
-            height={35}
+            width={45}
+            height={45}
             className='cursor-pointer'
+            quality={100}
+            priority
           />
         </a>
       </Link>
 
       <Link legacyBehavior href={"/"}>
-        <a className='hidden md:flex flex-col'>
-          <span className='font-bold text-xl border-b border-gray-600'>
+        <a className='flex flex-col text-sm md:text-xl'>
+          <span className='border-gray-600 border-b font-bold'>
             SMK Diponegoro Karanganyar
           </span>
           <span>Kab. Pekalongan</span>
