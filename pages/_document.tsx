@@ -25,7 +25,7 @@ export default function Document() {
           async
         />
       </Head>
-      <body>
+      <body suppressHydrationWarning>
         <Main />
         <NextScript />
       </body>
