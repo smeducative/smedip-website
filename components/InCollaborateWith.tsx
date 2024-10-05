@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { CollaboratorCards } from "./ui/collabolator-cards";
+
 const InCollaborateWith = () => {
   const collaborators = [
     {
@@ -37,20 +39,17 @@ const InCollaborateWith = () => {
   ];
 
   return (
-    <div className="mx-auto mt-12 max-w-6xl">
-      <div className="px-5 xl:px-0 py-12">
-        <div className="flex justify-center items-center font-bold font-roboto xl:text-2xl uppercase textlg">
-          In Collaboration with
+    <div className='mx-auto mt-12 max-w-6xl'>
+      <div className='px-5 xl:px-0 py-12'>
+        <div className='flex justify-center items-center mb-5 font-bold font-roboto text-lg xl:text-2xl uppercase'>
+          Media Kolaborasi
         </div>
-        <div className="gap-6 grid grid-cols-2 md:grid-cols-4 mt-8">
-          {collaborators.map((collaborator) => (
-            <img
-              key={collaborator.name}
-              src={collaborator.logo}
-              alt={collaborator.name}
-              className={`p-3 h-24 lg:h-40 w-24 lg:w-40 object-contain hover:scale-105 transition duration-300 cursor-pointer`}
-            />
-          ))}
+        <div className='relative flex flex-col justify-center items-center dark:bg-grid-white/[0.05] rounded-md overflow-hidden'>
+          <CollaboratorCards
+            items={collaborators}
+            direction='right'
+            speed='slow'
+          />
         </div>
       </div>
     </div>
