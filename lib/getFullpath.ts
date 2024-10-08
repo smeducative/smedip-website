@@ -2,7 +2,7 @@ export const getFullpath = (path?: string | undefined): string => {
   return (
     (process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : (process.env.VERCEL_PROJECT_PRODUCTION_URL as string)) +
+      : 'https://smkdiponegoropekalongan.sch.id' +
     (typeof path !== "undefined" ? path : "")
-  );
+  ));
 };
