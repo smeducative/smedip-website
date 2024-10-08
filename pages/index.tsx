@@ -70,10 +70,10 @@ export const getStaticProps: GetStaticProps = async () => {
   const [smedipYT, bdpTV] = await Promise.all([
     getActivities({
       channelId: "UCtbl00zVFRkH2cALJgSN3Uw",
-    }),
+    }).then((res) => res),
     getActivities({
       channelId: "UCZ5gDURHX02514KEbzt6sVQ",
-    }),
+    }).then((res) => res),
   ]);
 
   const videos = [...smedipYT, ...bdpTV];
