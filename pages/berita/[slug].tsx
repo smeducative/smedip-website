@@ -56,7 +56,7 @@ export default function ReadNews({
         title={news.title}
         center
         sub={
-          <div className="flex flex-col font-light text-slate-400 text-sm xl:text-base">
+          <div className='flex flex-col mt-3 font-light text-sm text-white xl:text-base'>
             <span>{news.author.name}</span>
             <span>{moment(news.created_at).format("LLLL")} WIB</span>
           </div>
@@ -69,15 +69,14 @@ export default function ReadNews({
         transition={{ duration: 2 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="mt-5 xl:mt-8"
-      >
-        <div className="mx-auto max-w-6xl">
-          <div className="gap-3 grid grid-cols-12">
-            <div className="border-slate-100 col-span-12 xl:col-span-8 bg-white border">
+        className='mt-5 xl:mt-8'>
+        <div className='mx-auto max-w-6xl'>
+          <div className='gap-3 grid grid-cols-12'>
+            <div className='border-slate-100 col-span-12 xl:col-span-8 bg-white border'>
               <Image
                 src={news.cover}
                 alt={news.title}
-                className="p-3 w-full object-cover"
+                className='p-3 w-full object-cover'
                 width={850}
                 height={650}
               />
@@ -91,9 +90,9 @@ export default function ReadNews({
                   leading-normal`}
                 dangerouslySetInnerHTML={{ __html: news.content }}
               />
-              <div className="sharethis-inline-share-button"></div>
+              <div className='sharethis-inline-share-button'></div>
             </div>
-            <div className="col-span-12 xl:col-span-4">
+            <div className='col-span-12 xl:col-span-4'>
               <PublikasiSection publikasi={publikasi} />
             </div>
           </div>
