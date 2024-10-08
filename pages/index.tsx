@@ -15,6 +15,7 @@ import SmedipKristalPage from "@/components/SmedipKristal";
 import MarsSmedip from "@/components/sections/MarsSmedip";
 import PPDBPage from "@/components/ppdb";
 import YoutubeGridCards, { YTVideo } from "@/components/youtube-grid-cards";
+import { getActivities } from "@/lib/getYtActivities";
 
 type Props = {
   news: News[];
@@ -67,12 +68,12 @@ export const getStaticProps: GetStaticProps = async () => {
       ? process.env.VERCEL_URL
       : "http://localhost:3000";
   const [smedipYT, bdpTV] = await Promise.all([
-    fetch(
-      `${url}/api/youtube-activities?channelId=UCtbl00zVFRkH2cALJgSN3Uw`
-    ).then((res) => res.json()),
-    fetch(
-      `${url}/api/youtube-activities?channelId=UCZ5gDURHX02514KEbzt6sVQ`
-    ).then((res) => res.json()),
+    getActivities({
+      channelId: "UCtbl00zVFRkH2cALJgSN3Uw",
+    }),
+    getActivities({
+      channelId: "UCZ5gDURHX02514KEbzt6sVQ",
+    }),
   ]);
 
   const videos = [...smedipYT, ...bdpTV];
