@@ -17,15 +17,19 @@ import PublikasiSection from "@/components/sections/PublikasiSection";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
+import SocialShare from "@/components/social-share";
+import Link from "next/link";
 
 moment.locale("id");
 
 export default function ReadNews({
   news,
   publikasi,
+  latestNews,
 }: {
   news: News;
   publikasi: Publikasi[];
+  latestNews: News[];
 }) {
   const { asPath } = useRouter();
 
@@ -70,7 +74,7 @@ export default function ReadNews({
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         className='mt-5 xl:mt-8'>
-        <div className='mx-auto max-w-6xl'>
+        <div className='mx-auto mb-5 max-w-6xl'>
           <div className='gap-3 grid grid-cols-12'>
             <div className='border-slate-100 col-span-12 xl:col-span-8 bg-white border'>
               <Image
@@ -90,10 +94,41 @@ export default function ReadNews({
                   leading-normal`}
                 dangerouslySetInnerHTML={{ __html: news.content }}
               />
-              <div className='sharethis-inline-share-button'></div>
+              <SocialShare url={getFullpath(asPath)} />
             </div>
-            <div className='col-span-12 xl:col-span-4'>
-              <PublikasiSection publikasi={publikasi} />
+            <div className='col-span-12 xl:col-span-4 px-5 xl:px-0'>
+              <strong>Tag:</strong> <br />
+              {news.categories?.map((cat) => (
+                <span
+                  key={cat.slug}
+                  className='inline-block bg-[#4FBEBC] mr-2 mb-2 px-3 py-1 rounded-full font-semibold text-white text-xs'>
+                  {cat.title}
+                </span>
+              ))}
+            </div>
+            <div className='col-span-12 px-5 xl:px-0'>
+              <div className='gap-3 grid grid-cols-4'>
+                {latestNews &&
+                  latestNews.map((news) => (
+                    <div className='gap-3 border-slate-200 col-span-1 bg-white p-3 border'>
+                      <img
+                        src={news.cover}
+                        alt={news.title}
+                        // className='w-full h-full object-cover'
+                        style={{
+                          aspectRatio: "16/9",
+                          objectFit: "cover",
+                        }}
+                      />
+                      <Link
+                        href={`/berita/${news.slug}`}
+                        key={news.slug}
+                        className='line-clamp-2 text-black text-sm hover:text-[#DB7710] hover:underline break-words overflow-x-hidden'>
+                        {news.title}
+                      </Link>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
         </div>
@@ -126,7 +161,7 @@ export const getStaticProps: GetStaticProps = async ({
 }: GetStaticPropsContext) => {
   const { slug } = params as IProps;
   const { data: news } = await showNews(slug);
-  const { data: publikasi } = await getPublikasi();
+  const { data: latestNews } = await getNews();
 
   if (!news) {
     return {
@@ -137,7 +172,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       news,
-      publikasi,
+      latestNews: latestNews.slice(0, 8),
     },
     revalidate: 1,
   };
