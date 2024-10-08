@@ -73,7 +73,7 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0.5 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1.5 }}
@@ -100,11 +100,11 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: index * 0.2 }}>
+              transition={{ duration: 1, delay: index * 0.2 }}>
               <Card className='rounded-md overflow-hidden'>
                 <Link
                   // will tsrget="_blank" to open in new tab
-                  href={`https://www.youtube.com/watch?v=${video.contentDetails.upload.videoId}`}
+                  href={`https://youtu.be/${video.contentDetails.upload.videoId}`}
                   target='_blank'>
                   <div className='relative cursor-pointer aspect-video'>
                     <img
