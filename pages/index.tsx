@@ -76,8 +76,6 @@ export const getStaticProps: GetStaticProps = async () => {
     }).then((res) => res.items),
   ]);
 
-  console.log(smedipYT, bdpTV);
-
   const videos = [...smedipYT, ...bdpTV];
 
   // then sort by snippet.publishedAt

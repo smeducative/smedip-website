@@ -111,7 +111,7 @@ export default function ReadNews({
                 {latestNews &&
                   latestNews.map((news) => (
                     <div
-                      className='gap-3 border-slate-200 col-span-1 bg-white p-3 border'
+                      className='gap-3 border-slate-200 col-span-4 md:col-span-2 xl:col-span-1 bg-white p-3 border'
                       key={news.slug}>
                       <img
                         src={news.cover}
