@@ -16,6 +16,7 @@ import MarsSmedip from "@/components/sections/MarsSmedip";
 import PPDBPage from "@/components/ppdb";
 import YoutubeGridCards, { YTVideo } from "@/components/youtube-grid-cards";
 import { getActivities } from "@/lib/getYtActivities";
+import GalleryImage from "@/components/gallery-image";
 
 type Props = {
   news: News[];
@@ -49,6 +50,7 @@ const Home: NextPage<Props> = ({ news, publikasi, videos }) => {
       />
       <HeroSection />
       <SmedipKristalPage />
+      <GalleryImage />
       {/* <SambutanKepsek /> */}
       <KompetensiKeahlian />
       <YoutubeGridCards items={videos} />

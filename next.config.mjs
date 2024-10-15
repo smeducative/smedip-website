@@ -10,6 +10,9 @@ const nextConfig = {
       {
         hostname: "object-smeducative.is3.cloudhost.id",
       },
+      {
+        hostname: "is3.cloudhost.id",
+      },
     ],
   },
 };
