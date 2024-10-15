@@ -125,8 +125,8 @@ export default function AppFooter() {
               <div className='flex md:flex-row flex-col gap-3'>
                 <iframe
                   src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.01362109823!2d109.62673867475796!3d-7.015330492986182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e701eff40b400c7%3A0x2c1c5d7a08fe8ead!2sSMK%20Diponegoro%20Kab.%20Pekalongan!5e1!3m2!1sen!2sid!4v1728121292470!5m2!1sen!2sid'
-                  width='400'
-                  height='250'
+                  width='340'
+                  height='230'
                   style={{ border: 0 }}
                   allowFullScreen
                   loading='lazy'></iframe>
