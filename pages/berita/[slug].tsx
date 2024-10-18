@@ -12,7 +12,6 @@ import { getFullpath } from "../../lib/getFullpath";
 import moment from "moment";
 import "moment/locale/id";
 import SmedipKristalPage from "@/components/SmedipKristal";
-import Publikasi from "../publikasi";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
@@ -23,11 +22,9 @@ moment.locale("id");
 
 export default function ReadNews({
   news,
-  publikasi,
   latestNews,
 }: {
   news: News;
-  publikasi: Publikasi[];
   latestNews: News[];
 }) {
   const { asPath } = useRouter();
