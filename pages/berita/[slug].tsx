@@ -17,6 +17,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import SocialShare from "@/components/social-share";
 import Link from "next/link";
+import { DiscussionEmbed } from "disqus-react";
 
 moment.locale("id");
 
@@ -91,6 +92,20 @@ export default function ReadNews({
                 dangerouslySetInnerHTML={{ __html: news.content }}
               />
               <SocialShare url={getFullpath(asPath)} />
+
+              {/* disqus */}
+              <div className='p-5'>
+                <DiscussionEmbed
+                  shortname='smkdiponegoropekalongan-sch-id'
+                  config={{
+                    url: getFullpath(asPath),
+                    identifier: news.slug,
+                    title: news.title,
+                    language: "id_ID",
+                  }}
+                />
+              </div>
+              {/* end: disqus */}
             </div>
             <div className='col-span-12 xl:col-span-4 px-5 xl:px-0'>
               <strong>Tag:</strong> <br />
