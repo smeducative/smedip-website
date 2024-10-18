@@ -5,7 +5,7 @@ import PublikasiList from "../../components/PublikasiList";
 import Jumbotron from "../../components/sections/Jumbotron";
 import { getPublikasi, Publikasi } from "../../lib/fetch";
 
-const Publikasi = ({ publications }: { publications: Publikasi[] }) => {
+const PublikasiPage = ({ publications }: { publications: Publikasi[] }) => {
   return (
     <AppLayout>
       <NextSeo title='Publikasi Guru dan Tenaga Kependidikan | SMK Diponegoro Karanganyar' />
@@ -13,7 +13,7 @@ const Publikasi = ({ publications }: { publications: Publikasi[] }) => {
 
       <div className='mx-auto max-w-6xl'>
         <div className='grid grid-cols-12'>
-          <div className='col-span-12 xl:col-span-8'>
+          <div className='col-span-12'>
             <PublikasiList list={publications} />
           </div>
         </div>
@@ -22,7 +22,7 @@ const Publikasi = ({ publications }: { publications: Publikasi[] }) => {
   );
 };
 
-export default Publikasi;
+export default PublikasiPage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data: publications } = await getPublikasi();

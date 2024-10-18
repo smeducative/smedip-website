@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 import { ParsedUrlQuery } from "querystring";
 import AppLayout from "../../components/layouts/AppLayout";
 import Jumbotron from "../../components/sections/Jumbotron";
-import { getNews, getPublikasi, News, showNews } from "../../lib/fetch";
+import { getNews, News, showNews } from "../../lib/fetch";
 import striptags from "striptags";
 import { useRouter } from "next/router";
 import { getFullpath } from "../../lib/getFullpath";
@@ -13,7 +13,6 @@ import moment from "moment";
 import "moment/locale/id";
 import SmedipKristalPage from "@/components/SmedipKristal";
 import Publikasi from "../publikasi";
-import PublikasiSection from "@/components/sections/PublikasiSection";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
@@ -62,7 +61,7 @@ export default function ReadNews({
         sub={
           <div className='flex flex-col mt-3 font-light text-sm text-white xl:text-base'>
             <span>{news.author.name}</span>
-            <span>{moment(news.created_at).format("LLLL")} WIB</span>
+            <span>{formatDate(news.created_at)}</span>
           </div>
         }
       />
@@ -107,11 +106,14 @@ export default function ReadNews({
               ))}
             </div>
             <div className='col-span-12 px-5 xl:px-0'>
-              <div className='gap-3 grid grid-cols-4'>
+              <div className='gap-3 grid grid-cols-12'>
+                <div className='col-span-12'>
+                  <h2 className='font-bold text-2xl'>Berita Terbaru</h2>
+                </div>
                 {latestNews &&
                   latestNews.map((news) => (
                     <div
-                      className='gap-3 border-slate-200 col-span-4 md:col-span-2 xl:col-span-1 bg-white p-3 border'
+                      className='gap-3 border-slate-200 col-span-12 md:col-span-6 xl:col-span-4 bg-white p-3 border'
                       key={news.slug}>
                       <img
                         src={news.cover}
@@ -128,6 +130,9 @@ export default function ReadNews({
                         className='line-clamp-2 text-black text-sm hover:text-[#DB7710] hover:underline break-words overflow-x-hidden'>
                         {news.title}
                       </Link>
+                      <span className='text-slate-400 text-xs'>
+                        {formatDate(news.created_at)}
+                      </span>
                     </div>
                   ))}
               </div>
@@ -140,6 +145,10 @@ export default function ReadNews({
     </AppLayout>
   );
 }
+
+const formatDate = (dateString: string) => {
+  return moment(dateString).locale("id").format("dddd, DD MMMM YYYY HH:mm");
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data: newses } = await getNews();
@@ -174,7 +183,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       news,
-      latestNews: latestNews.slice(0, 8),
+      latestNews: latestNews.slice(0, 12),
     },
     revalidate: 1,
   };

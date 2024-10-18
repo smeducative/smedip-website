@@ -65,10 +65,6 @@ const Home: NextPage<Props> = ({ news, publikasi, videos }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const url =
-    process.env.NODE_ENV === "production"
-      ? process.env.VERCEL_URL
-      : "http://localhost:3000";
   const [smedipYT, bdpTV] = await Promise.all([
     getActivities({
       channelId: "UCtbl00zVFRkH2cALJgSN3Uw",
