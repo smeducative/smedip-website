@@ -20,6 +20,7 @@ import Link from "next/link";
 import moment from "moment";
 import "moment/locale/id";
 import SmedipKristalPage from "@/components/SmedipKristal";
+import { DiscussionEmbed } from "disqus-react";
 
 export default function ReadPublication({
   data,
@@ -64,6 +65,20 @@ export default function ReadPublication({
               />
 
               <SocialShare url={getFullpath(asPath)} />
+
+              {/* disqus */}
+              <div className='p-5'>
+                <DiscussionEmbed
+                  shortname='smkdiponegoropekalongan-sch-id'
+                  config={{
+                    url: getFullpath(asPath),
+                    identifier: data.slug,
+                    title: data.title,
+                    language: "id_ID",
+                  }}
+                />
+              </div>
+              {/* end: disqus */}
             </div>
             {/* category */}
             <div className='col-span-12 xl:col-span-4 px-5 xl:px-0'>
