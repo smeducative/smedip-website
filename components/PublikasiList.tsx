@@ -1,53 +1,48 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Publikasi } from "../lib/fetch";
-import striptags from "striptags";
+
+import moment from "moment";
+import "moment/locale/id";
 
 const PublikasiList = ({ list }: { list: Publikasi[] }) => {
   return (
-    <div className="mt-8 px-3 xl:px-0">
-      <div className="gap-3 grid grid-cols-12">
-        {list?.map((article, i) => (
+    <div className='mt-8 px-3 xl:px-0'>
+      <div className='gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+        {list?.map((article, index) => (
           <Link
-            legacyBehavior
+            key={index}
             href={`/publikasi/${encodeURIComponent(article.slug)}`}
-            key={i}
-          >
-            <a className="flex border-slate-200 col-span-12 bg-white hover:bg-[#4FBEBC] hover:shadow hover:shadow-slate-200/50 px-3 py-2 border hover:scale-105 transition duration-300">
-              <div className="mr-3 xl:mr-5">
-                <img
-                  src={article.cover}
-                  alt={article.title}
-                  className="w-32 h-32 object-cover"
-                  width={128}
-                  height={128}
-                />
-              </div>
-              <div className="break-words">
-                <div className="line-clamp-3 font-bold text-base">
+            className='block border-slate-200 bg-white hover:bg-teal-400 hover:shadow-lg hover:shadow-slate-200/50 p-4 border rounded-lg transition-transform duration-300 ease-in-out hover:scale-105'>
+            <div className='flex items-start'>
+              <img
+                src={article.cover}
+                alt={article.title}
+                className='mr-4 rounded-md w-32 h-32 object-cover'
+                width={128}
+                height={128}
+              />
+              <div className='flex-1'>
+                <h3 className='mb-2 line-clamp-3 font-bold text-lg text-slate-800'>
                   {article.title}
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-normal text-xs xl:text-sm">
-                    {article.author.name}
-                  </span>
-                  <span className="font-normal text-xs xl:text-sm">
-                    {new Date(article.created_at).toLocaleString("id-ID", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "2-digit",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                    })}
-                  </span>
-                </div>
+                </h3>
+                <p className='mb-1 text-slate-600 text-sm'>
+                  {article.author.name}
+                </p>
+                <p className='text-slate-500 text-sm'>
+                  {formatDate(article.created_at)}
+                </p>
               </div>
-            </a>
+            </div>
           </Link>
         ))}
       </div>
     </div>
   );
+};
+
+const formatDate = (dateString: string) => {
+  return moment(dateString).locale("id").format("DD MMMM YY, HH:mm");
 };
 
 export default PublikasiList;
