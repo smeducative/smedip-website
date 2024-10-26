@@ -54,7 +54,7 @@ const Home: NextPage<Props> = ({ news, publikasi, videos, slides }) => {
         }}
       />
       <HeroSection />
-      <JumbotronCarouselComponent slides={slides} />
+      {slides?.length > 0 && <JumbotronCarouselComponent slides={slides} />}
       <SmedipKristalPage />
       <GalleryImage />
       {/* <SambutanKepsek /> */}
