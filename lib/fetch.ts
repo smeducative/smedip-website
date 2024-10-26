@@ -1,3 +1,4 @@
+import { Slide } from "@/components/jumbotron-carousel";
 import { api } from "./api";
 
 export type Categories = {
@@ -44,3 +45,7 @@ export const showPublikasi = async (
 ): Promise<{ data: Publikasi }> => {
   return api.get(`/publikasi/${slug}`).then((res) => res.data);
 };
+
+export const getSlides = async (): Promise<{ data: Slide[] }> => {
+  return api.get("/slides").then((res) => res);
+}

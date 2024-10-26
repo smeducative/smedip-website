@@ -4,7 +4,7 @@ import AppLayout from "../components/layouts/AppLayout";
 import HeroSection from "../components/sections/HeroSection";
 import NewsSection from "../components/sections/NewsSection";
 import PublikasiSection from "../components/sections/PublikasiSection";
-import { getNews, getPublikasi, Publikasi } from "../lib/fetch";
+import { getNews, getPublikasi, getSlides, Publikasi } from "../lib/fetch";
 import type { News } from "../lib/fetch";
 import SambutanKepsek from "../components/SambutanKepsek";
 import { NextSeo } from "next-seo";
@@ -17,14 +17,19 @@ import PPDBPage from "@/components/ppdb";
 import YoutubeGridCards, { YTVideo } from "@/components/youtube-grid-cards";
 import { getActivities } from "@/lib/getYtActivities";
 import GalleryImage from "@/components/gallery-image";
+import {
+  JumbotronCarouselComponent,
+  Slide,
+} from "@/components/jumbotron-carousel";
 
 type Props = {
   news: News[];
   publikasi: Publikasi[];
   videos: YTVideo[];
+  slides: Slide[];
 };
 
-const Home: NextPage<Props> = ({ news, publikasi, videos }) => {
+const Home: NextPage<Props> = ({ news, publikasi, videos, slides }) => {
   const { route } = useRouter();
 
   return (
@@ -49,6 +54,7 @@ const Home: NextPage<Props> = ({ news, publikasi, videos }) => {
         }}
       />
       <HeroSection />
+      <JumbotronCarouselComponent slides={slides} />
       <SmedipKristalPage />
       <GalleryImage />
       {/* <SambutanKepsek /> */}
@@ -84,14 +90,16 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const { data: news } = await getNews();
   const { data: publikasi } = await getPublikasi();
+  const { data: slides } = await getSlides();
 
   return {
     props: {
       news,
       publikasi,
       videos: sorted,
+      slides,
     },
-    revalidate: 10,
+    revalidate: 5,
   };
 };
 
