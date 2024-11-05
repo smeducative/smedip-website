@@ -8,6 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 export function AboutTracerStudy() {
   return (
@@ -104,12 +105,14 @@ export const HeroSectionTracerStudy = () => {
               Platform pelacakan dan analisis data alumni untuk meningkatkan
               mutu pendidikan dan relevansi lulusan dengan dunia kerja.
             </p>
-            <Button
-              size='lg'
-              className='bg-primary hover:bg-primary-dark w-fit'>
-              Isi Data Alumni
-              <ArrowRight className='ml-2' />
-            </Button>
+            <Link href='/tracer-study/form'>
+              <Button
+                size='lg'
+                className='bg-primary hover:bg-primary-dark w-fit'>
+                Isi Data Alumni
+                <ArrowRight className='ml-2' />
+              </Button>
+            </Link>
 
             <div className='flex flex-wrap gap-8 mt-8'>
               {/* <Stat value='1500+' label='Alumni Terlacak' /> */}
