@@ -108,7 +108,7 @@ export const HeroSectionTracerStudy = () => {
             <Link href='/tracer-study/form'>
               <Button
                 size='lg'
-                className='bg-primary hover:bg-primary-dark w-fit'>
+                className='bg-primary hover:scale-105 w-fit transition duration-500'>
                 Isi Data Alumni
                 <ArrowRight className='ml-2' />
               </Button>

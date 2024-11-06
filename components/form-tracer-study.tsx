@@ -2,9 +2,23 @@ import SurveyForm from "./survey-from";
 
 export default function FormTracerStudy() {
   return (
-    <div className='mx-auto max-w-7xl'>
-      <div className='px-4 pt-48 pb-16 md:pb-24'>Form Tracer Study</div>
-      <SurveyForm />
+    <div>
+      <div className='bg-gradient-to-r from-[#3e7a81] to-[#38a460] px-4 pt-48 md:pt-56 pb-16'>
+        <div className='flex flex-col text-center'>
+          <h1 className='font-bold text-4xl'>Form Tracer Study</h1>
+          <p className='mx-auto mt-3 mb-12 max-w-3xl text-white'>
+            Tracer Study SMK Diponegoro Karanganyar adalah sistem pelacakan
+            alumni yang bertujuan untuk mengevaluasi output pendidikan sekolah.
+            Isilah data alumni terlebih dahulu, kemudian isi data survey dengan
+            sejujurnya.
+          </p>
+        </div>
+      </div>
+
+      {/* survey form */}
+      <div className='mx-auto my-8 max-w-7xl'>
+        <SurveyForm />
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,6 +15,9 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { useQuery } from "@tanstack/react-query";
+import { Checkbox } from "./ui/checkbox";
+import { cn } from "@/lib/utils";
+import { SendHorizonal } from "lucide-react";
 
 type QuestionOption = {
   id: number;
@@ -37,7 +40,11 @@ type QuestionType = {
   options: QuestionOption[];
 };
 
-type QuestionsData = Record<string, QuestionType[]>;
+type Answer = {
+  question_id: number;
+  value: string | null;
+  options: { option_id: number }[];
+};
 
 const categoryDescriptions: Record<string, string> = {
   bekerja:
@@ -69,8 +76,13 @@ const fetchQuestions = async () => {
 };
 
 export default function SurveyForm() {
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [answers, setAnswers] = useState<Answer[]>([]);
   const [selectedSection, setSelectedSection] = useState<string>("bekerja");
+
+  // when selected section changes, reset answers
+  useEffect(() => {
+    setAnswers([]);
+  }, [selectedSection]);
 
   const {
     data: questionsData,
@@ -93,8 +105,40 @@ export default function SurveyForm() {
     console.log(questionsData);
   }
 
-  const handleInputChange = (question: string, value: string) => {
-    setAnswers((prev) => ({ ...prev, [question]: value }));
+  const handleInputChange = ({
+    question_id,
+    value,
+    options,
+  }: {
+    question_id: number;
+    value?: string;
+    options?: Array<{
+      option_id: number;
+      value?: string;
+    }>;
+  }) => {
+    setAnswers((prevAnswers) => {
+      const updatedAnswers = prevAnswers.map((answer) =>
+        answer.question_id === question_id
+          ? { ...answer, value: value || null, options: options || [] }
+          : answer
+      );
+
+      if (
+        !updatedAnswers.some((answer) => answer.question_id === question_id)
+      ) {
+        updatedAnswers.push({
+          question_id,
+          value: value || null,
+          options: options || [],
+        });
+      }
+
+      // where value and options are not empty
+      return updatedAnswers.filter(
+        (answer) => answer.value !== null || answer.options.length > 0
+      );
+    });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -107,25 +151,35 @@ export default function SurveyForm() {
     const questionId = `${selectedSection}-${index}`; // Fix incorrect usage of template literal
 
     return (
-      <div key={questionId} className='mb-4'>
-        <Label htmlFor={questionId} className='font-medium text-base'>
+      <div key={questionId} className='mb-4 border-t-2 border-green-100'>
+        <Label htmlFor={questionId} className='font-semibold text-sm'>
           {question.question}
         </Label>
         {question.type === "text" ? (
           <Input
             id={questionId}
-            value={answers[question.question] || ""}
-            onChange={(e) =>
-              handleInputChange(question.question, e.target.value)
+            onInput={(e) =>
+              handleInputChange({
+                question_id: question.id,
+                value: (e.target as HTMLInputElement).value,
+              })
             }
+            placeholder='Tulis jawabanmu disini'
             className='mt-1'
           />
-        ) : (
+        ) : question.type === "radio" ? (
           <RadioGroup
             onValueChange={(value) =>
-              handleInputChange(question.question, value)
+              handleInputChange({
+                question_id: question.id,
+                options: [{ option_id: parseInt(value) }],
+              })
             }
-            value={answers[question.question]}
+            value={
+              answers
+                .find((answer) => answer.question_id === question.id)
+                ?.options[0]?.option_id.toString() || ""
+            }
             className='mt-2'>
             {question.options.map((option, optionIndex) => (
               <div
@@ -141,13 +195,57 @@ export default function SurveyForm() {
               </div>
             ))}
           </RadioGroup>
-        )}
+        ) : question.type === "checkbox" ? (
+          <div className='gap-3 grid mt-2'>
+            {question.options.map((option, optionIndex) => (
+              <div
+                key={`${questionId}-${optionIndex}`}
+                className='flex items-center space-x-2'>
+                <Checkbox
+                  id={`${questionId}-${optionIndex}`}
+                  checked={answers
+                    .find((answer) => answer.question_id === question.id)
+                    ?.options.some((answer) => answer.option_id === option.id)}
+                  onCheckedChange={(checked) =>
+                    handleInputChange({
+                      question_id: question.id,
+                      options: checked
+                        ? [
+                            ...(answers
+                              .find(
+                                (answer) => answer.question_id === question.id
+                              )
+                              ?.options.filter(
+                                (answer) => answer.option_id !== option.id
+                              ) || []),
+                            {
+                              option_id: option.id,
+                            },
+                          ]
+                        : answers
+                            .find(
+                              (answer) => answer.question_id === question.id
+                            )
+                            ?.options.filter(
+                              (answer) => answer.option_id !== option.id
+                            ) || [],
+                    })
+                  }
+                  className='rounded w-4 h-4'
+                />
+                <Label htmlFor={`${questionId}-${optionIndex}`}>
+                  {option.name}
+                </Label>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     );
   };
 
   return (
-    <Card className='mx-auto w-full max-w-4xl'>
+    <Card className='border-green-400 shadow mx-auto rounded-none md:rounded-md w-full max-w-4xl'>
       <CardHeader>
         <CardTitle>Formulir Survei</CardTitle>
         <CardDescription>
@@ -156,38 +254,41 @@ export default function SurveyForm() {
       </CardHeader>
       <CardContent>
         <div className='mb-6'>
-          {/* <Label className='block mb-2 font-medium text-base'>
-            Pilih Kategori
-          </Label> */}
+          <Label className='block mb-2 font-medium text-base'>
+            Tap kategori yang sesuai
+          </Label>
           <RadioGroup
             onValueChange={setSelectedSection}
-            className='gap-4 grid grid-cols-2'>
+            className='gap-4 grid grid-cols-1 md:grid-cols-2'>
             {[
               "bekerja",
               "melanjutkan pendidikan",
               "wirausaha",
               "belum bekerja",
             ].map((section) => (
-              <Label
-                key={section}
-                htmlFor={section}
-                className={`flex flex-col items-center justify-center rounded-lg border-2 p-4 hover:bg-blue-100 cursor-pointer ${section} ${
+              <div
+                className={cn(
+                  "flex items-center space-x-2 border-2 p-3 rounded-md cursor-pointer",
                   selectedSection === section
-                    ? "ring-2 ring-offset-2 ring-blue-400 bg-blue-100 text-blue-700"
+                    ? "border-green-500 text-green-500"
                     : ""
-                }`}>
+                )}>
                 <RadioGroupItem
+                  className={cn(
+                    selectedSection === section
+                      ? "border-2 border-green-500 text-green-500"
+                      : ""
+                  )}
                   value={section}
                   id={section}
-                  className='sr-only'
                 />
-                <span className='font-semibold text-lg'>
-                  {section.toUpperCase()}
-                </span>
-                <p className='mt-2 text-center text-xs'>
-                  {categoryDescriptions[section]}
-                </p>
-              </Label>
+                <Label htmlFor={section} className='cursor-pointer'>
+                  <span className='font-bold'>{section.toUpperCase()}</span>
+                  <p className='text-sm'>
+                    {categoryDescriptions[section] || "Tidak ada deskripsi"}
+                  </p>
+                </Label>
+              </div>
             ))}
           </RadioGroup>
         </div>
@@ -199,13 +300,17 @@ export default function SurveyForm() {
           </form>
         )}
       </CardContent>
-      <CardFooter>
+      <CardFooter className='flex flex-col'>
+        <p className='small text-gray-400'>
+          * Pastikan data yang dimasukkan sudah benar
+        </p>
         <Button
           type='button'
           onClick={handleSubmit}
           disabled={!selectedSection}
-          className='w-full'>
-          Submit
+          className=''>
+          Kirim Survei
+          <SendHorizonal className='ml-2 w-4 h-4' />
         </Button>
       </CardFooter>
     </Card>

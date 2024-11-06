@@ -3,10 +3,6 @@ import AppLayout from "@/components/layouts/AppLayout";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 import { getFullpath } from "@/lib/getFullpath";
-import {
-  AboutTracerStudy,
-  HeroSectionTracerStudy,
-} from "@/components/about-tracer-study";
 import SmedipKristalPage from "@/components/SmedipKristal";
 import FormTracerStudy from "@/components/form-tracer-study";
 
