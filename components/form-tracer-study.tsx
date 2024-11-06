@@ -1,6 +1,10 @@
+import { useState } from "react";
+import IdentifyCardStudentTracerStudy from "./identify-card-student-tracer-study";
 import SurveyForm from "./survey-from";
 
 export default function FormTracerStudy() {
+  const [step, setStep] = useState(1);
+
   return (
     <div>
       <div className='bg-gradient-to-r from-[#3e7a81] to-[#38a460] px-4 pt-48 md:pt-56 pb-16'>
@@ -17,7 +21,8 @@ export default function FormTracerStudy() {
 
       {/* survey form */}
       <div className='mx-auto my-8 max-w-7xl'>
-        <SurveyForm />
+        {step === 1 && <IdentifyCardStudentTracerStudy />}
+        {step === 2 && <SurveyForm />}
       </div>
     </div>
   );
