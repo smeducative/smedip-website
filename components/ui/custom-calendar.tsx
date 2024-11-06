@@ -25,12 +25,14 @@ interface DatePickerProps {
   label?: string;
   initialDate?: Date;
   onDateChange: (date: Date | null) => void;
+  disabled?: boolean;
 }
 
 export function DatePicker({
-  label = "Select Date",
+  label,
   initialDate,
   onDateChange,
+  disabled = false,
 }: DatePickerProps) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(
     initialDate || null
@@ -133,7 +135,7 @@ export function DatePicker({
 
   return (
     <div className='w-full max-w-sm'>
-      <Label htmlFor='date-picker'>{label}</Label>
+      {label && <Label htmlFor='date-picker'>{label}</Label>}
       <Popover open={isOpen} onOpenChange={setIsOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -141,6 +143,7 @@ export function DatePicker({
             variant='outline'
             role='combobox'
             aria-expanded={isOpen}
+            disabled={disabled}
             className='justify-between w-full'>
             {selectedDate
               ? selectedDate.toLocaleDateString("id-ID", {
@@ -176,7 +179,7 @@ export function DatePicker({
                   <SelectValue>{currentYear}</SelectValue>
                 </SelectTrigger>
                 <SelectContent>
-                  {years.slice(13).map((year) => (
+                  {years.map((year) => (
                     <SelectItem key={year} value={year.toString()}>
                       {year}
                     </SelectItem>

@@ -4,6 +4,7 @@ import SurveyForm from "./survey-from";
 
 export default function FormTracerStudy() {
   const [step, setStep] = useState(1);
+  const [identify, setIdentify] = useState("");
 
   return (
     <div>
@@ -21,7 +22,12 @@ export default function FormTracerStudy() {
 
       {/* survey form */}
       <div className='mx-auto my-8 max-w-7xl'>
-        {step === 1 && <IdentifyCardStudentTracerStudy />}
+        {step === 1 && (
+          <IdentifyCardStudentTracerStudy
+            onIdentified={(id) => setIdentify(id)}
+            onStep={(step) => setStep(step)}
+          />
+        )}
         {step === 2 && <SurveyForm />}
       </div>
     </div>
