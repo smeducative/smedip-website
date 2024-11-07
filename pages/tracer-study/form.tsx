@@ -12,11 +12,11 @@ const Home: NextPage = () => {
   return (
     <AppLayout bright>
       <NextSeo
-        title='Tracer Study SMK Diponegoro Karanganyar Kab. Pekalongan | MAU Modern, Agamis, Unggul'
+        title='Form Tracer Study SMK Diponegoro Karanganyar Kab. Pekalongan | MAU Modern, Agamis, Unggul'
         description='Platform pelacakan dan analisis data alumni untuk pengembangan mutu pendidikan sekolah menengah kejuruan SMK Diponegoro Karanganyar Kabupaten Pekalongan'
         canonical={getFullpath()}
         openGraph={{
-          title: "Tracer Study SMK Diponegoro Karanganyar",
+          title: "Form Tracer Study SMK Diponegoro Karanganyar",
           description:
             "Platform pelacakan dan analisis data alumni untuk pengembangan mutu pendidikan sekolah menengah kejuruan SMK Diponegoro Karanganyar Kabupaten Pekalongan",
           url: route,
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
               url: getFullpath("/logo.png"),
               width: 850,
               height: 650,
-              alt: "Tracer Study SMK Diponegoro Karanganyar",
+              alt: "Form Tracer Study SMK Diponegoro Karanganyar",
             },
           ],
         }}

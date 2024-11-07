@@ -15,8 +15,8 @@ export default function FormTracerStudy() {
           <p className='mx-auto mt-3 mb-12 max-w-3xl text-white'>
             Tracer Study SMK Diponegoro Karanganyar adalah sistem pelacakan
             alumni yang bertujuan untuk mengevaluasi output pendidikan sekolah.
-            Isilah data alumni terlebih dahulu, kemudian isi data survey dengan
-            sejujurnya.
+            Identifikasi data alumni terlebih dahulu, kemudian isi data survey
+            dengan sejujurnya.
           </p>
         </div>
       </div>
