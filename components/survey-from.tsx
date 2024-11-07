@@ -14,10 +14,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Checkbox } from "./ui/checkbox";
 import { cn } from "@/lib/utils";
-import { SendHorizonal } from "lucide-react";
+import { LoaderCircle, SendHorizonal } from "lucide-react";
+import { api } from "@/lib/api";
 
 type QuestionOption = {
   id: number;
@@ -75,11 +76,39 @@ const fetchQuestions = async () => {
   return response.json();
 };
 
-export default function SurveyForm() {
+const storeAnswers = async (answers: Answer[], identity: string) => {
+  const response = await api.post(
+    "/tracer-study/store",
+    {
+      student_id: identity,
+      answers,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+  return response.data;
+};
+
+export default function SurveyForm({
+  identity,
+  onStep,
+}: {
+  identity: string;
+  onStep: (step: number) => void;
+}) {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [selectedSection, setSelectedSection] = useState<string>("bekerja");
 
   // when selected section changes, reset answers
+  useEffect(() => {
+    setAnswers([]);
+    setSelectedSection("bekerja");
+  }, []);
+
   useEffect(() => {
     setAnswers([]);
   }, [selectedSection]);
@@ -93,16 +122,20 @@ export default function SurveyForm() {
     queryFn: fetchQuestions,
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["store-answers"],
+    mutationFn: () => storeAnswers(answers, identity),
+    onSuccess: (data) => {
+      onStep(3);
+    },
+  });
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
     return <div>Error: {error.message}</div>;
-  }
-
-  if (questionsData) {
-    console.log(questionsData);
   }
 
   const handleInputChange = ({
@@ -145,13 +178,15 @@ export default function SurveyForm() {
     e.preventDefault();
     console.log("Form submitted:", answers);
     // Here you would typically send the data to your backend
+
+    mutate();
   };
 
   const renderQuestion = (question: QuestionType, index: number) => {
     const questionId = `${selectedSection}-${index}`; // Fix incorrect usage of template literal
 
     return (
-      <div key={questionId} className='mb-4 border-t-2 border-green-100'>
+      <div key={questionId} className='border-green-100 mb-4 border-t-2'>
         <Label htmlFor={questionId} className='font-semibold text-sm'>
           {question.question}
         </Label>
@@ -258,7 +293,8 @@ export default function SurveyForm() {
             Tap kategori yang sesuai
           </Label>
           <RadioGroup
-            onValueChange={setSelectedSection}
+            value={selectedSection}
+            onValueChange={(value) => setSelectedSection(value)}
             className='gap-4 grid grid-cols-1 md:grid-cols-2'>
             {[
               "bekerja",
@@ -267,6 +303,7 @@ export default function SurveyForm() {
               "belum bekerja",
             ].map((section) => (
               <div
+                key={section}
                 className={cn(
                   "flex items-center space-x-2 border-2 p-3 rounded-md cursor-pointer",
                   selectedSection === section
@@ -301,16 +338,21 @@ export default function SurveyForm() {
         )}
       </CardContent>
       <CardFooter className='flex flex-col'>
-        <p className='small text-gray-400'>
+        <p className='text-gray-400 small'>
           * Pastikan data yang dimasukkan sudah benar
         </p>
-        <Button
-          type='button'
-          onClick={handleSubmit}
-          disabled={!selectedSection}
-          className=''>
-          Kirim Survei
-          <SendHorizonal className='ml-2 w-4 h-4' />
+        <Button onClick={handleSubmit} disabled={!selectedSection || isPending}>
+          {isPending ? (
+            <>
+              <LoaderCircle className='mr-2 w-4 h-4 animate-spin' />
+              Mengirim Survei
+            </>
+          ) : (
+            <>
+              Kirim Survei
+              <SendHorizonal className='ml-2 w-4 h-4' />
+            </>
+          )}
         </Button>
       </CardFooter>
     </Card>

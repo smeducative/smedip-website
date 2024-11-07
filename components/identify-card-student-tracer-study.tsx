@@ -89,12 +89,15 @@ export default function IdentifyCardStudentTracerStudy({
         });
       } catch (error) {
         if (error instanceof AxiosError && error.response?.status === 404) {
-          throw new Error("Data alumni tidak ditemukan");
+          throw new Error(
+            "Data alumni tidak ditemukan, periksa kembali Nama Lengkap dan Tanggal Lahir"
+          );
         }
         throw error;
       }
     },
     enabled: false,
+    retry: 3,
   });
 
   useEffect(() => {

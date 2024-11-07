@@ -28,7 +28,10 @@ export default function FormTracerStudy() {
             onStep={(step) => setStep(step)}
           />
         )}
-        {step === 2 && <SurveyForm />}
+        {step === 2 && (
+          <SurveyForm identity={identify} onStep={(step) => setStep(step)} />
+        )}
+        {step === 3 && <div>Done</div>}
       </div>
     </div>
   );
