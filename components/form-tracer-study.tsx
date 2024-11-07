@@ -1,6 +1,7 @@
 import { useState } from "react";
 import IdentifyCardStudentTracerStudy from "./identify-card-student-tracer-study";
 import SurveyForm from "./survey-from";
+import SurveySuccesfully from "./survey-successfully";
 
 export default function FormTracerStudy() {
   const [step, setStep] = useState(1);
@@ -31,7 +32,7 @@ export default function FormTracerStudy() {
         {step === 2 && (
           <SurveyForm identity={identify} onStep={(step) => setStep(step)} />
         )}
-        {step === 3 && <div>Done</div>}
+        {step === 3 && <SurveySuccesfully />}
       </div>
     </div>
   );
