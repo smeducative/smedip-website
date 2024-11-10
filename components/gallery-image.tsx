@@ -1,10 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 export default function GalleryImage() {
   const images = [
-    // "https://is3.cloudhost.id/object-smeducative/gallery/CBMM1543.jpg",
-    // "https://is3.cloudhost.id/object-smeducative/gallery/IMG-20230905-WA0024.jpg",
     "https://is3.cloudhost.id/object-smeducative/gallery/IMG-20240822-WA0021.jpg",
     "https://is3.cloudhost.id/object-smeducative/gallery/IMG-20241015-WA0035.jpg",
     "https://is3.cloudhost.id/object-smeducative/gallery/SMK dipo (36) (1).jpg",
@@ -13,28 +12,47 @@ export default function GalleryImage() {
     "https://is3.cloudhost.id/object-smeducative/gallery/WhatsApp Image 2024-10-11 at 12.28.12_a2bac899.jpg",
   ];
 
+  // Duplicate the images array 100 times to ensure seamless looping
+  const duplicatedImages = Array(100).fill(images).flat();
+
+  const [width, setWidth] = useState(0);
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    const element = carouselRef.current as HTMLDivElement | null;
+    if (element) {
+      setWidth(element.scrollWidth / 2);
+    }
+  }, []);
+
   return (
     <div className='my-12 overflow-hidden' suppressHydrationWarning>
       <motion.div
+        ref={carouselRef}
         className='flex p-12'
-        animate={{ x: ["0%", "-100%"] }}
+        animate={{ x: [0, -width] }}
         style={{
-          width: "200%",
+          width: "fit-content",
         }}
-        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}>
-        {[...images, ...images].map((image, idx) => (
+        transition={{
+          repeat: Infinity,
+          duration: 20 * 100,
+          ease: "linear",
+          repeatType: "loop",
+        }}>
+        {duplicatedImages.map((image, idx) => (
           <motion.div
-            key={"images" + idx}
+            key={`image-${idx}`}
             style={{
               rotate: Math.random() * 20 - 10,
             }}
             whileHover={{
-              scale: 1.1,
+              scale: 1.3,
               rotate: 0,
               zIndex: 100,
             }}
             whileTap={{
-              scale: 1.1,
+              scale: 1.3,
               rotate: 0,
               zIndex: 100,
             }}

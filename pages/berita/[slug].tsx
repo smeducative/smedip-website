@@ -130,7 +130,7 @@ export default function ReadNews({
                       <img
                         src={news.cover}
                         alt={news.title}
-                        // className='w-full h-full object-cover'
+                        className='w-full h-full object-cover'
                         style={{
                           aspectRatio: "16/9",
                           objectFit: "cover",
