@@ -38,6 +38,13 @@ export default function AppNavbarMobile({ open }: Props) {
           />
         </li>
         <li>
+          <Link legacyBehavior href={`/tracer-study`}>
+            <a className='nav-link' target={"_blank"}>
+              Tracer Study
+            </a>
+          </Link>
+        </li>
+        <li>
           <Link
             legacyBehavior
             href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>

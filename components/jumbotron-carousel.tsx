@@ -64,7 +64,7 @@ export function JumbotronCarouselComponent({ slides }: { slides: Slide[] }) {
 
   return (
     <div
-      className='relative mx-auto my-0 md:my-8 w-full max-w-5xl h-[40vh] sm:h-[50vh] md:h-[75vh]'
+      className='relative mx-auto my-0 md:my-8 w-full max-w-5xl h-[30vh] sm:h-[50vh] md:h-[75vh]'
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
       <div className='shadow-md h-full overflow-hidden'>
@@ -81,7 +81,7 @@ export function JumbotronCarouselComponent({ slides }: { slides: Slide[] }) {
                   src={slide.image_url}
                   alt={slide.caption || "slide"}
                   fill
-                  className='h-full object-cover'
+                  className='w-full h-full aspect-[16/9] object-cover'
                 />
                 <div className='absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent line-clamp-2 p-6 text-center text-white'>
                   <p className='text-lg break-words'>{slide.caption}</p>

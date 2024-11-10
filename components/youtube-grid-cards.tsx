@@ -97,8 +97,8 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
           videos.map((video, index) => (
             <motion.div
               key={video.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: index * 0.2 }}>
               <Card className='rounded-md overflow-hidden'>

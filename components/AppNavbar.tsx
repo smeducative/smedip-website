@@ -14,39 +14,36 @@ import * as React from "react";
 
 export default function AppNavbar() {
   return (
-    <NavigationMenu className="hidden lg:flex">
+    <NavigationMenu className='lg:flex hidden'>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
+          <Link href='/' legacyBehavior passHref>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle({
                 className: "bg-transparent",
-              })}
-            >
+              })}>
               Beranda
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent">
+          <NavigationMenuTrigger className='bg-transparent'>
             Profil
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="bg-white min-w-[200px]">
+            <ul className='bg-white min-w-[200px]'>
               <li>
                 <NavigationMenuLink
                   className={navigationMenuTriggerStyle({
                     className: "bg-transparent",
                   })}
-                  asChild
-                >
+                  asChild>
                   <Link
                     className={cn(
                       "w-full block select-none space-y-1 rounded-md p-5 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     )}
-                    href="/visi-dan-misi"
-                  >
+                    href='/visi-dan-misi'>
                     Visi dan Misi
                   </Link>
                 </NavigationMenuLink>
@@ -56,27 +53,26 @@ export default function AppNavbar() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <Link href="#kompetensi-keahlian" legacyBehavior passHref>
+          <Link href='#kompetensi-keahlian' legacyBehavior passHref>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle({
                 className: "bg-transparent",
-              })}
-            >
+              })}>
               Kompetensi Keahlian
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent">
+          <NavigationMenuTrigger className='bg-transparent'>
             Informasi
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] bg-white">
-              <ListItem href="/berita" title="Berita">
+            <ul className='gap-3 grid lg:grid-cols-[.75fr_1fr] bg-white p-4 md:w-[400px] lg:w-[500px]'>
+              <ListItem href='/berita' title='Berita'>
                 Informasi terbaru yang ada di sekolah.
               </ListItem>
-              <ListItem href="/publikasi" title="Publikasi">
+              <ListItem href='/publikasi' title='Publikasi'>
                 Publikasi dari guru dan siswa.
               </ListItem>
             </ul>
@@ -84,18 +80,27 @@ export default function AppNavbar() {
         </NavigationMenuItem>
 
         <NavigationMenuItem>
+          <Link href='/tracer-study' passHref legacyBehavior target='_blank'>
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle({
+                className: "bg-transparent",
+              })}>
+              Tracer Study
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
           <Link
-            href="https://ppdb.smkdiponegoropekalongan.sch.id"
+            href='https://ppdb.smkdiponegoropekalongan.sch.id'
             passHref
             legacyBehavior
-            target="_blank"
-          >
+            target='_blank'>
             <NavigationMenuLink
               className={navigationMenuTriggerStyle({
                 className:
                   "bg-yellow-500 text-white hover:bg-white hover:text-yellow-400",
-              })}
-            >
+              })}>
               PPDB Online
             </NavigationMenuLink>
           </Link>
@@ -118,10 +123,9 @@ const ListItem = React.forwardRef<
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          {...props}>
+          <div className='font-medium text-sm leading-none'>{title}</div>
+          <p className='line-clamp-2 text-muted-foreground text-sm leading-snug'>
             {children}
           </p>
         </a>

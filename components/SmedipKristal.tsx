@@ -17,7 +17,11 @@ const SmedipKristalPage = () => {
         className='mx-auto pt-12 xl:pt-24 pb-10 max-w-6xl'>
         <div className='gap-6 grid grid-cols-12 px-5 xl:px-0'>
           <div className='flex justify-center items-center col-span-12 lg:col-span-4'>
-            <Image src={SmedipKristal} alt={`sambutan kepsek src`} />
+            <Image
+              src={SmedipKristal}
+              alt={`sambutan kepsek src`}
+              className='duration-500 hover:-rotate-3 hover:scale-110'
+            />
           </div>
           <div className='col-span-12 lg:col-span-8'>
             <div className='flex flex-col justify-center items-start'>

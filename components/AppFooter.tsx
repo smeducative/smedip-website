@@ -3,11 +3,7 @@ import Link from "next/link";
 
 export default function AppFooter() {
   return (
-    <footer
-      className='mt-12 text-slate-100'
-      style={{
-        backgroundColor: `#081c05`,
-      }}>
+    <footer className='bg-[#142822] mt-12 text-slate-100'>
       <div className='pt-12 pb-10'>
         <div className='mx-auto max-w-7xl'>
           <div className='gap-6 grid grid-cols-12 px-5'>
@@ -105,6 +101,15 @@ export default function AppFooter() {
                   </Link>
                 </li>
                 <li>
+                  <Link
+                    legacyBehavior
+                    href={`https://smkdiponegoropekalongan.sch.id/tracer-study`}>
+                    <a className='hover:text-slate-100 hover:underline'>
+                      Tracer Study (Alumni)
+                    </a>
+                  </Link>
+                </li>
+                <li>
                   <Link legacyBehavior href={`/digital-card`}>
                     <a className='hover:text-slate-100 hover:underline'>
                       Kartu Digital
@@ -145,7 +150,8 @@ export default function AppFooter() {
         </div>
       </div>
       <div className='bg-black py-5 text-center'>
-        &copy; {new Date().getFullYear()} SMK Diponegoro Karanganyar.
+        &copy; {new Date().getFullYear()} SMK Diponegoro Karanganyar Kab.
+        Pekalongan
       </div>
     </footer>
   );
