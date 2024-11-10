@@ -6,7 +6,7 @@ import { getFullpath } from "@/lib/getFullpath";
 import {
   AboutTracerStudy,
   HeroSectionTracerStudy,
-} from "@/components/about-tracer-study";
+} from "@/components/tracer-study/about-tracer-study";
 import SmedipKristalPage from "@/components/SmedipKristal";
 
 const Home: NextPage = () => {

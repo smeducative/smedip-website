@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,12 +15,15 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Checkbox } from "./ui/checkbox";
+import { Checkbox } from "../ui/checkbox";
 import { cn } from "@/lib/utils";
 import { LoaderCircle, SendHorizonal } from "lucide-react";
 import { api } from "@/lib/api";
+import TextQuestion from "./text-question";
+import RadioQuestion from "./radio-question";
+import CheckboxQuestion from "./checkbox-question";
 
-type QuestionOption = {
+export type QuestionOption = {
   id: number;
   question_id: number;
   name: string;
@@ -30,7 +33,7 @@ type QuestionOption = {
   deleted_at: string | null;
 };
 
-type QuestionType = {
+export type QuestionType = {
   id: number;
   key: string;
   question: string;
@@ -41,7 +44,7 @@ type QuestionType = {
   options: QuestionOption[];
 };
 
-type Answer = {
+export type Answer = {
   question_id: number;
   value: string | null;
   options: { option_id: number }[];
@@ -102,15 +105,20 @@ export default function SurveyForm({
 }) {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [selectedSection, setSelectedSection] = useState<string>("bekerja");
+  const [errors, setErrors] = useState<Record<number, string>>({});
+  const [generalError, setGeneralError] = useState<string>("");
 
-  // when selected section changes, reset answers
   useEffect(() => {
     setAnswers([]);
     setSelectedSection("bekerja");
+    setErrors({});
+    setGeneralError("");
   }, []);
 
   useEffect(() => {
     setAnswers([]);
+    setErrors({});
+    setGeneralError("");
   }, [selectedSection]);
 
   const {
@@ -130,6 +138,76 @@ export default function SurveyForm({
     },
   });
 
+  const handleInputChange = useCallback(
+    ({
+      question_id,
+      value,
+      options,
+    }: {
+      question_id: number;
+      value?: string;
+      options?: Array<{ option_id: number; value?: string }>;
+    }) => {
+      setAnswers((prevAnswers) => {
+        const updatedAnswers = prevAnswers.map((answer) =>
+          answer.question_id === question_id
+            ? { ...answer, value: value || null, options: options || [] }
+            : answer
+        );
+
+        if (
+          !updatedAnswers.some((answer) => answer.question_id === question_id)
+        ) {
+          updatedAnswers.push({
+            question_id,
+            value: value || null,
+            options: options || [],
+          });
+        }
+
+        return updatedAnswers.filter(
+          (answer) => answer.value !== null || answer.options.length > 0
+        );
+      });
+
+      setErrors((prevErrors) => {
+        const newErrors = { ...prevErrors };
+        delete newErrors[question_id];
+        return newErrors;
+      });
+    },
+    []
+  );
+
+  const validateAnswers = useCallback(() => {
+    const newErrors: Record<number, string> = {};
+    let hasErrors = false;
+
+    questionsData?.forEach((question) => {
+      if (question.key === selectedSection) {
+        const answer = answers.find((a) => a.question_id === question.id);
+        if (!answer || (answer.value === null && answer.options.length === 0)) {
+          newErrors[question.id] = "Pertanyaan ini harus dijawab";
+          hasErrors = true;
+        }
+      }
+    });
+
+    setErrors(newErrors);
+    setGeneralError(
+      hasErrors ? "Semua pertanyaan harus dijawab sebelum mengirim survei." : ""
+    );
+    return !hasErrors;
+  }, [answers, questionsData, selectedSection]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // if validatted and has no error
+    if (validateAnswers()) {
+      mutate();
+    }
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -137,147 +215,6 @@ export default function SurveyForm({
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-
-  const handleInputChange = ({
-    question_id,
-    value,
-    options,
-  }: {
-    question_id: number;
-    value?: string;
-    options?: Array<{
-      option_id: number;
-      value?: string;
-    }>;
-  }) => {
-    setAnswers((prevAnswers) => {
-      const updatedAnswers = prevAnswers.map((answer) =>
-        answer.question_id === question_id
-          ? { ...answer, value: value || null, options: options || [] }
-          : answer
-      );
-
-      if (
-        !updatedAnswers.some((answer) => answer.question_id === question_id)
-      ) {
-        updatedAnswers.push({
-          question_id,
-          value: value || null,
-          options: options || [],
-        });
-      }
-
-      // where value and options are not empty
-      return updatedAnswers.filter(
-        (answer) => answer.value !== null || answer.options.length > 0
-      );
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", answers);
-    // Here you would typically send the data to your backend
-
-    mutate();
-  };
-
-  const renderQuestion = (question: QuestionType, index: number) => {
-    const questionId = `${selectedSection}-${index}`; // Fix incorrect usage of template literal
-
-    return (
-      <div key={questionId} className='border-green-100 mb-4 border-t-2'>
-        <Label htmlFor={questionId} className='font-semibold text-sm'>
-          {question.question}
-        </Label>
-        {question.type === "text" ? (
-          <Input
-            id={questionId}
-            onInput={(e) =>
-              handleInputChange({
-                question_id: question.id,
-                value: (e.target as HTMLInputElement).value,
-              })
-            }
-            placeholder='Tulis jawabanmu disini'
-            className='mt-1'
-          />
-        ) : question.type === "radio" ? (
-          <RadioGroup
-            onValueChange={(value) =>
-              handleInputChange({
-                question_id: question.id,
-                options: [{ option_id: parseInt(value) }],
-              })
-            }
-            value={
-              answers
-                .find((answer) => answer.question_id === question.id)
-                ?.options[0]?.option_id.toString() || ""
-            }
-            className='mt-2'>
-            {question.options.map((option, optionIndex) => (
-              <div
-                key={`${questionId}-${optionIndex}`}
-                className='flex items-center space-x-2'>
-                <RadioGroupItem
-                  value={option.id.toString()}
-                  id={`${questionId}-${optionIndex}`}
-                />
-                <Label htmlFor={`${questionId}-${optionIndex}`}>
-                  {option.name}
-                </Label>
-              </div>
-            ))}
-          </RadioGroup>
-        ) : question.type === "checkbox" ? (
-          <div className='gap-3 grid mt-2'>
-            {question.options.map((option, optionIndex) => (
-              <div
-                key={`${questionId}-${optionIndex}`}
-                className='flex items-center space-x-2'>
-                <Checkbox
-                  id={`${questionId}-${optionIndex}`}
-                  checked={answers
-                    .find((answer) => answer.question_id === question.id)
-                    ?.options.some((answer) => answer.option_id === option.id)}
-                  onCheckedChange={(checked) =>
-                    handleInputChange({
-                      question_id: question.id,
-                      options: checked
-                        ? [
-                            ...(answers
-                              .find(
-                                (answer) => answer.question_id === question.id
-                              )
-                              ?.options.filter(
-                                (answer) => answer.option_id !== option.id
-                              ) || []),
-                            {
-                              option_id: option.id,
-                            },
-                          ]
-                        : answers
-                            .find(
-                              (answer) => answer.question_id === question.id
-                            )
-                            ?.options.filter(
-                              (answer) => answer.option_id !== option.id
-                            ) || [],
-                    })
-                  }
-                  className='rounded w-4 h-4'
-                />
-                <Label htmlFor={`${questionId}-${optionIndex}`}>
-                  {option.name}
-                </Label>
-              </div>
-            ))}
-          </div>
-        ) : null}
-      </div>
-    );
-  };
 
   return (
     <Card className='border-green-400 shadow mx-auto rounded-none md:rounded-md w-full max-w-4xl'>
@@ -294,7 +231,7 @@ export default function SurveyForm({
           </Label>
           <RadioGroup
             value={selectedSection}
-            onValueChange={(value) => setSelectedSection(value)}
+            onValueChange={setSelectedSection}
             className='gap-4 grid grid-cols-1 md:grid-cols-2'>
             {[
               "bekerja",
@@ -333,7 +270,52 @@ export default function SurveyForm({
           <form onSubmit={handleSubmit}>
             {questionsData
               .filter((question) => question.key === selectedSection)
-              .map((question, index) => renderQuestion(question, index))}
+              .map((question, index) => {
+                const questionId = `${selectedSection}-${index}`;
+                const errorMessage = errors[question.id];
+                return (
+                  <div key={questionId} className='mb-4'>
+                    {question.type === "text" && (
+                      <TextQuestion
+                        question={question}
+                        onChange={handleInputChange}
+                        error={errorMessage}
+                      />
+                    )}
+                    {question.type === "radio" && (
+                      <RadioQuestion
+                        question={question}
+                        onChange={handleInputChange}
+                        value={
+                          answers
+                            .find(
+                              (answer) => answer.question_id === question.id
+                            )
+                            ?.options[0]?.option_id.toString() || ""
+                        }
+                        error={errorMessage}
+                      />
+                    )}
+                    {question.type === "checkbox" && (
+                      <CheckboxQuestion
+                        question={question}
+                        onChange={handleInputChange}
+                        checkedOptions={
+                          answers.find(
+                            (answer) => answer.question_id === question.id
+                          )?.options || []
+                        }
+                        error={errorMessage}
+                      />
+                    )}
+                    {errorMessage && (
+                      <p className='mt-1 text-red-500 text-sm'>
+                        {errorMessage}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
           </form>
         )}
       </CardContent>

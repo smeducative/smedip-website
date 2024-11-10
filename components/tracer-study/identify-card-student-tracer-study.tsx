@@ -25,7 +25,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { DatePicker } from "@/components/ui/custom-calendar";
-import { Alert, AlertTitle } from "./ui/alert";
+import { Alert, AlertTitle } from "../ui/alert";
 import { AxiosError } from "axios";
 
 const formSchema = z.object({

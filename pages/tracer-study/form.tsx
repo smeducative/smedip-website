@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 import { getFullpath } from "@/lib/getFullpath";
 import SmedipKristalPage from "@/components/SmedipKristal";
-import FormTracerStudy from "@/components/form-tracer-study";
+import FormTracerStudy from "@/components/tracer-study/form-tracer-study";
 
 const Home: NextPage = () => {
   const { route } = useRouter();
