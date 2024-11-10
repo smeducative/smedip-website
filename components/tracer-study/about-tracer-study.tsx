@@ -9,11 +9,13 @@ import {
 } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import TracerStudyPNG from "../../assets/tracer-study.png";
+import Image from "next/image";
 
 export function AboutTracerStudy() {
   return (
     <section className='bg-white py-20'>
-      <div className='mx-auto px-4 max-w-6xl container'>
+      <div className='mx-auto px-4 max-w-7xl container'>
         <div
           className='mb-12 py-12'
           style={{
@@ -32,13 +34,15 @@ export function AboutTracerStudy() {
           </p>
         </div>
 
-        <h3 className='mb-6 font-semibold text-2xl'>Output dan Laporan</h3>
-        <p className='mb-8 text-gray-600'>
-          Hasil pengolahan data tracer study akan menghasilkan laporan-laporan
-          berikut
-        </p>
+        <div className='border-[#FFA500] mb-6 py-3 pl-3 border-l-4'>
+          <h3 className='font-semibold text-2xl'>Output dan Laporan</h3>
+          <p className='text-gray-600'>
+            Hasil pengolahan data tracer study akan menghasilkan laporan-laporan
+            berikut
+          </p>
+        </div>
 
-        <div className='gap-8 grid md:grid-cols-2'>
+        <div className='gap-3 grid md:grid-cols-2 xl:grid-cols-4'>
           <ReportCard
             icon={Users}
             title='Profil Lulusan'
@@ -93,15 +97,18 @@ export const HeroSectionTracerStudy = () => {
   return (
     <section className='bg-gradient-to-r from-[#3e7a81] to-[#38a460]'>
       <div className='mx-auto max-w-7xl'>
-        <div className='gap-8 grid grid-cols-1 md:grid-cols-2 px-4 pt-48 pb-16 md:pb-24'>
+        <div className='gap-8 grid grid-cols-1 md:grid-cols-2 px-4 pt-48 xl:pt-36'>
           <div className='flex flex-col justify-center'>
             <span className='font-semibold text-2xl text-white'>
               Tracer Study
             </span>
-            <h1 className='mb-4 font-bold text-4xl text-primary md:text-5xl leading-tight'>
+            <h1 className='font-bold text-4xl text-primary md:text-5xl xl:text-7xl leading-tight'>
               SMK Diponegoro Karanganyar
             </h1>
-            <p className='mb-8 text-xl'>
+            <span className='font-semibold text-lg underline underline-offset-4'>
+              Kabupaten Pekalongan
+            </span>
+            <p className='my-5 text-xl'>
               Platform pelacakan dan analisis data alumni untuk meningkatkan
               mutu pendidikan dan relevansi lulusan dengan dunia kerja.
             </p>
@@ -114,17 +121,14 @@ export const HeroSectionTracerStudy = () => {
               </Button>
             </Link>
 
-            <div className='flex flex-wrap gap-8 mt-8'>
-              {/* <Stat value='1500+' label='Alumni Terlacak' /> */}
-              {/* <Sta value='85%' label='Tingkat Keterserapan' /> */}
-              {/* <Stat value='4.8' label='Rating Kepuasan' /> */}
-            </div>
+            {/* <div className='flex flex-wrap gap-8 mt-8'>
+            </div> */}
           </div>
           <div className='flex justify-center items-center'>
-            <img
-              src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-              alt='Dashboard Tracer Study'
-              className='shadow-lg rounded-lg max-w-full h-auto'
+            <Image
+              src={TracerStudyPNG}
+              className='max-w-full h-auto'
+              alt='Tracer Study'
             />
           </div>
         </div>
@@ -153,10 +157,12 @@ function ReportCard({
   };
 
   return (
-    <Card className='hover:shadow-lg duration-500'>
+    <Card className='hover:scale-105 hover:shadow-lg rounded-md duration-500'>
       <CardHeader>
-        <Icon className='mb-4 w-12 h-12 text-[#cfd72a]' />
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className='flex items-center gap-3'>
+          <Icon className='w-6 h-6 text-[#2ad7a3]' />
+          <span className='text-xl'>{title}</span>
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <ul className='space-y-2 text-gray-600'>
