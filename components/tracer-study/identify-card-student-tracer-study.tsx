@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -23,7 +23,7 @@ import { api } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { DatePicker } from "@/components/ui/custom-calendar";
 import { Alert, AlertTitle } from "../ui/alert";
 import { AxiosError } from "axios";
@@ -38,6 +38,7 @@ const formSchema = z.object({
 
 type Props = {
   onIdentified: (student_id: string) => void;
+  onContact: ({ email, phone }: { email: string; phone: string }) => void;
   onStep: (step: number) => void;
 };
 
@@ -69,8 +70,12 @@ const getStudentIdentity = async ({
 
 export default function IdentifyCardStudentTracerStudy({
   onIdentified,
+  onContact,
   onStep,
 }: Props) {
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -97,14 +102,20 @@ export default function IdentifyCardStudentTracerStudy({
       }
     },
     enabled: false,
-    retry: 3,
+    retry: 2,
   });
 
   useEffect(() => {
     if (isSuccess) {
       onIdentified(data?.student_id);
+      setEmail(data?.user.email);
+      setPhone(data?.no_hp);
     }
-  }, [isSuccess, data, onIdentified]);
+  }, [isSuccess, data]);
+
+  useEffect(() => {
+    onContact({ email, phone });
+  }, [email, phone]);
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     await refetch();
@@ -270,6 +281,46 @@ export default function IdentifyCardStudentTracerStudy({
                           disabled
                         />
                       </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  name='email'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          className='w-full max-w-sm'
+                          value={email || ""}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder='Masukkan email kamu'
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Tulis atau ubah email kamu jika belum sesuai
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  name='phone'
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>No. Whatsapp</FormLabel>
+                      <FormControl>
+                        <Input
+                          className='w-full max-w-sm'
+                          value={phone || ""}
+                          onChange={(e) => setPhone(e.target.value)}
+                          placeholder='Masukkan no. whatsapp kamu'
+                        />
+                      </FormControl>
+                      <FormDescription>
+                        Tulis atau ubah no. whatsapp kamu jika belum sesuai
+                      </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
