@@ -79,11 +79,16 @@ const fetchQuestions = async () => {
   return response.json();
 };
 
-const storeAnswers = async (answers: Answer[], identity: string) => {
+const storeAnswers = async (
+  answers: Answer[],
+  identity: string,
+  contact?: { email: string; phone: string }
+) => {
   const response = await api.post(
     "/tracer-study/store",
     {
       student_id: identity,
+      contact,
       answers,
     },
     {
@@ -98,9 +103,11 @@ const storeAnswers = async (answers: Answer[], identity: string) => {
 
 export default function SurveyForm({
   identity,
+  contact,
   onStep,
 }: {
   identity: string;
+  contact: { email: string; phone: string };
   onStep: (step: number) => void;
 }) {
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -132,7 +139,7 @@ export default function SurveyForm({
 
   const { mutate, isPending } = useMutation({
     mutationKey: ["store-answers"],
-    mutationFn: () => storeAnswers(answers, identity),
+    mutationFn: () => storeAnswers(answers, identity, contact),
     onSuccess: (data) => {
       onStep(3);
     },

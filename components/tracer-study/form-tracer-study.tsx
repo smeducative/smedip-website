@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IdentifyCardStudentTracerStudy from "./identify-card-student-tracer-study";
 import SurveyForm from "./survey-from";
 import SurveySuccesfully from "./survey-successfully";
@@ -6,6 +6,11 @@ import SurveySuccesfully from "./survey-successfully";
 export default function FormTracerStudy() {
   const [step, setStep] = useState(1);
   const [identify, setIdentify] = useState("");
+  const [contact, setContact] = useState({ email: "", phone: "" });
+
+  useEffect(() => {
+    console.log(identify, contact);
+  }, [contact]);
 
   return (
     <div>
@@ -26,11 +31,16 @@ export default function FormTracerStudy() {
         {step === 1 && (
           <IdentifyCardStudentTracerStudy
             onIdentified={(id) => setIdentify(id)}
+            onContact={(contact) => setContact(contact)}
             onStep={(step) => setStep(step)}
           />
         )}
         {step === 2 && (
-          <SurveyForm identity={identify} onStep={(step) => setStep(step)} />
+          <SurveyForm
+            identity={identify}
+            contact={contact}
+            onStep={(step) => setStep(step)}
+          />
         )}
         {step === 3 && <SurveySuccesfully />}
       </div>
