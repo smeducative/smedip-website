@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import SocialShare from "@/components/social-share";
 import Link from "next/link";
 import { DiscussionEmbed } from "disqus-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 moment.locale("id");
 
@@ -124,28 +125,32 @@ export default function ReadNews({
                 </div>
                 {latestNews &&
                   latestNews.map((news) => (
-                    <div
-                      className='gap-3 border-slate-200 col-span-12 md:col-span-6 xl:col-span-4 bg-white p-3 border'
-                      key={news.slug}>
-                      <img
-                        src={news.cover}
-                        alt={news.title}
-                        className='w-full h-full object-cover'
-                        style={{
-                          aspectRatio: "16/9",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <Link
-                        href={`/berita/${news.slug}`}
-                        key={news.slug}
-                        className='line-clamp-2 text-black text-sm hover:text-[#DB7710] hover:underline break-words overflow-x-hidden'>
-                        {news.title}
-                      </Link>
-                      <span className='text-slate-400 text-xs'>
-                        {formatDate(news.created_at)}
-                      </span>
-                    </div>
+                    <Card className='col-span-12 md:col-span-4 rounded-md overflow-hidden'>
+                      <div className='cursor-pointer aspect-video'>
+                        <img
+                          src={news.cover}
+                          alt={news.title}
+                          className='w-full h-full object-cover'
+                          style={{
+                            aspectRatio: "16/9",
+                            objectFit: "cover",
+                          }}
+                          width={320}
+                        />
+                      </div>
+                      <CardContent className='p-4'>
+                        <Link
+                          // will tsrget="_blank" to open in new tab
+                          href={`/berita/${news.slug}`}>
+                          <h2 className='line-clamp-2 font-semibold text-sm hover:text-[#DB7710] hover:underline'>
+                            {news.title}
+                          </h2>
+                        </Link>
+                        <p className='line-clamp-2 text-muted-foreground text-xs'>
+                          {formatDate(news.created_at)}
+                        </p>
+                      </CardContent>
+                    </Card>
                   ))}
               </div>
             </div>
@@ -195,7 +200,7 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       news,
-      latestNews: latestNews.slice(0, 12),
+      latestNews: latestNews.slice(0, 15),
     },
     revalidate: 1,
   };
