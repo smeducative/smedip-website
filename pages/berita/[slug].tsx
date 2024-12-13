@@ -125,7 +125,9 @@ export default function ReadNews({
                 </div>
                 {latestNews &&
                   latestNews.map((news) => (
-                    <Card className='col-span-12 md:col-span-4 rounded-md overflow-hidden'>
+                    <Card
+                      className='col-span-12 md:col-span-4 rounded-md overflow-hidden'
+                      key={news.slug}>
                       <div className='cursor-pointer aspect-video'>
                         <img
                           src={news.cover}
