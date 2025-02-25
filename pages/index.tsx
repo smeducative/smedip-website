@@ -35,8 +35,8 @@ const Home: NextPage<Props> = ({ news, publikasi, videos, slides }) => {
   return (
     <AppLayout bright>
       <NextSeo
-        title='SMK Diponegoro Karanganyar Kab. Pekalongan | MAU Modern, Agamis, Unggul'
-        description='Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan Kejuruan dengan Layanan Pendidikan yang Modern Sesuai Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern Agamis Unggul)'
+        title="SMK Diponegoro Karanganyar Kab. Pekalongan | MAU Modern, Agamis, Unggul"
+        description="Terwujudnya Sekolah Sebagai Pusat Pendidikan dan Pelatihan Kejuruan dengan Layanan Pendidikan yang Modern Sesuai Perkembangan Ilmu Pengetahan yang Menghasilkan Sumber Daya Manusia yang Unggul dalam Prestasi dan Berakhlak Islami (Modern Agamis Unggul)"
         canonical={getFullpath()}
         openGraph={{
           title: "SMK Diponegoro Karanganyar",
@@ -74,13 +74,17 @@ export const getStaticProps: GetStaticProps = async () => {
   const [smedipYT, bdpTV] = await Promise.all([
     getActivities({
       channelId: "UCtbl00zVFRkH2cALJgSN3Uw",
-    }).then((res) => res.items),
+    }).then((res) => res),
     getActivities({
       channelId: "UCZ5gDURHX02514KEbzt6sVQ",
-    }).then((res) => res.items),
+    }).then((res) => res),
   ]);
 
-  const videos = [...smedipYT, ...bdpTV];
+  const filtered = [...smedipYT, ...bdpTV].filter(
+    (item) => item.snippet.type === "upload"
+  );
+
+  const videos = filtered;
 
   // then sort by snippet.publishedAt
   const sorted = videos.sort(

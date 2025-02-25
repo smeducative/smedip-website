@@ -66,6 +66,8 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
   const [videos, setVideos] = useState<YTVideo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  console.log(items);
+
   useEffect(() => {
     setVideos(items);
     setIsLoading(false);
@@ -77,8 +79,9 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 1.5 }}
-      className='mx-auto my-12 p-4 max-w-7xl'>
-      <h1 className='mb-12 font-bold text-2xl text-center'>
+      className="mx-auto my-12 p-4 max-w-7xl"
+    >
+      <h1 className="mb-12 font-bold text-2xl text-center">
         Terbaru dari channel SMK Diponegoro Karanganyar dan BDP TV
       </h1>
       <motion.div
@@ -86,11 +89,12 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5 }}
-        className='gap-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4'>
+        className="gap-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4"
+      >
         {isLoading &&
           [1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-            <Card key={i} className='rounded-md overflow-hidden'>
-              <Skeleton className='w-full h-40 object-cover' />
+            <Card key={i} className="rounded-md overflow-hidden">
+              <Skeleton className="w-full h-40 object-cover" />
             </Card>
           ))}
         {isLoading === false &&
@@ -100,31 +104,33 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
               initial={{ opacity: 0, y: 100 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, delay: index * 0.2 }}>
-              <Card className='rounded-md overflow-hidden'>
+              transition={{ duration: 1, delay: index * 0.2 }}
+            >
+              <Card className="rounded-md overflow-hidden">
                 <Link
                   // will tsrget="_blank" to open in new tab
                   href={`https://youtu.be/${video.contentDetails.upload.videoId}`}
-                  target='_blank'>
-                  <div className='relative cursor-pointer aspect-video'>
+                  target="_blank"
+                >
+                  <div className="relative aspect-video cursor-pointer">
                     <img
                       alt={video.snippet.title}
-                      className='w-full h-full object-cover'
-                      height='180'
+                      className="w-full h-full object-cover"
+                      height="180"
                       src={video.snippet.thumbnails.high.url}
                       style={{
                         aspectRatio: "16/9",
                         objectFit: "cover",
                       }}
-                      width='320'
+                      width="320"
                     />
-                    <div className='absolute inset-0 flex justify-center items-center bg-black bg-opacity-50'>
-                      <Play className='opacity-80 w-12 h-12 text-white' />
+                    <div className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50">
+                      <Play className="opacity-80 w-12 h-12 text-white" />
                     </div>
                   </div>
                 </Link>
-                <CardContent className='p-4'>
-                  <h2 className='line-clamp-2 font-semibold text-sm'>
+                <CardContent className="p-4">
+                  <h2 className="font-semibold text-sm line-clamp-2">
                     {video.snippet.title}
                   </h2>
                 </CardContent>

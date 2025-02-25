@@ -8,9 +8,13 @@ const apiEndpoint = `https://www.googleapis.com/youtube/v3`;
 export const getActivities = async ({ channelId }: { channelId: string }) => {
   const data =
     await fetch(`${apiEndpoint}/activities?channelId=${channelId}&key=${key}
-    &part=snippet,contentDetails&maxResults=4`);
+    &part=snippet,contentDetails&maxResults=10`);
 
   const response = await data.json();
 
-  return response;
+  const filtered = response.items
+    .filter((item: Activities) => item.snippet.type === "upload")
+    .slice(0, 4);
+
+  return filtered;
 };
