@@ -123,6 +123,13 @@ export default function AppFooter() {
                     </a>
                   </Link>
                 </li>
+                <li>
+                  <Link legacyBehavior href={`/mikrotik-academy`}>
+                    <a className='hover:text-slate-100 hover:underline'>
+                      MikroTik Academy
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </div>
 

@@ -1,5 +1,6 @@
+import { cn } from "@/lib/utils";
 import Link from "next/link";
-import NavDropdown from "./NavDropdown";
+import * as React from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,8 +10,6 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import * as React from "react";
 
 export default function AppNavbar() {
   return (
@@ -74,6 +73,9 @@ export default function AppNavbar() {
               </ListItem>
               <ListItem href='/publikasi' title='Publikasi'>
                 Publikasi dari guru dan siswa.
+              </ListItem>
+              <ListItem href='/mikrotik-academy' title='MikroTik Academy'>
+                Program resmi MikroTik Academy di SMK Diponegoro Karanganyar.
               </ListItem>
             </ul>
           </NavigationMenuContent>

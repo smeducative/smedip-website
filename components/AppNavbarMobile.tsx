@@ -34,6 +34,7 @@ export default function AppNavbarMobile({ open }: Props) {
             items={[
               { title: "Berita", href: "/berita" },
               { title: "Publikasi", href: "/publikasi" },
+              { title: "MikroTik Academy", href: "/mikrotik-academy" },
             ]}
           />
         </li>

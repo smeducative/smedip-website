@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { Skeleton } from "./ui/skeleton";
 
 export type YTSnippet = {
@@ -66,7 +66,7 @@ export default function YoutubeGridCards({ items }: { items: YTVideo[] }) {
   const [videos, setVideos] = useState<YTVideo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log(items);
+  // console.log(items);
 
   useEffect(() => {
     setVideos(items);
