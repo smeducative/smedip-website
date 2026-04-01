@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 type Props = {
-  title: string;
+  title: string | React.ReactNode;
   center?: boolean;
   sub?: JSX.Element | string;
 };

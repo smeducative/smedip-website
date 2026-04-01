@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { News } from "../../lib/fetch";
 import NewsList from "../NewsList";
 
@@ -15,7 +14,7 @@ export default function NewsSection({ news }: { news: News[] }) {
       </div>
 
       <div className='mx-auto mt-5 xl:mt-8 px-5 max-w-6xl'>
-        <NewsList list={news} />
+        <NewsList list={news} showLoadMore />
       </div>
     </div>
   );

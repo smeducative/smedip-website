@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Activities } from "../type/youtube";
@@ -10,7 +9,7 @@ const YoutubeActivities = () => {
     const getActivities = async (): Promise<Activities[]> => {
       const response = await fetch("/api/youtube-activities");
 
-      console.log(response);
+      // console.log(response);
 
       const data = await response.json();
 
