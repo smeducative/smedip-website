@@ -96,8 +96,8 @@ export default function AppFooter() {
                 <li>
                   <Link
                     legacyBehavior
-                    href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
-                    <a className='hover:text-slate-100 hover:underline'>PPDB</a>
+                    href={`https://spmb.smkdiponegoropekalongan.sch.id`}>
+                    <a className='hover:text-slate-100 hover:underline'>SPMB</a>
                   </Link>
                 </li>
                 <li>

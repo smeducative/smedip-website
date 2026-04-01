@@ -48,9 +48,9 @@ export default function AppNavbarMobile({ open }: Props) {
         <li>
           <Link
             legacyBehavior
-            href={`https://ppdb.smkdiponegoropekalongan.sch.id`}>
+            href={`https://spmb.smkdiponegoropekalongan.sch.id`}>
             <a className='nav-link' target={"_blank"}>
-              PPDB Online
+              SPMB Online
             </a>
           </Link>
         </li>
