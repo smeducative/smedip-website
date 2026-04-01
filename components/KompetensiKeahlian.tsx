@@ -528,9 +528,9 @@ export default function KompetensiKeahlian() {
               <h3 className='mt-4 font-inter text-2xl font-semibold leading-tight text-[#17372f] sm:text-[2rem]'>
                 Belajar di ruang yang mendukung skill, disiplin, dan rasa percaya diri.
               </h3>
-              <p className='mt-4 text-sm leading-7 text-[#4f665c] sm:text-base'>
+              {/* <p className='mt-4 text-sm leading-7 text-[#4f665c] sm:text-base'>
                 Di bawah ini, alasan memilih sekolah dan fasilitas utama ditampilkan dalam blok ringkas seperti referensi SPMB, tetapi disesuaikan dengan karakter visual situs ini.
-              </p>
+              </p> */}
 
               <div className='mt-6 grid gap-3'>
                 <div className='rounded-[26px] bg-[#17372f] px-5 py-4 text-white'>
