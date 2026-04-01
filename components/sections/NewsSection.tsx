@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { News } from "../../lib/fetch";
 import NewsList from "../NewsList";
 
