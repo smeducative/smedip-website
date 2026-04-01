@@ -9,7 +9,7 @@ const MikroTikAcademy = () => {
         <title>MikroTik Academy | SMK Diponegoro Karanganyar Kab. Pekalongan</title>
       </Head>
 
-      <Jumbotron title='Program MikroTik Academy di SMK Diponegoro Karanganyar Kab. Pekalongan' center />
+      <Jumbotron title={<span>Program MikroTik Academy di <strong>SMK Diponegoro Karanganyar Kab. Pekalongan</strong></span>} center />
 
       <div className='mx-auto max-w-6xl flex items-center justify-center font-roboto'>
         <div className='mt-8 mb-20 w-full p-8 lg:p-12 xl:w-3/4 bg-white rounded-md shadow-lg'>
@@ -19,7 +19,7 @@ const MikroTikAcademy = () => {
             </p>
             
             <p className='text-lg leading-relaxed mb-6'>
-              Sebagai salah satu bentuk implementasi program tersebut, SMK Diponegoro Karanganyar Kab. Pekalongan telah ditunjuk sebagai Training Partner Akademi MikroTik resmi melalui <a href="https://www.belajarmikrotik.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">www.belajarmikrotik.com</a>. Program MikroTik Academy ini diperuntukkan khusus bagi siswa Jurusan Teknik Komputer dan Jaringan.
+              Sebagai salah satu bentuk implementasi program tersebut, <strong>SMK Diponegoro Karanganyar Kab. Pekalongan</strong> telah ditunjuk sebagai Training Partner Akademi MikroTik resmi melalui <a href="https://www.belajarmikrotik.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">www.belajarmikrotik.com</a>. Program MikroTik Academy ini diperuntukkan khusus bagi siswa Jurusan Teknik Komputer dan Jaringan.
             </p>
 
             <p className='text-lg leading-relaxed mb-6'>
@@ -31,7 +31,7 @@ const MikroTikAcademy = () => {
             </p>
 
             <p className='text-lg leading-relaxed mb-4'>
-              Dalam kelas MikroTik Academy di SMK Diponegoro Karanganyar Kab. Pekalongan, siswa diajarkan berbagai topik penting dan relevan dengan dunia jaringan komputer, di antaranya:
+              Dalam kelas MikroTik Academy di <strong>SMK Diponegoro Karanganyar Kab. Pekalongan</strong>, siswa diajarkan berbagai topik penting dan relevan dengan dunia jaringan komputer, di antaranya:
             </p>
 
             <ul className='list-disc pl-6 space-y-2 text-lg leading-relaxed mb-6'>
@@ -49,7 +49,7 @@ const MikroTikAcademy = () => {
             </p>
 
             <p className='text-lg leading-relaxed font-semibold'>
-              Pelaksanaan MikroTik Academy di SMK Diponegoro Karanganyar Kab. Pekalongan didukung sepenuhnya oleh Belajar MikroTik sebagai Koordinator Resmi MikroTik Academy di Indonesia.
+              Pelaksanaan MikroTik Academy di <strong>SMK Diponegoro Karanganyar Kab. Pekalongan</strong> didukung sepenuhnya oleh Belajar MikroTik sebagai Koordinator Resmi MikroTik Academy di Indonesia.
             </p>
           </article>
         </div>
