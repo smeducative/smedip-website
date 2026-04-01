@@ -94,7 +94,7 @@ export default function AppNavbar() {
 
         <NavigationMenuItem>
           <Link
-            href='https://ppdb.smkdiponegoropekalongan.sch.id'
+            href='https://spmb.smkdiponegoropekalongan.sch.id'
             passHref
             legacyBehavior
             target='_blank'>
@@ -103,7 +103,7 @@ export default function AppNavbar() {
                 className:
                   "bg-yellow-500 text-white hover:bg-white hover:text-yellow-400",
               })}>
-              PPDB Online
+              SPMB Online
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

@@ -59,7 +59,7 @@ const programs: Program[] = [
     icon: Wifi,
     className: "lg:col-span-7",
     featured: true,
-    image: "/assets/images/CBMM4413.JPG",
+    // image: "/assets/images/CBMM4413.JPG",
   },
   {
     code: "TKR",
@@ -383,11 +383,11 @@ export default function KompetensiKeahlian() {
             Program Keahlian
           </div>
           <h2 className='mt-4 max-w-2xl font-inter text-3xl font-bold leading-tight text-[#17372f] sm:text-4xl lg:text-5xl'>
-            Pilih jalur belajar yang dekat dengan minat, praktik, dan peluang kerja.
+            Pilih jalur belajar yang tepat sesuai minat, bakat, dan peluang masa depan.
           </h2>
           <p className='mt-4 max-w-2xl text-sm leading-7 text-[#466256] sm:text-base'>
-            Bagian ini dirapikan mengikuti ritme halaman SPMB: jurusan tampil lebih informatif,
-            kompetensinya terlihat jelas, dan alasan memilih sekolah langsung terbaca tanpa terasa padat.
+            Kami menghadirkan program keahlian yang relevan dengan kebutuhan industri saat ini,
+            dirancang untuk mencetak generasi yang kompeten, kreatif, dan memiliki daya saing tinggi dengan karakter Modern, Agamis, dan Unggul.
           </p>
         </div>
 
@@ -520,7 +520,7 @@ export default function KompetensiKeahlian() {
         </div>
 
         <div className='mt-16 grid gap-4 lg:grid-cols-12'>
-          <div className='lg:col-span-4' data-kk-reveal>
+          <div className='lg:col-span-5' data-kk-reveal>
             <div className='h-full rounded-[32px] border border-[#dbd2c3] bg-white/80 p-6 shadow-[0_18px_50px_rgba(24,56,47,0.06)] sm:p-7'>
               <div className='inline-flex items-center rounded-full bg-[#eef4f1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#17372f]'>
                 Keunggulan & Fasilitas
@@ -528,23 +528,34 @@ export default function KompetensiKeahlian() {
               <h3 className='mt-4 font-inter text-2xl font-semibold leading-tight text-[#17372f] sm:text-[2rem]'>
                 Belajar di ruang yang mendukung skill, disiplin, dan rasa percaya diri.
               </h3>
-              {/* <p className='mt-4 text-sm leading-7 text-[#4f665c] sm:text-base'>
-                Di bawah ini, alasan memilih sekolah dan fasilitas utama ditampilkan dalam blok ringkas seperti referensi SPMB, tetapi disesuaikan dengan karakter visual situs ini.
-              </p> */}
+              <p className='mt-4 text-sm leading-7 text-[#4f665c] sm:text-base'>
+                Kami menyediakan fasilitas lengkap dan sistem pendidikan yang terintegrasi untuk memastikan setiap siswa siap menghadapi tantangan di dunia kerja maupun jenjang pendidikan selanjutnya.
+              </p>
 
               <div className='mt-6 grid gap-3'>
                 <div className='rounded-[26px] bg-[#17372f] px-5 py-4 text-white'>
-                  <p className='text-sm font-semibold'>Lingkungan belajar aktif</p>
+                  <p className='text-sm font-semibold'>Ekosistem Belajar MAU</p>
                   <p className='mt-2 text-sm leading-6 text-[#d7e2dc]'>
-                    Teori, praktik, organisasi, dan pembinaan karakter bertemu dalam satu alur belajar.
+                    Menyeimbangkan aspek ketakwaan, kecerdasan digital, dan keahlian praktis dalam satu lingkungan yang suportif.
                   </p>
                 </div>
-                
+                <div className='rounded-[26px] border border-[#dbd2c3] bg-white/50 px-5 py-4'>
+                  <p className='text-sm font-semibold text-[#17372f]'>Kultur Industri</p>
+                  <p className='mt-2 text-sm leading-6 text-[#4f665c]'>
+                    Pembiasaan ritme kerja profesional, disiplin tinggi, dan tanggung jawab yang dimulai dari ruang kelas.
+                  </p>
+                </div>
+                <div className='rounded-[26px] border border-[#dbd2c3] bg-white/50 px-5 py-4'>
+                  <p className='text-sm font-semibold text-[#17372f]'>Akses Peluang Karir</p>
+                  <p className='mt-2 text-sm leading-6 text-[#4f665c]'>
+                    Koneksi dengan mitra industri untuk program magang, guru tamu, serta penyaluran lulusan yang terarah.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className='lg:col-span-8 grid gap-4 sm:grid-cols-2' data-kk-reveal>
+          <div className='lg:col-span-7 grid gap-4 grid-cols-1' data-kk-reveal>
             {highlights.map((item) => {
               const Icon = item.icon;
 

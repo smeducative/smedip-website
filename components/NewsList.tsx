@@ -29,7 +29,7 @@ export default function NewsList({
             <SpotlightCard
               spotlightColor='rgba(219, 119, 16, 0.2)'
               className='border-[#a36220]/20 border-2 flex flex-row bg-white hover:bg-[#DB7710] rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 w-full'>
-              <div className='relative w-36 sm:w-48 lg:w-60 flex-shrink-0 overflow-hidden'>
+              <div className='relative w-28 sm:w-48 lg:w-60 flex-shrink-0 overflow-hidden'>
                 <img
                   src={news.cover}
                   alt={news.title}
@@ -37,14 +37,14 @@ export default function NewsList({
                 />
                 <div className='absolute inset-0 bg-gradient-to-r from-black/5 to-transparent group-hover:opacity-0 transition-opacity duration-500' />
               </div>
-              <div className='flex flex-col justify-center p-4 xl:p-5 flex-1 break-words overflow-x-hidden'>
-                <span className='text-xs font-semibold uppercase tracking-widest text-[#DB7710] group-hover:text-orange-200 transition-colors duration-500 mb-1'>
+              <div className='flex flex-col justify-center p-3 sm:p-4 xl:p-5 flex-1 break-words overflow-x-hidden'>
+                <span className='text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#DB7710] group-hover:text-orange-200 transition-colors duration-500 mb-0.5 sm:mb-1'>
                   Informasi
                 </span>
-                <h2 className='line-clamp-2 font-bold text-base xl:text-lg leading-snug'>
+                <h2 className='line-clamp-2 font-bold text-sm sm:text-base xl:text-lg leading-snug'>
                   {news.title}
                 </h2>
-                <div className='flex flex-col gap-0.5 text-slate-400 group-hover:text-white/70 mt-3 transition-colors duration-500'>
+                <div className='flex flex-col gap-0.5 text-slate-400 group-hover:text-white/70 mt-2 sm:mt-3 transition-colors duration-500'>
                   <span className='font-medium text-sm'>{news.author.name}</span>
                   <span className='font-normal text-xs'>
                     {moment(news.created_at).format("DD MMMM YYYY")}&nbsp;·&nbsp;
