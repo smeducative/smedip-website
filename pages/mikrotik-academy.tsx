@@ -1,6 +1,8 @@
 import Head from "next/head";
+import Image from "next/image";
 import AppLayout from "../components/layouts/AppLayout";
 import Jumbotron from "../components/sections/Jumbotron";
+import MikrotikAcademyImg from "../assets/mikrotik-academy.png";
 
 const MikroTikAcademy = () => {
   return (
@@ -13,6 +15,15 @@ const MikroTikAcademy = () => {
 
       <div className='mx-auto max-w-6xl flex items-center justify-center font-roboto'>
         <div className='mt-8 mb-20 w-full p-8 lg:p-12 xl:w-3/4 bg-white rounded-md shadow-lg'>
+          <div className='flex justify-center mb-8'>
+            <Image
+              src={MikrotikAcademyImg}
+              alt='MikroTik Academy SMK Diponegoro'
+              width={400}
+              height={200}
+              className='object-contain'
+            />
+          </div>
           <article className='prose prose-slate max-w-none'>
             <p className='text-lg leading-relaxed mb-6'>
               Program MikroTik Academy merupakan program khusus yang dirancang bagi institusi pendidikan, termasuk universitas, STMIK, AMIK, institut teknik, serta SMK dan sekolah menengah kejuruan lainnya yang menerapkan sistem pembelajaran berbasis semester. Melalui program ini, sekolah dapat secara resmi membuka kelas MikroTik (<a href="https://www.mikrotik.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">www.mikrotik.com</a>) bersertifikasi sebagai bagian integral dari kurikulum pembelajaran, sekaligus memberikan kesempatan kepada siswa untuk mengikuti ujian sertifikasi resmi di akhir periode pembelajaran.
