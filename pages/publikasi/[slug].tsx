@@ -53,14 +53,14 @@ export default function ReadPublication({
       <div className='my-5 xl:my-8'>
         <div className='mx-auto max-w-6xl'>
           <div className='gap-3 grid grid-cols-12'>
-            <div className='border-slate-100 col-span-12 xl:col-span-8 bg-white border rounded-lg overflow-hidden'>
+            <div className='border-slate-100 col-span-12 xl:col-span-8 bg-white dark:bg-slate-800 dark:border-slate-700 border rounded-lg overflow-hidden'>
               <img
                 src={data.cover}
                 alt={data.title}
                 className='mb-5 w-full object-cover'
               />
               <article
-                className='px-5 py-3 w-full max-w-none text-black text-sm lg:text-base leading-normal prose prose-green'
+                className='px-5 py-3 w-full max-w-none text-black dark:text-slate-200 text-sm lg:text-base leading-normal prose prose-green'
                 dangerouslySetInnerHTML={{ __html: data.content }}
               />
 
@@ -86,7 +86,7 @@ export default function ReadPublication({
               {data.categories?.map((cat) => (
                 <span
                   key={cat.slug}
-                  className='inline-block bg-[#4FBEBC] mr-2 mb-2 px-3 py-1 rounded-full font-semibold text-white text-xs'>
+                  className='inline-block bg-[#4FBEBC] dark:bg-[#0f6b69] mr-2 mb-2 px-3 py-1 rounded-full font-semibold text-white text-xs'>
                   {cat.title}
                 </span>
               ))}
@@ -101,7 +101,7 @@ export default function ReadPublication({
                 </div>
                 {publications?.map((publikasi) => (
                   <div
-                    className='flex flex-col gap-3 border-slate-200 col-span-12 md:col-span-6 xl:col-span-4 bg-white shadow p-3 border rounded-md'
+                    className='flex flex-col gap-3 border-slate-200 col-span-12 md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 dark:border-slate-700 shadow p-3 border rounded-md'
                     key={publikasi.slug}>
                     <img
                       src={publikasi.cover}
@@ -115,7 +115,7 @@ export default function ReadPublication({
                     <Link
                       href={`/publikasi/${publikasi.slug}`}
                       key={publikasi.slug}
-                      className='line-clamp-2 font-bold text-black text-sm hover:text-[#DB7710] hover:underline break-words overflow-x-hidden'>
+                      className='line-clamp-2 font-bold text-black dark:text-slate-100 text-sm hover:text-[#DB7710] dark:hover:text-orange-300 hover:underline break-words overflow-x-hidden'>
                       {publikasi.title}
                     </Link>
 
@@ -141,7 +141,7 @@ export default function ReadPublication({
                 </div>
                 {newses?.map((news) => (
                   <div
-                    className='gap-3 border-slate-200 col-span-12 md:col-span-6 xl:col-span-4 bg-white p-3 border'
+                    className='gap-3 border-slate-200 col-span-12 md:col-span-6 xl:col-span-4 bg-white dark:bg-slate-800 dark:border-slate-700 p-3 border'
                     key={news.slug}>
                     <img
                       src={news.cover}
@@ -155,7 +155,7 @@ export default function ReadPublication({
                     <Link
                       href={`/berita/${news.slug}`}
                       key={news.slug}
-                      className='line-clamp-2 text-black text-sm hover:text-[#DB7710] hover:underline break-words overflow-x-hidden'>
+                      className='line-clamp-2 text-black dark:text-slate-100 text-sm hover:text-[#DB7710] dark:hover:text-orange-300 hover:underline break-words overflow-x-hidden'>
                       {news.title}
                     </Link>
                     {/* time */}

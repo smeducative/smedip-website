@@ -12,7 +12,7 @@ const MikroTikAcademy = () => {
       <Jumbotron title={<span>Program MikroTik Academy di <strong>SMK Diponegoro Karanganyar Kab. Pekalongan</strong></span>} center />
 
       <div className='mx-auto max-w-6xl flex items-center justify-center font-roboto'>
-        <div className='mt-8 mb-20 w-full p-8 lg:p-12 xl:w-3/4 bg-white rounded-md shadow-lg'>
+        <div className='mt-8 mb-20 w-full p-8 lg:p-12 xl:w-3/4 bg-white dark:bg-slate-800 dark:text-slate-100 rounded-md shadow-lg dark:shadow-black/40'>
           <article className='prose prose-slate max-w-none'>
             <p className='text-lg leading-relaxed mb-6'>
               Program MikroTik Academy merupakan program khusus yang dirancang bagi institusi pendidikan, termasuk universitas, STMIK, AMIK, institut teknik, serta SMK dan sekolah menengah kejuruan lainnya yang menerapkan sistem pembelajaran berbasis semester. Melalui program ini, sekolah dapat secara resmi membuka kelas MikroTik (<a href="https://www.mikrotik.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">www.mikrotik.com</a>) bersertifikasi sebagai bagian integral dari kurikulum pembelajaran, sekaligus memberikan kesempatan kepada siswa untuk mengikuti ujian sertifikasi resmi di akhir periode pembelajaran.

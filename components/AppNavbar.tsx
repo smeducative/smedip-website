@@ -31,7 +31,7 @@ export default function AppNavbar() {
             Profil
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className='bg-white min-w-[200px]'>
+            <ul className='bg-white dark:bg-card dark:text-card-foreground min-w-[200px]'>
               <li>
                 <NavigationMenuLink
                   className={navigationMenuTriggerStyle({
@@ -67,7 +67,7 @@ export default function AppNavbar() {
             Informasi
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className='gap-3 grid lg:grid-cols-[.75fr_1fr] bg-white p-4 md:w-[400px] lg:w-[500px]'>
+            <ul className='gap-3 grid lg:grid-cols-[.75fr_1fr] bg-white dark:bg-card dark:text-card-foreground p-4 md:w-[400px] lg:w-[500px]'>
               <ListItem href='/berita' title='Berita'>
                 Informasi terbaru yang ada di sekolah.
               </ListItem>
@@ -101,7 +101,7 @@ export default function AppNavbar() {
             <NavigationMenuLink
               className={navigationMenuTriggerStyle({
                 className:
-                  "bg-yellow-500 text-white hover:bg-white hover:text-yellow-400",
+                  "bg-yellow-500 text-white hover:bg-white dark:hover:bg-card dark:hover:text-yellow-400 hover:text-yellow-400",
               })}>
               SPMB Online
             </NavigationMenuLink>

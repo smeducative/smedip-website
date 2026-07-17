@@ -89,3 +89,54 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Dark mode adjustments for hardcoded light surfaces */
+@layer components {
+  .dark .prose {
+    @apply text-slate-200;
+  }
+  .dark .prose a {
+    @apply text-sky-400;
+  }
+}
+
+/* KompetensiKeahlian: black background in dark mode, keep text & icons visible */
+.dark #kompetensi-keahlian [class*="text-[#17372f]"],
+.dark #kompetensi-keahlian [class*="text-[#24463b]"] {
+  color: #f1f5f2;
+}
+.dark #kompetensi-keahlian [class*="text-[#4f665c]"],
+.dark #kompetensi-keahlian [class*="text-[#466256]"],
+.dark #kompetensi-keahlian [class*="text-[#5f786d]"] {
+  color: #c2d3cb;
+}
+.dark #kompetensi-keahlian [class*="text-[#8b5a1f]"] {
+  color: #e7c79a;
+}
+/* card tiles -> dark surface */
+.dark #kompetensi-keahlian .rounded-\[32px\],
+.dark #kompetensi-keahlian .rounded-\[30px\],
+.dark #kompetensi-keahlian .rounded-\[28px\],
+.dark #kompetensi-keahlian .rounded-\[26px\] {
+  background-color: #14241f;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+/* light helper chips -> muted dark surface */
+.dark #kompetensi-keahlian .bg-white,
+.dark #kompetensi-keahlian .bg-white\/88,
+.dark #kompetensi-keahlian .bg-white\/80,
+.dark #kompetensi-keahlian .bg-white\/90,
+.dark #kompetensi-keahlian .bg-white\/50,
+.dark #kompetensi-keahlian .bg-\[#f8f5ef\],
+.dark #kompetensi-keahlian .bg-\[#f2ebe0\] {
+  background-color: #1c322b !important;
+}
+/* icon tiles keep a LIGHT background so the icon stays its original dark color on black */
+.dark #kompetensi-keahlian .bg-\[#eef4f1\] {
+  background-color: #eef4f1 !important;
+  color: #17372f !important;
+}
+.dark #kompetensi-keahlian .bg-\[#eef4f1\] .h-5,
+.dark #kompetensi-keahlian .bg-\[#eef4f1\] svg {
+  color: #17372f !important;
+}

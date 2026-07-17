@@ -29,7 +29,7 @@ export default function DigitalCard() {
         <div className="col-span-2 lg:col-span-1">
           <div className="mx-auto max-w-6xl flex items-center justify-center">
             <div className="mt-8 w-full px-5 xl:p-0">
-              <p className="mb-2 text-gray-700">
+              <p className="mb-2 text-gray-700 dark:text-slate-300">
                 Masukkan NIS Anda untuk mendapatkan kartu digital.
               </p>
               <input
@@ -37,7 +37,7 @@ export default function DigitalCard() {
                 value={nis}
                 onChange={handleInputChange}
                 placeholder="Masukkan NIS"
-                className="bg-gray-200 text-black border border-green-500 rounded w-full py-2 px-4"
+                className="bg-gray-200 dark:bg-slate-700 dark:text-white text-black border border-green-500 rounded w-full py-2 px-4"
               />
             </div>
           </div>
@@ -61,8 +61,8 @@ export default function DigitalCard() {
               </button>
             </div>
           ) : (
-            <div className="h-96 bg-white flex items-center justify-center">
-              <p className="text-center text-gray-700">
+            <div className="h-96 bg-white dark:bg-slate-800 flex items-center justify-center">
+              <p className="text-center text-gray-700 dark:text-slate-300">
                 Kartu Digital akan tampil disini jika NIS ditemukan
               </p>
             </div>
