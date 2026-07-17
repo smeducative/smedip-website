@@ -91,16 +91,27 @@ export const getStaticProps: GetStaticProps = async () => {
 			Date.parse(b.snippet.publishedAt) - Date.parse(a.snippet.publishedAt),
 	);
 
-	const { data: news } = await getNews();
-	const { data: publikasi } = await getPublikasi();
-	const { data: slides } = await getSlides();
+	const safe = async <T,>(fn: () => Promise<T>, fallback: T): Promise<T> => {
+		try {
+			return await fn();
+		} catch (err) {
+			console.error("getStaticProps fetch failed:", err);
+			return fallback;
+		}
+	};
+
+	const [newsRes, publikasiRes, slidesRes] = await Promise.all([
+		safe(() => getNews(), { data: [] }),
+		safe(() => getPublikasi(), { data: [] }),
+		safe(() => getSlides(), { data: [] }),
+	]);
 
 	return {
 		props: {
-			news,
-			publikasi,
+			news: newsRes.data,
+			publikasi: publikasiRes.data,
 			videos: sorted,
-			slides,
+			slides: slidesRes.data,
 		},
 		revalidate: 5,
 	};

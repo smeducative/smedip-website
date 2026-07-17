@@ -375,21 +375,27 @@ export default function KompetensiKeahlian() {
     <section
       ref={sectionRef}
       id='kompetensi-keahlian'
-      className='relative overflow-hidden bg-[#f4efe6] py-16 sm:py-20'>
+      className='relative overflow-hidden bg-[#f4efe6] py-16 dark:bg-black sm:py-20'>
       <div className='absolute inset-x-0 top-0 h-72 ' />
-      <div className='absolute right-0 top-28 h-64 w-64 rounded-full bg-[#db7710]/10 blur-3xl' data-kk-orb />
+      <div
+        className='absolute right-0 top-28 h-64 w-64 rounded-full bg-[#db7710]/10 blur-3xl'
+        data-kk-orb
+      />
 
       <div className='relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='max-w-full' data-kk-reveal>
           <div className='inline-flex items-center rounded-full border border-[#d8cbb7] bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#8b5a1f]'>
             Program Keahlian
           </div>
-          <h2 className='mt-4 max-w-full font-inter text-3xl font-bold leading-tight text-[#17372f] sm:text-4xl lg:text-5xl'>
-            Pilih jalur belajar yang tepat sesuai minat, bakat, dan peluang masa depan.
+          <h2 className='mt-4 max-w-2xl font-inter text-3xl font-bold leading-tight text-[#17372f] dark:text-white sm:text-4xl lg:text-5xl'>
+            Pilih jalur belajar yang tepat sesuai minat, bakat, dan peluang masa
+            depan.
           </h2>
-          <p className='mt-4 max-w-full text-sm leading-7 text-[#466256] sm:text-base'>
-            Kami menghadirkan program keahlian yang relevan dengan kebutuhan industri saat ini,
-            dirancang untuk mencetak generasi yang kompeten, kreatif, dan memiliki daya saing tinggi dengan karakter Modern, Agamis, dan Unggul.
+          <p className='mt-4 max-w-2xl text-sm leading-7 text-[#466256] dark:text-white/80 sm:text-base'>
+            Kami menghadirkan program keahlian yang relevan dengan kebutuhan
+            industri saat ini, dirancang untuk mencetak generasi yang kompeten,
+            kreatif, dan memiliki daya saing tinggi dengan karakter Modern,
+            Agamis, dan Unggul.
           </p>
         </div>
 
