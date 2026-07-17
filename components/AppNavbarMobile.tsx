@@ -34,9 +34,13 @@ export default function AppNavbarMobile({ open }: Props) {
             items={[
               { title: "Berita", href: "/berita" },
               { title: "Publikasi", href: "/publikasi" },
-              { title: "MikroTik Academy", href: "/mikrotik-academy" },
             ]}
           />
+        </li>
+        <li>
+          <Link legacyBehavior href={`/mikrotik-academy`}>
+            <a className='nav-link'>MikroTik Academy</a>
+          </Link>
         </li>
         <li>
           <Link legacyBehavior href={`/tracer-study`}>

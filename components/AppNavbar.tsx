@@ -74,11 +74,19 @@ export default function AppNavbar() {
               <ListItem href='/publikasi' title='Publikasi'>
                 Publikasi dari guru dan siswa.
               </ListItem>
-              <ListItem href='/mikrotik-academy' title='MikroTik Academy'>
-                Program resmi MikroTik Academy di SMK Diponegoro Karanganyar.
-              </ListItem>
             </ul>
           </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <Link href='/mikrotik-academy' legacyBehavior passHref>
+            <NavigationMenuLink
+              className={navigationMenuTriggerStyle({
+                className: "bg-transparent",
+              })}>
+              MikroTik Academy
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
