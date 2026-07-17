@@ -28,7 +28,7 @@ export default function NewsList({
             style={{ animationDelay: `${i * 80}ms` }}>
             <SpotlightCard
               spotlightColor='rgba(219, 119, 16, 0.2)'
-              className='border-[#a36220]/20 border-2 flex flex-row bg-white hover:bg-[#DB7710] rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 w-full'>
+              className='border-[#a36220]/20 border-2 flex flex-row bg-white dark:bg-slate-800 dark:text-slate-100 hover:bg-[#DB7710] dark:hover:bg-[#DB7710] rounded-xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-500 w-full'>
               <div className='relative w-28 sm:w-48 lg:w-60 flex-shrink-0 overflow-hidden'>
                 <img
                   src={news.cover}

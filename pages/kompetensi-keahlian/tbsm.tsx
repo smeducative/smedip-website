@@ -12,7 +12,7 @@ const Tbsm = () => {
       <Jumbotron title='Teknik dan Bisnis Sepeda Motor (TBSM)' center />
 
       <div className='mx-auto max-w-6xl flex items-center justify-center font-roboto'>
-        <div className='mt-8 w-full p-5 xl:w-2/3 bg-white rounded-md shadow'>
+        <div className='mt-8 w-full p-5 xl:w-2/3 bg-white dark:bg-slate-800 dark:text-slate-100 rounded-md shadow dark:shadow-black/40'>
           <h1 className='text-xl font-bold mt-5'>Visi</h1>
           <p>
             Terwujudnya Pendidikan yang Modern Sesuai Perkembangan Ilmu

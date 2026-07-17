@@ -1,8 +1,14 @@
+"use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SmedipKristal from "@/public/assets/images/smedip-kristal.png";
+import SmedipKristalWhite from "@/public/assets/images/smedip-kristal-white.png";
+import { useTheme } from "./ThemeProvider";
 
 const SmedipKristalPage = () => {
+	const { theme } = useTheme();
+	const kristalSrc = theme === "dark" ? SmedipKristalWhite : SmedipKristal;
 	return (
 		<div
 			style={{
@@ -20,7 +26,7 @@ const SmedipKristalPage = () => {
 				<div className="gap-6 grid grid-cols-12 px-5 xl:px-0">
 					<div className="flex justify-center items-center col-span-12 lg:col-span-4">
 						<Image
-							src={SmedipKristal}
+							src={kristalSrc}
 							alt={`sambutan kepsek src`}
 							className="hover:-rotate-3 hover:scale-110 duration-500"
 						/>
