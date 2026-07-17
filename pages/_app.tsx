@@ -3,6 +3,8 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useState } from "react";
 import { Inter, Lato, Roboto } from "next/font/google";
+import ScrollToTopButton from "../components/ScrollToTopButton";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,7 +30,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <main className={`${roboto.className}`}>
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+        <ThemeProvider>
+          <Component {...pageProps} />
+          <ScrollToTopButton />
+        </ThemeProvider>
       </QueryClientProvider>
     </main>
   );

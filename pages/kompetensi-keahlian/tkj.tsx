@@ -12,7 +12,7 @@ const TKJ = () => {
       <Jumbotron title='Teknik Komputer dan Jaringan (TKJ)' center />
 
       <div className='mx-auto max-w-6xl flex items-center justify-center font-roboto'>
-        <div className='mt-8 w-full p-5 xl:w-2/3 bg-white rounded-md shadow'>
+        <div className='mt-8 w-full p-5 xl:w-2/3 bg-white dark:bg-slate-800 dark:text-slate-100 rounded-md shadow dark:shadow-black/40'>
           <p className='mt-10'>
             Teknik Komputer &amp; Jaringan (<strong>TKJ</strong>) merupakan
             salah satu program keahlian&nbsp;<strong>SMK</strong>&nbsp;yang

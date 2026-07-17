@@ -13,7 +13,7 @@ const PublikasiList = ({ list }: { list: Publikasi[] }) => {
           <Link
             key={index}
             href={`/publikasi/${encodeURIComponent(article.slug)}`}
-            className='block border-slate-200 bg-white hover:bg-teal-400 hover:shadow-lg hover:shadow-slate-200/50 p-2 border rounded-lg transition-transform duration-300 ease-in-out hover:scale-105'>
+            className='block border-slate-200 bg-white dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 hover:bg-teal-400 dark:hover:bg-teal-500 hover:shadow-lg hover:shadow-slate-200/50 dark:hover:shadow-black/30 p-2 border rounded-lg transition-transform duration-300 ease-in-out hover:scale-105'>
             <div className='flex items-start'>
               <img
                 src={article.cover}
@@ -23,7 +23,7 @@ const PublikasiList = ({ list }: { list: Publikasi[] }) => {
                 height={128}
               />
               <div className='flex-1'>
-                <h3 className='mb-2 line-clamp-3 font-bold text-md text-slate-800'>
+                <h3 className='mb-2 line-clamp-3 font-bold text-md text-slate-800 dark:text-slate-100'>
                   {article.title}
                 </h3>
                 <p className='mb-1 text-slate-600 text-sm'>

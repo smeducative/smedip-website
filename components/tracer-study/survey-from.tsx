@@ -190,7 +190,7 @@ export default function SurveyForm({
     const newErrors: Record<number, string> = {};
     let hasErrors = false;
 
-    questionsData?.forEach((question) => {
+    questionsData?.forEach((question: QuestionType) => {
       if (question.key === selectedSection) {
         const answer = answers.find((a) => a.question_id === question.id);
         if (!answer || (answer.value === null && answer.options.length === 0)) {
@@ -276,8 +276,8 @@ export default function SurveyForm({
         {selectedSection && questionsData && (
           <form onSubmit={handleSubmit}>
             {questionsData
-              .filter((question) => question.key === selectedSection)
-              .map((question, index) => {
+              .filter((question: QuestionType) => question.key === selectedSection)
+              .map((question: QuestionType, index: number) => {
                 const questionId = `${selectedSection}-${index}`;
                 const errorMessage = errors[question.id];
                 return (

@@ -70,13 +70,13 @@ export default function NavDropdown({ title, items }: NavDropdownProps) {
             ? "absolute left-0 mt-2 -ml-1 origin-top-left rounded-md shadow-lg"
             : "hidden"
         }>
-        <div className='rounded-md bg-white shadow-xs'>
-          <ul className='w-48 py-1 text-sm leading-6 divide-y divide-gray-50'>
+        <div className='rounded-md bg-white dark:bg-slate-800 dark:text-slate-100 shadow-xs'>
+          <ul className='w-48 py-1 text-sm leading-6 divide-y divide-gray-50 dark:divide-slate-700'>
             {items &&
               items.map((item) => (
                 <li key={item.title}>
                   <Link legacyBehavior href={item.href}>
-                    <a className='block px-4 py-2 text-left text-gray-900 hover:bg-green-100 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out'>
+                    <a className='block px-4 py-2 text-left text-gray-900 dark:text-slate-100 hover:bg-green-100 dark:hover:bg-slate-700 focus:outline-none focus:bg-gray-50 dark:focus:bg-slate-700 transition duration-150 ease-in-out'>
                       {item.title}
                     </a>
                   </Link>

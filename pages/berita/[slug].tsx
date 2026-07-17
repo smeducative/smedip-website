@@ -74,7 +74,7 @@ export default function ReadNews({
         className='mt-5 xl:mt-8'>
         <div className='mx-auto mb-5 max-w-6xl'>
           <div className='gap-3 grid grid-cols-12'>
-            <div className='border-slate-100 col-span-12 xl:col-span-8 bg-white border'>
+            <div className='border-slate-100 col-span-12 xl:col-span-8 bg-white dark:bg-slate-800 border dark:border-slate-700'>
               <Image
                 src={news.cover}
                 alt={news.title}
@@ -88,7 +88,7 @@ export default function ReadNews({
                   text-sm lg:text-base
                   font-roboto
                   aspect-video
-                  prose max-w-none prose-green text-black 
+                  prose max-w-none prose-green text-black dark:text-slate-200 
                   leading-normal`}
                 dangerouslySetInnerHTML={{ __html: news.content }}
               />
@@ -113,7 +113,7 @@ export default function ReadNews({
               {news.categories?.map((cat) => (
                 <span
                   key={cat.slug}
-                  className='inline-block bg-[#4FBEBC] mr-2 mb-2 px-3 py-1 rounded-full font-semibold text-white text-xs'>
+                  className='inline-block bg-[#4FBEBC] dark:bg-[#0f6b69] mr-2 mb-2 px-3 py-1 rounded-full font-semibold text-white text-xs'>
                   {cat.title}
                 </span>
               ))}

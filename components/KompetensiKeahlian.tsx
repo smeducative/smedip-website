@@ -289,7 +289,7 @@ export default function KompetensiKeahlian() {
 
     const initAnimations = async () => {
       const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       ).matches;
 
       if (prefersReducedMotion || !sectionRef.current) {
@@ -318,26 +318,28 @@ export default function KompetensiKeahlian() {
               trigger: sectionRef.current,
               start: "top 72%",
             },
-          }
+          },
         );
 
-        gsap.utils.toArray<HTMLElement>("[data-program-card]").forEach((card) => {
-          gsap.fromTo(
-            card,
-            { autoAlpha: 0, y: 42, scale: 0.98 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.85,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: card,
-                start: "top 86%",
+        gsap.utils
+          .toArray<HTMLElement>("[data-program-card]")
+          .forEach((card) => {
+            gsap.fromTo(
+              card,
+              { autoAlpha: 0, y: 42, scale: 0.98 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.85,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 86%",
+                },
               },
-            }
-          );
-        });
+            );
+          });
 
         gsap.to("[data-kk-parallax]", {
           yPercent: -8,
@@ -391,8 +393,7 @@ export default function KompetensiKeahlian() {
           </p>
         </div>
 
-        <div className='mt-8 grid gap-4 lg:grid-cols-12'>          
-
+        <div className='mt-8 grid gap-4 lg:grid-cols-12'>
           {programs.map((program) => {
             const Icon = program.icon;
 
@@ -417,7 +418,7 @@ export default function KompetensiKeahlian() {
                             {program.title}
                           </h3>
                         </div>
-                        <div className='inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-[#eff5f1] text-[#17372f]'>
+                        <div className='inline-flex h-11 w-11 items-center justify-center rounded-2xl text-[#17372f]'>
                           <Icon className='h-5 w-5' />
                         </div>
                       </div>
@@ -432,14 +433,19 @@ export default function KompetensiKeahlian() {
                               className='object-cover'
                               sizes='(min-width: 1024px) 32vw, 100vw'
                             />
-                            <div className='absolute inset-0 bg-gradient-to-t from-[#17372f]/70 via-[#17372f]/0 to-transparent' data-kk-parallax />
+                            <div
+                              className='absolute inset-0 bg-gradient-to-t from-[#17372f]/70 via-[#17372f]/0 to-transparent'
+                              data-kk-parallax
+                            />
                             <div className='absolute bottom-4 left-4 inline-flex rounded-full bg-white/88 px-4 py-2 text-xs font-semibold text-[#17372f]'>
                               {program.label}
                             </div>
                           </div>
                           <div className='flex flex-col justify-between rounded-[28px] bg-[#f8f5ef] p-5'>
                             <div>
-                              <p className='text-sm leading-7 text-[#4f665c]'>{program.description}</p>
+                              <p className='text-sm leading-7 text-[#4f665c]'>
+                                {program.description}
+                              </p>
                             </div>
                             <div className='mt-4'>
                               <p className='text-xs font-semibold uppercase tracking-[0.22em] text-[#8b5a1f]'>
@@ -497,7 +503,9 @@ export default function KompetensiKeahlian() {
                       </div>
 
                       <div className='relative mt-6 flex items-center justify-between gap-4 border-[#ebe3d6] border-t pt-4'>
-                        <p className='text-xs font-medium leading-5 text-[#5f786d]'>{program.label}</p>
+                        <p className='text-xs font-medium leading-5 text-[#5f786d]'>
+                          {program.label}
+                        </p>
                         {program.href ? (
                           <Link
                             href={program.href}
@@ -506,7 +514,7 @@ export default function KompetensiKeahlian() {
                             <ArrowUpRight className='h-4 w-4' />
                           </Link>
                         ) : (
-                          <span className='inline-flex items-center rounded-full bg-[#f2ebe0] px-4 py-2 text-xs font-semibold text-[#17372f]'>
+                          <span className='inline-flex items-center rounded-full px-4 py-2 text-xs font-semibold text-[#17372f]'>
                             Jalur kreatif siswa
                           </span>
                         )}
@@ -522,33 +530,43 @@ export default function KompetensiKeahlian() {
         <div className='mt-16 grid gap-4 lg:grid-cols-12'>
           {/* <div className='lg:col-span-5' data-kk-reveal>
             <div className='h-full rounded-[32px] border border-[#dbd2c3] bg-white/80 p-6 shadow-[0_18px_50px_rgba(24,56,47,0.06)] sm:p-7'>
-              <div className='inline-flex items-center rounded-full bg-[#eef4f1] px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#17372f]'>
+              <div className='inline-flex items-center rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-[#17372f]'>
                 Keunggulan & Fasilitas
               </div>
               <h3 className='mt-4 font-inter text-2xl font-semibold leading-tight text-[#17372f] sm:text-[2rem]'>
-                Belajar di ruang yang mendukung skill, disiplin, dan rasa percaya diri.
+                Belajar di ruang yang mendukung skill, disiplin, dan rasa
+                percaya diri.
               </h3>
               <p className='mt-4 text-sm leading-7 text-[#4f665c] sm:text-base'>
-                Kami menyediakan fasilitas lengkap dan sistem pendidikan yang terintegrasi untuk memastikan setiap siswa siap menghadapi tantangan di dunia kerja maupun jenjang pendidikan selanjutnya.
+                Kami menyediakan fasilitas lengkap dan sistem pendidikan yang
+                terintegrasi untuk memastikan setiap siswa siap menghadapi
+                tantangan di dunia kerja maupun jenjang pendidikan selanjutnya.
               </p>
 
               <div className='mt-6 grid gap-3'>
                 <div className='rounded-[26px] bg-[#17372f] px-5 py-4 text-white'>
                   <p className='text-sm font-semibold'>Ekosistem Belajar MAU</p>
                   <p className='mt-2 text-sm leading-6 text-[#d7e2dc]'>
-                    Menyeimbangkan aspek ketakwaan, kecerdasan digital, dan keahlian praktis dalam satu lingkungan yang suportif.
+                    Menyeimbangkan aspek ketakwaan, kecerdasan digital, dan
+                    keahlian praktis dalam satu lingkungan yang suportif.
                   </p>
                 </div>
                 <div className='rounded-[26px] border border-[#dbd2c3] bg-white/50 px-5 py-4'>
-                  <p className='text-sm font-semibold text-[#17372f]'>Kultur Industri</p>
+                  <p className='text-sm font-semibold text-[#17372f]'>
+                    Kultur Industri
+                  </p>
                   <p className='mt-2 text-sm leading-6 text-[#4f665c]'>
-                    Pembiasaan ritme kerja profesional, disiplin tinggi, dan tanggung jawab yang dimulai dari ruang kelas.
+                    Pembiasaan ritme kerja profesional, disiplin tinggi, dan
+                    tanggung jawab yang dimulai dari ruang kelas.
                   </p>
                 </div>
                 <div className='rounded-[26px] border border-[#dbd2c3] bg-white/50 px-5 py-4'>
-                  <p className='text-sm font-semibold text-[#17372f]'>Akses Peluang Karir</p>
+                  <p className='text-sm font-semibold text-[#17372f]'>
+                    Akses Peluang Karir
+                  </p>
                   <p className='mt-2 text-sm leading-6 text-[#4f665c]'>
-                    Koneksi dengan mitra industri untuk program magang, guru tamu, serta penyaluran lulusan yang terarah.
+                    Koneksi dengan mitra industri untuk program magang, guru
+                    tamu, serta penyaluran lulusan yang terarah.
                   </p>
                 </div>
               </div>
@@ -563,13 +581,15 @@ export default function KompetensiKeahlian() {
                 <div
                   key={item.title}
                   className='rounded-[30px] border border-[#dbd2c3] bg-white/88 p-5 shadow-[0_18px_50px_rgba(24,56,47,0.05)] sm:p-6'>
-                  <div className='inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#eef4f1] text-[#17372f]'>
+                  <div className='inline-flex h-12 w-12 items-center justify-center rounded-2xl text-[#17372f]'>
                     <Icon className='h-5 w-5' />
                   </div>
                   <h4 className='mt-4 font-inter text-xl font-semibold text-[#17372f]'>
                     {item.title}
                   </h4>
-                  <p className='mt-3 text-sm leading-7 text-[#4f665c]'>{item.description}</p>
+                  <p className='mt-3 text-sm leading-7 text-[#4f665c]'>
+                    {item.description}
+                  </p>
                 </div>
               );
             })}
@@ -586,7 +606,10 @@ export default function KompetensiKeahlian() {
                     className='object-cover opacity-70'
                     sizes='(min-width: 1024px) 28vw, 100vw'
                   />
-                  <div className='absolute inset-0 bg-gradient-to-r from-[#18382f] via-[#18382f]/30 to-transparent' data-kk-parallax />
+                  <div
+                    className='absolute inset-0 bg-gradient-to-r from-[#18382f] via-[#18382f]/30 to-transparent'
+                    data-kk-parallax
+                  />
                 </div>
               </div>
 
@@ -596,10 +619,13 @@ export default function KompetensiKeahlian() {
                   Fasilitas sekolah
                 </div>
                 <h3 className='mt-4 font-inter text-2xl font-semibold leading-tight sm:text-[2rem]'>
-                  Ruang belajar yang siap dipakai untuk bertumbuh, bukan hanya dipamerkan.
+                  Ruang belajar yang siap dipakai untuk bertumbuh, bukan hanya
+                  dipamerkan.
                 </h3>
                 <p className='mt-4 text-sm leading-7 text-[#d7e2dc] sm:text-base'>
-                  Dari lab komputer hingga green house, fasilitas dipilih untuk mendukung jurusan, kegiatan siswa, dan ritme belajar sehari-hari.
+                  Dari lab komputer hingga green house, fasilitas dipilih untuk
+                  mendukung jurusan, kegiatan siswa, dan ritme belajar
+                  sehari-hari.
                 </p>
 
                 <div className='mt-6 flex flex-wrap gap-2'>
@@ -614,7 +640,6 @@ export default function KompetensiKeahlian() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
